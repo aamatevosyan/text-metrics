@@ -1,0 +1,71 @@
+[
+    {
+        "id": 1,
+        "name": {
+            "en": "Moscow Branch"
+        },
+        "branch_type_id": 1
+    },
+    {
+        "id": 2,
+        "name": {
+            "en": "Moscow Perm"
+        },
+        "branch_type_id": 1
+    },
+    {
+        "id": 3,
+        "name": {
+            "en": "Moscow Nijniy Novgorod"
+        },
+        "branch_type_id": 1
+    },
+    {
+        "id": 4,
+        "name": {
+            "en": "Computer Science"
+        },
+        "parent_id": 1,
+        "branch_type_id": 2
+    },
+    {
+        "id": 5,
+        "name": {
+            "en": "History"
+        },
+        "parent_id": 1,
+        "branch_type_id": 2
+    },
+    {
+        "id": 6,
+        "name": {
+            "en": "Culture"
+        },
+        "parent_id": 2,
+        "branch_type_id": 2
+    },
+    {
+        "id": 7,
+        "name": {
+            "en": "Computer Science and Mathematics"
+        },
+        "parent_id": 4,
+        "branch_type_id": 3
+    },
+    {
+        "id": 8,
+        "name": {
+            "en": "Software Engineering"
+        },
+        "parent_id": 4,
+        "branch_type_id": 3
+    },
+    {
+        "id": 9,
+        "name": {
+            "en": "Russian History"
+        },
+        "parent_id": 5,
+        "branch_type_id": 3
+    }
+]

@@ -100,6 +100,16 @@ abstract class ModelSeeder extends BaseSeeder
         return $modelClass::create($data);
     }
 
+    public function afterSeed(): void
+    {
+
+    }
+
+    public function beforeSeed(): void
+    {
+
+    }
+
     /**
      * Seed the application's database.
      *
@@ -107,9 +117,13 @@ abstract class ModelSeeder extends BaseSeeder
      */
     public function run(): void
     {
+        $this->beforeSeed();
+
         DB::transaction(
             fn() => collect($this->getData())
                 ->each(fn(array $data) => $this->updateOrCreate($data))
         );
+
+        $this->afterSeed();
     }
 }
