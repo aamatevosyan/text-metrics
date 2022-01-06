@@ -1,6 +1,5 @@
 <?php
 
-use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
 
 return [
@@ -49,19 +48,6 @@ return [
     'username' => 'email',
 
     'email' => 'email',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Home Path
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the path where users will get redirected during
-    | authentication or password reset when the operations are successful
-    | and the user is authenticated. You are free to change this value.
-    |
-    */
-
-    'home' => RouteServiceProvider::HOME,
 
     /*
     |--------------------------------------------------------------------------
@@ -132,9 +118,8 @@ return [
     */
 
     'features' => [
-        Features::registration(),
         Features::resetPasswords(),
-        // Features::emailVerification(),
+        Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([
@@ -142,4 +127,32 @@ return [
         ]),
     ],
 
+    // custom
+    'home' => 'front.dashboard',  // route name
+    'login' => 'front.login',  // route name,
+    'passwordReset' => 'front.password.reset',  // route name,
+    'guestMiddleware' => ['guest:web'],
+    'authMiddleware' => ['auth:web'],
+
+    'overrides' => [
+        'admin' => [
+            'guard' => 'admin',
+            'passwords' => 'admins',
+            'middleware' => ['web', 'admin'],
+            'features' => [
+                Features::resetPasswords(),
+                Features::emailVerification(),
+                Features::updateProfileInformation(),
+                Features::updatePasswords(),
+                Features::twoFactorAuthentication([
+                    'confirmPassword' => true,
+                ]),
+            ],
+            'home' => 'admin.dashboard',  // route name,
+            'login' => 'admin.login',  // route name,
+            'passwordReset' => 'admin.password.reset',  // route name,
+            'guestMiddleware' => ['guest:admin'],
+            'authMiddleware' => ['auth:admin'],
+        ],
+    ]
 ];

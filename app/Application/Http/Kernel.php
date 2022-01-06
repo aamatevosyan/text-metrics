@@ -48,6 +48,10 @@ class Kernel extends HttpKernel
         'front' => [
             \App\Http\Middleware\HandleFrontInertiaRequests::class,
         ],
+
+        'admin' => [
+            \App\Http\Middleware\HandleAdminInertiaRequests::class,
+        ],
     ];
 
     /**

@@ -20,7 +20,7 @@
                     Resend Verification Email
                 </jet-button>
 
-                <Link :href="route('logout')" method="post" as="button" class="underline text-sm text-gray-600 hover:text-gray-900">Log Out</Link>
+                <Link :href="route('front.logout')" method="post" as="button" class="underline text-sm text-gray-600 hover:text-gray-900">Log Out</Link>
             </div>
         </form>
     </jet-authentication-card>
@@ -54,7 +54,7 @@
 
         methods: {
             submit() {
-                this.form.post(this.route('verification.send'))
+                this.form.post(this.route('front.verification.send'))
             },
         },
 

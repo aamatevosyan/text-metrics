@@ -15,7 +15,7 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        JetStream::ignoreRoutes();
     }
 
     /**
@@ -25,6 +25,7 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerOverrideConfigPanels();
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
@@ -45,5 +46,20 @@ class JetstreamServiceProvider extends ServiceProvider
             'update',
             'delete',
         ]);
+    }
+
+    private function registerOverrideConfigPanels(): void
+    {
+        if (preg_match("#^(admin)\.#", request()->getHost(), $matches)) {
+            $panel = $matches[1];
+            config()->set('jetstream.middleware', config("fortify.overrides.{$panel}.middleware"));
+            config()->set('jetstream.features', config("fortify.overrides.{$panel}.features"));
+            config()->set('jetstream.profile_photo_disk', config("fortify.overrides.{$panel}.profile_photo_disk"));
+        }
+    }
+
+    public static function registerRoutes($module = null): void
+    {
+        require(base_path('routes/jetstream.php'));
     }
 }

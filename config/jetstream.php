@@ -28,7 +28,7 @@ return [
      |
      */
 
-    'middleware' => ['web'],
+    'middleware' => ['web', 'front'],
 
     /*
     |--------------------------------------------------------------------------
@@ -61,5 +61,19 @@ return [
     */
 
     'profile_photo_disk' => 'public',
+
+    'overrides' => [
+        'admin' => [
+            'middleware' => ['web', 'admin'],
+            'features' => [
+                // Features::termsAndPrivacyPolicy(),
+                // Features::profilePhotos(),
+                // Features::api(),
+                // Features::teams(['invitations' => true]),
+                Features::accountDeletion(),
+            ],
+            'profile_photo_disk' => 'public',
+        ],
+    ]
 
 ];

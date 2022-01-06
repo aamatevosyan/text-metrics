@@ -223,7 +223,7 @@
 
         methods: {
             createApiToken() {
-                this.createApiTokenForm.post(route('api-tokens.store'), {
+                this.createApiTokenForm.post(route('front.api-tokens.store'), {
                     preserveScroll: true,
                     onSuccess: () => {
                         this.displayingToken = true
@@ -239,7 +239,7 @@
             },
 
             updateApiToken() {
-                this.updateApiTokenForm.put(route('api-tokens.update', this.managingPermissionsFor), {
+                this.updateApiTokenForm.put(route('front.api-tokens.update', this.managingPermissionsFor), {
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: () => (this.managingPermissionsFor = null),
@@ -251,7 +251,7 @@
             },
 
             deleteApiToken() {
-                this.deleteApiTokenForm.delete(route('api-tokens.destroy', this.apiTokenBeingDeleted), {
+                this.deleteApiTokenForm.delete(route('front.api-tokens.destroy', this.apiTokenBeingDeleted), {
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: () => (this.apiTokenBeingDeleted = null),

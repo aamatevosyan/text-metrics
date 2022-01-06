@@ -177,6 +177,11 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+        /*
+         * Domain Model Service Providers...
+         */
+        Domain\Admin\Providers\AdminServiceProvider::class,
+
     ],
 
     /*

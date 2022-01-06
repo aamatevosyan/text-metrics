@@ -95,7 +95,7 @@
             },
 
             submit() {
-                this.form.post(this.route('two-factor.login'))
+                this.form.post(this.route('front.two-factor.login'))
             }
         }
     })

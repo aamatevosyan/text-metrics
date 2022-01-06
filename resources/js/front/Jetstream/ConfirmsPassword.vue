@@ -78,7 +78,7 @@
 
         methods: {
             startConfirmingPassword() {
-                axios.get(route('password.confirmation')).then(response => {
+                axios.get(route('front.password.confirmation')).then(response => {
                     if (response.data.confirmed) {
                         this.$emit('confirmed');
                     } else {
@@ -92,7 +92,7 @@
             confirmPassword() {
                 this.form.processing = true;
 
-                axios.post(route('password.confirm'), {
+                axios.post(route('front.password.confirm'), {
                     password: this.form.password,
                 }).then(() => {
                     this.form.processing = false;

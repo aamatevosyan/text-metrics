@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-themes = process.env.npm_config_theme ? (process.env.npm_config_theme).split(',') : ['front'];
+themes = process.env.npm_config_theme ? (process.env.npm_config_theme).split(',') : ['front', 'admin'];
 mix.webpackConfig(require('./webpack/webpack.config'))
 
 themes.map((theme) => {
