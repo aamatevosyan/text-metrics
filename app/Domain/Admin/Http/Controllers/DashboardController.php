@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        ray('here');
         return Inertia::render('Dashboard');
     }
 }
