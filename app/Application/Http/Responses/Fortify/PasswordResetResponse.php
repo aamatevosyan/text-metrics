@@ -8,23 +8,23 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PasswordResetResponse implements PasswordResetResponseContract
 {
-  /**
-   * The response status language key.
-   *
-   * @var string
-   */
-  protected $status;
+    /**
+     * The response status language key.
+     *
+     * @var string
+     */
+    protected $status;
 
-  /**
-   * Create a new response instance.
-   *
-   * @param string $status
-   * @return void
-   */
-  public function __construct(string $status)
-  {
-    $this->status = $status;
-  }
+    /**
+     * Create a new response instance.
+     *
+     * @param  string  $status
+     * @return void
+     */
+    public function __construct(string $status)
+    {
+        $this->status = $status;
+    }
 
     /**
      * Create an HTTP response that represents the object.
@@ -33,10 +33,10 @@ class PasswordResetResponse implements PasswordResetResponseContract
      * Request  $request
      * @return JsonResponse|Response
      */
-  public function toResponse($request): JsonResponse|Response
-  {
-    return $request->wantsJson()
-      ? new JsonResponse(['message' => trans($this->status)], 200)
-      : redirect()->route(config('fortify.login'))->with('status', trans($this->status));
-  }
+    public function toResponse($request): JsonResponse|Response
+    {
+        return $request->wantsJson()
+            ? new JsonResponse(['message' => trans($this->status)], 200)
+            : redirect()->route(config('fortify.login'))->with('status', trans($this->status));
+    }
 }

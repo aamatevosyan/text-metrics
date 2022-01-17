@@ -14,8 +14,8 @@ namespace App\Models{
 /**
  * App\Models\Admin
  *
- * @mixin IdeHelperAdmin
  * @property int $id
+ * @property int|null $branch_id
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -26,17 +26,26 @@ namespace App\Models{
  * @property string|null $two_factor_recovery_codes
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
+ * @property-read int|null $abilities_count
+ * @property-read \App\Models\Branch|null $branch
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
+ * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Admin whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Admin whereIs($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|Admin whereIsAll($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|Admin whereIsNot($role)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereProfilePhotoUrl($value)
@@ -45,14 +54,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereUpdatedAt($value)
  */
-	class IdeHelperAdmin extends \Eloquent {}
+	class IdeHelperAdmin {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Branch
  *
- * @mixin IdeHelperBranch
  * @property int $id
  * @property int|null $parent_id
  * @property int $_lft
@@ -119,14 +127,13 @@ namespace App\Models{
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch withDepth(string $as = 'depth')
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch withoutRoot()
  */
-	class IdeHelperBranch extends \Eloquent {}
+	class IdeHelperBranch {}
 }
 
 namespace App\Models{
 /**
  * App\Models\BranchType
  *
- * @mixin IdeHelperBranchType
  * @property int $id
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -142,15 +149,45 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereUpdatedAt($value)
  */
-	class IdeHelperBranchType extends \Eloquent {}
+	class IdeHelperBranchType {}
 }
 
 namespace App\Models{
 /**
- * App\Models\User
+ * App\Models\CourseWork
  *
- * @mixin IdeHelperUser
  * @property int $id
+ * @property string $uuid
+ * @property int $user_id
+ * @property int $supervisor_id
+ * @property int $status
+ * @property array $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read array $translations
+ * @property-read \App\Models\User|null $student
+ * @property-read \App\Models\User $supervisor
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereSupervisorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUuid($value)
+ */
+	class IdeHelperCourseWork {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Supervisor
+ *
+ * @property int $id
+ * @property int $branch_id
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -161,18 +198,74 @@ namespace App\Models{
  * @property string|null $two_factor_recovery_codes
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
+ * @property-read int|null $abilities_count
+ * @property-read \App\Models\Branch|null $branch
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
+ * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereBranchId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereIs($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereIsAll($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereIsNot($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereProfilePhotoUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereTwoFactorRecoveryCodes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereTwoFactorSecret($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereUpdatedAt($value)
+ */
+	class IdeHelperSupervisor {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\User
+ *
+ * @property int $id
+ * @property int $branch_id
+ * @property string $name
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property string $profile_photo_url
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
+ * @property-read int|null $abilities_count
+ * @property-read \App\Models\Branch|null $branch
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
+ * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIs($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsAll($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsNot($role)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereProfilePhotoUrl($value)
@@ -181,6 +274,76 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
-	class IdeHelperUser extends \Eloquent {}
+	class IdeHelperUser {}
+}
+
+namespace Silber\Bouncer\Database{
+/**
+ * Silber\Bouncer\Database\Ability
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $title
+ * @property int|null $entity_id
+ * @property string|null $entity_type
+ * @property bool $only_owned
+ * @property array $options
+ * @property int|null $scope
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $identifier
+ * @property-read string $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
+ * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability byName($name, $strict = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability forModel($model, $strict = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability simpleAbility()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereEntityType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereOnlyOwned($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereOptions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereScope($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ability whereUpdatedAt($value)
+ */
+	class IdeHelperAbility {}
+}
+
+namespace Silber\Bouncer\Database{
+/**
+ * Silber\Bouncer\Database\Role
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $title
+ * @property int|null $level
+ * @property int|null $scope
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
+ * @property-read int|null $abilities_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereAssignedTo($model, ?array $keys = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereScope($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
+ */
+	class IdeHelperRole {}
 }
 

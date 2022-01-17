@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Bouncer;
 use Illuminate\Support\ServiceProvider;
 use Spatie\LaravelRay\RayServiceProvider;
 
@@ -28,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Bouncer::cache();
     }
 }

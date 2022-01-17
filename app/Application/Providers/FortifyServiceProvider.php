@@ -13,12 +13,17 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Contracts\PasswordResetResponse as PasswordResetResponseContract;
+use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
 {
+    public static function registerRoutes($module = null): void
+    {
+        require(base_path('routes/fortify.php'));
+    }
+
     /**
      * Register any application services.
      *
@@ -72,7 +77,7 @@ class FortifyServiceProvider extends ServiceProvider
 
     private function registerFortifyOverrideConfigPanels(): void
     {
-        if (preg_match("#^(admin)\.#", request()->getHost(), $matches)) {
+        if (preg_match("#^(admin|supervisor)\.#", request()->getHost(), $matches)) {
             $panel = $matches[1];
             config()->set('fortify.middleware', config("fortify.overrides.{$panel}.middleware"));
             config()->set('fortify.guard', config("fortify.overrides.{$panel}.guard"));
@@ -83,10 +88,5 @@ class FortifyServiceProvider extends ServiceProvider
             config()->set('fortify.passwordReset', config("fortify.overrides.{$panel}.passwordReset"));
             config()->set('auth.defaults.guard', config('fortify.guard'));
         }
-    }
-
-    public static function registerRoutes($module = null): void
-    {
-        require(base_path('routes/fortify.php'));
     }
 }

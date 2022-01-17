@@ -17,6 +17,7 @@
         "laravel/jetstream": "^2.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "silber/bouncer": "v1.0.0-rc.11",
         "spatie/laravel-translatable": "^5.1",
         "tightenco/ziggy": "^1.0"
     },

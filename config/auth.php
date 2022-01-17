@@ -46,6 +46,11 @@ return [
             'provider' => 'admins',
         ],
 
+        'supervisor' => [
+            'driver' => 'session',
+            'provider' => 'supervisors',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -80,6 +85,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+
+        'supervisors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Supervisor::class,
+        ],
     ],
 
     /*
@@ -104,8 +114,16 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'supervisors' => [
+            'provider' => 'supervisors',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

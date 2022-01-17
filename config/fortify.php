@@ -154,5 +154,25 @@ return [
             'guestMiddleware' => ['guest:admin'],
             'authMiddleware' => ['auth:admin'],
         ],
+
+        'supervisor' => [
+            'guard' => 'supervisor',
+            'passwords' => 'supervisors',
+            'middleware' => ['web', 'supervisor'],
+            'features' => [
+                Features::resetPasswords(),
+                Features::emailVerification(),
+                Features::updateProfileInformation(),
+                Features::updatePasswords(),
+                Features::twoFactorAuthentication([
+                    'confirmPassword' => true,
+                ]),
+            ],
+            'home' => 'supervisor.dashboard',  // route name,
+            'login' => 'supervisor.login',  // route name,
+            'passwordReset' => 'supervisor.password.reset',  // route name,
+            'guestMiddleware' => ['guest:supervisor'],
+            'authMiddleware' => ['auth:supervisor'],
+        ],
     ]
 ];

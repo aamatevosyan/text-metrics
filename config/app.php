@@ -181,6 +181,7 @@ return [
          * Domain Model Service Providers...
          */
         Domain\Admin\Providers\AdminServiceProvider::class,
+        Domain\Supervisor\Providers\SupervisorServiceProvider::class,
 
     ],
 

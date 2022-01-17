@@ -8,29 +8,29 @@
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-                <api-token-manager :tokens="tokens"
-                                   :available-permissions="availablePermissions"
-                                   :default-permissions="defaultPermissions" />
+                <api-token-manager :available-permissions="availablePermissions"
+                                   :default-permissions="defaultPermissions"
+                                   :tokens="tokens"/>
             </div>
         </div>
     </app-layout>
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import ApiTokenManager from '@admin/Pages/API/Partials/ApiTokenManager.vue'
-    import AppLayout from '@admin/Layouts/AppLayout.vue'
+import {defineComponent} from 'vue'
+import ApiTokenManager from '@admin/Pages/API/Partials/ApiTokenManager.vue'
+import AppLayout from '@admin/Layouts/AppLayout.vue'
 
-    export default defineComponent({
-        props: [
-            'tokens',
-            'availablePermissions',
-            'defaultPermissions',
-        ],
+export default defineComponent({
+    props: [
+        'tokens',
+        'availablePermissions',
+        'defaultPermissions',
+    ],
 
-        components: {
-            ApiTokenManager,
-            AppLayout,
-        },
-    })
+    components: {
+        ApiTokenManager,
+        AppLayout,
+    },
+})
 </script>

@@ -8,6 +8,11 @@ use Laravel\Jetstream\Jetstream;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
+    public static function registerRoutes($module = null): void
+    {
+        require(base_path('routes/jetstream.php'));
+    }
+
     /**
      * Register any application services.
      *
@@ -31,6 +36,16 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::deleteUsersUsing(DeleteUser::class);
     }
 
+    private function registerOverrideConfigPanels(): void
+    {
+        if (preg_match("#^(admin|supervisor)\.#", request()->getHost(), $matches)) {
+            $panel = $matches[1];
+            config()->set('jetstream.middleware', config("fortify.overrides.{$panel}.middleware"));
+            config()->set('jetstream.features', config("fortify.overrides.{$panel}.features"));
+            config()->set('jetstream.profile_photo_disk', config("fortify.overrides.{$panel}.profile_photo_disk"));
+        }
+    }
+
     /**
      * Configure the permissions that are available within the application.
      *
@@ -46,20 +61,5 @@ class JetstreamServiceProvider extends ServiceProvider
             'update',
             'delete',
         ]);
-    }
-
-    private function registerOverrideConfigPanels(): void
-    {
-        if (preg_match("#^(admin)\.#", request()->getHost(), $matches)) {
-            $panel = $matches[1];
-            config()->set('jetstream.middleware', config("fortify.overrides.{$panel}.middleware"));
-            config()->set('jetstream.features', config("fortify.overrides.{$panel}.features"));
-            config()->set('jetstream.profile_photo_disk', config("fortify.overrides.{$panel}.profile_photo_disk"));
-        }
-    }
-
-    public static function registerRoutes($module = null): void
-    {
-        require(base_path('routes/jetstream.php'));
     }
 }

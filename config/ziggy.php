@@ -5,5 +5,6 @@ return [
     'groups' => [
         'admin' => ['admin.*'],
         'front' => ['front.*'],
+        'supervisor' => ['supervisor.*'],
     ],
 ];

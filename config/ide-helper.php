@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'filename'  => '_ide_helper.php',
+    'filename' => '_ide_helper.php',
 
     /*
     |--------------------------------------------------------------------------
@@ -111,8 +111,8 @@ return [
     'include_helpers' => true,
 
     'helper_files' => [
-        base_path() . '/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
-        base_path() . '/app/Application/Helpers/helper.php',
+        base_path().'/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+        base_path().'/app/Application/Helpers/helper.php',
     ],
 
     /*
@@ -130,6 +130,7 @@ return [
 
     'model_locations' => [
         'app/Application/Models',
+        'vendor/silber/bouncer/src/Database',
     ],
 
     /*

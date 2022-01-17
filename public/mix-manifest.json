@@ -4,5 +4,10 @@
     "/js/front/app.js": "/js/front/app.js",
     "/css/front/app.css": "/css/front/app.css",
     "/js/admin/app.js": "/js/admin/app.js",
-    "/css/admin/app.css": "/css/admin/app.css"
+    "/css/admin/app.css": "/css/admin/app.css",
+    "/js/supervisor/app.js": "/js/supervisor/app.js",
+    "/css/supervisor/app.css": "/css/supervisor/app.css",
+    "/assets/front/.gitkeep": "/assets/front/.gitkeep",
+    "/assets/admin/.gitkeep": "/assets/admin/.gitkeep",
+    "/assets/supervisor/.gitkeep": "/assets/supervisor/.gitkeep"
 }

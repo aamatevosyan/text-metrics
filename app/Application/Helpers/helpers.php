@@ -40,7 +40,7 @@ if (!function_exists('mainDomain')) {
         return Cache::driver('array')
             ->get(
                 'main-domain',
-                fn() => preg_replace('#^(admin)\.#', '', request()->getHost())
+                fn() => preg_replace('#^(admin|supervisor)\.#', '', request()->getHost())
             );
     }
 }
@@ -55,6 +55,7 @@ if (!function_exists('domainFor')) {
 
         return match ($domain) {
             'admin' => "admin.{$mainDomain}",
+            'supervisor' => "supervisor.{$mainDomain}",
             default => $mainDomain,
         };
     }

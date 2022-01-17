@@ -1,3 +1,5 @@
-create database text_metrics_testing;
+create
+database text_metrics_testing;
 
-GRANT ALL PRIVILEGES ON DATABASE text_metrics_testing TO sail;
+GRANT ALL PRIVILEGES ON DATABASE
+text_metrics_testing TO sail;

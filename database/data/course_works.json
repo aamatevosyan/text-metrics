@@ -1,0 +1,10 @@
+[
+    {
+        "user_id": 1,
+        "supervisor_id": 1,
+        "name": {
+            "en": "Some coursework"
+        },
+        "status": 1
+    }
+]

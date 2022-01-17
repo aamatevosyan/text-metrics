@@ -1,14 +1,15 @@
 <template>
-    <Head title="Two-factor Confirmation" />
+    <Head title="Two-factor Confirmation"/>
 
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <jet-authentication-card-logo/>
         </template>
 
         <div class="mb-4 text-sm text-gray-600">
             <template v-if="! recovery">
-                Please confirm access to your account by entering the authentication code provided by your authenticator application.
+                Please confirm access to your account by entering the authentication code provided by your authenticator
+                application.
             </template>
 
             <template v-else>
@@ -16,21 +17,24 @@
             </template>
         </div>
 
-        <jet-validation-errors class="mb-4" />
+        <jet-validation-errors class="mb-4"/>
 
         <form @submit.prevent="submit">
             <div v-if="! recovery">
-                <jet-label for="code" value="Code" />
-                <jet-input ref="code" id="code" type="text" inputmode="numeric" class="mt-1 block w-full" v-model="form.code" autofocus autocomplete="one-time-code" />
+                <jet-label for="code" value="Code"/>
+                <jet-input id="code" ref="code" v-model="form.code" autocomplete="one-time-code" autofocus
+                           class="mt-1 block w-full" inputmode="numeric" type="text"/>
             </div>
 
             <div v-else>
-                <jet-label for="recovery_code" value="Recovery Code" />
-                <jet-input ref="recovery_code" id="recovery_code" type="text" class="mt-1 block w-full" v-model="form.recovery_code" autocomplete="one-time-code" />
+                <jet-label for="recovery_code" value="Recovery Code"/>
+                <jet-input id="recovery_code" ref="recovery_code" v-model="form.recovery_code" autocomplete="one-time-code"
+                           class="mt-1 block w-full" type="text"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer" @click.prevent="toggleRecovery">
+                <button class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer" type="button"
+                        @click.prevent="toggleRecovery">
                     <template v-if="! recovery">
                         Use a recovery code
                     </template>
@@ -40,7 +44,7 @@
                     </template>
                 </button>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="ml-4">
                     Log in
                 </jet-button>
             </div>
@@ -49,54 +53,54 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue';
-    import { Head } from '@inertiajs/inertia-vue3';
-    import JetAuthenticationCard from '@admin/Jetstream/AuthenticationCard.vue'
-    import JetAuthenticationCardLogo from '@admin/Jetstream/AuthenticationCardLogo.vue'
-    import JetButton from '@admin/Jetstream/Button.vue'
-    import JetInput from '@admin/Jetstream/Input.vue'
-    import JetLabel from '@admin/Jetstream/Label.vue'
-    import JetValidationErrors from '@admin/Jetstream/ValidationErrors.vue'
+import {defineComponent} from 'vue';
+import {Head} from '@inertiajs/inertia-vue3';
+import JetAuthenticationCard from '@admin/Jetstream/AuthenticationCard.vue'
+import JetAuthenticationCardLogo from '@admin/Jetstream/AuthenticationCardLogo.vue'
+import JetButton from '@admin/Jetstream/Button.vue'
+import JetInput from '@admin/Jetstream/Input.vue'
+import JetLabel from '@admin/Jetstream/Label.vue'
+import JetValidationErrors from '@admin/Jetstream/ValidationErrors.vue'
 
-    export default defineComponent({
-        components: {
-            Head,
-            JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetLabel,
-            JetValidationErrors,
-        },
+export default defineComponent({
+    components: {
+        Head,
+        JetAuthenticationCard,
+        JetAuthenticationCardLogo,
+        JetButton,
+        JetInput,
+        JetLabel,
+        JetValidationErrors,
+    },
 
-        data() {
-            return {
-                recovery: false,
-                form: this.$inertia.form({
-                    code: '',
-                    recovery_code: '',
-                })
-            }
-        },
-
-        methods: {
-            toggleRecovery() {
-                this.recovery ^= true
-
-                this.$nextTick(() => {
-                    if (this.recovery) {
-                        this.$refs.recovery_code.focus()
-                        this.form.code = '';
-                    } else {
-                        this.$refs.code.focus()
-                        this.form.recovery_code = ''
-                    }
-                })
-            },
-
-            submit() {
-                this.form.post(this.route('admin.two-factor.login'))
-            }
+    data() {
+        return {
+            recovery: false,
+            form: this.$inertia.form({
+                code: '',
+                recovery_code: '',
+            })
         }
-    })
+    },
+
+    methods: {
+        toggleRecovery() {
+            this.recovery ^= true
+
+            this.$nextTick(() => {
+                if (this.recovery) {
+                    this.$refs.recovery_code.focus()
+                    this.form.code = '';
+                } else {
+                    this.$refs.code.focus()
+                    this.form.recovery_code = ''
+                }
+            })
+        },
+
+        submit() {
+            this.form.post(this.route('admin.two-factor.login'))
+        }
+    }
+})
 </script>

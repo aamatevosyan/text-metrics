@@ -1,9 +1,26 @@
 [
     {
-        "name": "Tom Prof",
-        "email": "tprof@hse.ru",
+        "id": 1,
+        "name": "Some SuperAdmin",
+        "email": "superadmin@hse.ru",
         "email_verified_at": "2022-01-05T12:52:15.000000Z",
-        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Tom+ProfS&color=7F9CF5&background=EBF4FF",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+SuperAdmin&color=7F9CF5&background=EBF4FF",
+        "password": "secret"
+    },
+    {
+        "id": 2,
+        "name": "Some Admin",
+        "email": "admin@hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+Admin&color=7F9CF5&background=EBF4FF",
+        "password": "secret"
+    },
+    {
+        "id": 3,
+        "name": "Some Manager",
+        "email": "manager@hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+Manager&color=7F9CF5&background=EBF4FF",
         "password": "secret"
     }
 ]

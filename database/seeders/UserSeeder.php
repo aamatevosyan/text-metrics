@@ -7,7 +7,6 @@ use Hash;
 
 class UserSeeder extends ModelSeeder
 {
-
     public function getModelClass(): string
     {
         return User::class;

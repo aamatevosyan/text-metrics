@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\Admin;
+use App\Models\Supervisor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +18,7 @@ class AuthenticateLoginAttempt
 
             $user = (match ($guardName) {
                 'admin' => Admin::query(),
+                'supervisor' => Supervisor::query(),
                 default => User::query(),
             });
             $user = $user->where('email', $request->email)->first();
