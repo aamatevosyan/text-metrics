@@ -16,9 +16,9 @@ class CreateCourseWorksTable extends Migration
         Schema::create('course_works', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('user_id')
+            $table->foreignId('student_id')
                 ->index()
-                ->constrained('users');
+                ->constrained();
             $table->foreignId('supervisor_id')
                 ->index()
                 ->constrained();
