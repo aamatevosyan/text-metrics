@@ -1,13 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/front/app.js": "/js/front/app.js",
-    "/css/front/app.css": "/css/front/app.css",
-    "/js/admin/app.js": "/js/admin/app.js",
-    "/css/admin/app.css": "/css/admin/app.css",
-    "/js/supervisor/app.js": "/js/supervisor/app.js",
-    "/css/supervisor/app.css": "/css/supervisor/app.css",
-    "/assets/front/.gitkeep": "/assets/front/.gitkeep",
-    "/assets/admin/.gitkeep": "/assets/admin/.gitkeep",
-    "/assets/supervisor/.gitkeep": "/assets/supervisor/.gitkeep"
+    "/modules/admin/js/app.js": "/modules/admin/js/app.js?id=d470de17e063bcc81a84",
+    "/modules/supervisor/js/app.js": "/modules/supervisor/js/app.js?id=3bc3fe5a4aa2943ecdf3",
+    "/modules/front/js/app.js": "/modules/front/js/app.js?id=dc09763d9d36852da08d",
+    "/modules/front/css/app.css": "/modules/front/css/app.css?id=64759a6590e42d59e75f",
+    "/modules/supervisor/css/app.css": "/modules/supervisor/css/app.css?id=64759a6590e42d59e75f",
+    "/modules/admin/css/app.css": "/modules/admin/css/app.css?id=64759a6590e42d59e75f"
 }

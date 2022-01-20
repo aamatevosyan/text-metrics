@@ -13,7 +13,7 @@ class HandleSupervisorInertiaRequests extends Middleware
      * @see https://inertiajs.com/server-side-setup#root-template
      * @var string
      */
-    protected $rootView = 'supervisor.app';
+    protected $rootView = 'supervisor';
 
     /**
      * Determines the current asset version.
