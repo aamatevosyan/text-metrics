@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\CourseWorkType;
+use App\Enums\DocumentTypeStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,8 +24,11 @@ class CreateCourseWorksTable extends Migration
             $table->foreignId('supervisor_id')
                 ->index()
                 ->constrained();
+            $table->unsignedTinyInteger('type')
+                ->default(CourseWorkType::CourseWork->value)
+                ->index();
             $table->unsignedTinyInteger('status')
-                ->default(0)
+                ->default(DocumentTypeStatus::Active->value)
                 ->index();
             $table->jsonb('name');
             $table->timestamps();

@@ -1,6 +1,6 @@
 export default [
     {
-        title: 'Dashboard',
-        name: 'front.dashboard',
+        title: 'Courseworks',
+        name: 'front.course-works',
     }
 ];

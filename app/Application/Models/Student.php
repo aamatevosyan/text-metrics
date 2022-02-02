@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\HasBaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -69,5 +70,10 @@ class Student extends Authenticatable
     public function branch(): HasOne
     {
         return $this->hasOne(Branch::class);
+    }
+
+    public function courseWorks(): HasMany
+    {
+        return $this->hasMany(CourseWork::class);
     }
 }

@@ -1,9 +1,80 @@
 [
     {
+        "id": 1,
         "student_id": 1,
         "supervisor_id": 1,
         "name": {
             "en": "Some coursework"
+        },
+        "status": 1
+    },
+    {
+        "id": 2,
+        "student_id": 2,
+        "supervisor_id": 2,
+        "name": {
+            "en": "Program for Clustering Russian Universities on their Educational and Research Indicators on the Basis of Agglomerative Hierarchical Method",
+            "ru": "Программа для кластеризации российских вузов по показателям их научно-образовательной деятельности на основе иерархического агломеративного метода"
+        },
+        "status": 1
+    },
+    {
+        "id": 3,
+        "student_id": 2,
+        "supervisor_id": 3,
+        "name": {
+            "en": "The Outliner Developed on the Base of Python Wrapper PyQt for Qt Framework",
+            "ru": "Менеджер заметок, разработанный c использованием \"обёртки\" PyQt для Qt фреймворка на языке Python"
+        },
+        "status": 1
+    },
+    {
+        "id": 4,
+        "student_id": 2,
+        "supervisor_id": 4,
+        "name": {
+            "en": "Web Application for Monitoring the Quality of Texts of Students' Term and Graduate Qualification Works",
+            "ru": "Веб-приложение для мониторинга качества текстов курсовых и выпускных квалификационных работ студентов"
+        },
+        "status": 1
+    },
+    {
+        "id": 5,
+        "student_id": 3,
+        "supervisor_id": 1,
+        "name": {
+            "en": "STATE PROVISION OF TRAINING FOR UNEMPLOYED CITIZENS OF THE RUSSIAN FEDERATION AND ITS STATUS DURING THE CORONAVIRUS PANDEMIC",
+            "ru": "ГОСУДАРСТВЕННОЕ ОБЕСПЕЧЕНИЕ ОБУЧЕНИЯ БЕЗРАБОТНЫХ ГРАЖДАН РОССИЙСКОЙ ФЕДЕРАЦИИ И ЕГО СОСТОЯНИЕ В ПЕРИОД ПАНДЕМИИ КОРОНАВИРУСА"
+        },
+        "status": 1
+    },
+    {
+        "id": 6,
+        "student_id": 4,
+        "supervisor_id": 1,
+        "name": {
+            "en": "NEURAL NETWORK PROBABILISTIC CALCULATOR OF FAILURES OF ELECTRIC CENTRIFUGAL PUMP UNITS",
+            "ru": "НЕЙРОСЕТЕВОЙ ВЕРОЯТНОСТНЫЙ КАЛЬКУЛЯТОР ОТКАЗОВ УСТАНОВОК ЭЛЕКТРОЦЕНТРОБЕЖНЫХ НАСОСОВ"
+        },
+        "status": 1
+    },
+    {
+        "id": 7,
+        "student_id": 5,
+        "supervisor_id": 1,
+        "name": {
+            "en": "THE \"ONLINE WEB DESIGN SCHOOL\" STARTUP PROJECT",
+            "ru": "ПРОЕКТ СТАРТАПА “ОНЛАЙН ШКОЛА ВЕБ-ДИЗАЙНА”"
+        },
+        "status": 1
+    },
+    {
+        "id": 8,
+        "student_id": 6,
+        "supervisor_id": 1,
+        "name": {
+            "en": "Russian and American Press on Sanctions Policy Against Russia",
+            "ru": "Российская и американская пресса о политике санкций в отношении России"
         },
         "status": 1
     }

@@ -25,7 +25,7 @@ class PaginatedCollection extends ResourceCollection
     return [
       'data' => $this->resourceClass::collection(
         $this->collection
-      )->toArray($request),
+      )->resolve($request),
       'links' => $links,
     ];
   }

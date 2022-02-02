@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 $guard = $guard === 'web' ? 'front' : $guard;
-                return redirect(route($guard.'.home'));
+                return redirect(route($guard.'.dashboard'));
             }
         }
 

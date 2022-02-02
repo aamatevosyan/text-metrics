@@ -72,7 +72,10 @@ abstract class InertiaController extends Controller
         return $request->boolean('ajax') || $request->expectsJson();
     }
 
-    abstract protected function inertiaUI(Request $request): array;
+    protected function inertiaUI(Request $request): array
+    {
+        return [];
+    }
 
     protected function redirect(string $route, array $params = []): RedirectResponse
     {

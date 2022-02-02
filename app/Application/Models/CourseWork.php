@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
+use App\Enums\CourseWorkStatus;
+use App\Enums\CourseWorkType;
 use App\Traits\HasBaseModel;
+use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
-use Str;
 
 /**
  * @mixin IdeHelperCourseWork
  */
 class CourseWork extends Model implements HasMedia
 {
-    use HasBaseModel, HasTranslations, InteractsWithMedia;
-
-    public const STATUS_INACTIVE = 0;
-    public const STATUS_ACTIVE = 1;
+    use HasBaseModel, HasTranslations, InteractsWithMedia, HasUuid;
 
     protected $fillable = [
         'id',
@@ -27,16 +26,17 @@ class CourseWork extends Model implements HasMedia
         'student_id',
         'supervisor_id',
         'status',
+        'type',
+    ];
+
+    protected $casts = [
+        'type' => CourseWorkType::class,
+        'status' => CourseWorkStatus::class,
     ];
 
     protected array $translatable = [
         'name',
     ];
-
-    protected static function booted(): void
-    {
-        static::creating(fn(self $model) => $model->uuid = $model->uuid ?? Str::uuid()->toString());
-    }
 
     public function student(): BelongsTo
     {

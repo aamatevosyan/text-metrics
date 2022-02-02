@@ -25,8 +25,10 @@ export default defineComponent({
         },
     },
     setup(props) {
-        const href = computed(() => route(props.routeName))
-        const isActive = computed(() => route().current(props.routeName))
+        const indexRoute = computed(() => props.routeName.endsWith('index') ? props.routeName : props.routeName +
+            '.index')
+        const href = computed(() => route(indexRoute.value))
+        const isActive = computed(() => route().current(props.routeName + '.*'))
 
         return {
             href,

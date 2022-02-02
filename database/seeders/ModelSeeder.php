@@ -39,7 +39,7 @@ abstract class ModelSeeder extends BaseSeeder
     {
         $fileName = $this->getJsonFileName();
 
-        return array_map(fn($data) => $this->prepareData($data), static::getJson($fileName));
+        return array_map(fn($data) => $this->prepareData($data), static::getDataJson($fileName));
     }
 
     /**

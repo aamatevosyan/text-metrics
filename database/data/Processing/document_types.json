@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "Portable Document Format",
+        "mime_types": [
+            "application/pdf"
+        ],
+        "status": 1
+    },
+    {
+        "id": 2,
+        "name": "Microsoft Word document",
+        "mime_types": [
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ],
+        "status": 1
+    }
+]

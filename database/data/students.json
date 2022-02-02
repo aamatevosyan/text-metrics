@@ -7,5 +7,50 @@
         "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+Student&color=7F9CF5&background=EBF4FF",
         "password": "secret",
         "branch_id": 8
+    },
+    {
+        "id": 2,
+        "name": "Armen Matevosyan",
+        "email": "aamatevosyan@edu.hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Armen+Matevosyan&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 8
+    },
+    {
+        "id": 3,
+        "name": "Sergey Ivanov",
+        "email": "svivanov@edu.hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Sergey+Ivanov&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 3
+    },
+    {
+        "id": 4,
+        "name": "Daler Abdurasulzoda",
+        "email": "dabdurasulzoda@edu.hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Ivanov+Sergey&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 1
+    },
+    {
+        "id": 5,
+        "name": "Olga Abdullina",
+        "email": "odabdullina@edu.hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Olga+Abdulina&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 3
+    },
+    {
+        "id": 6,
+        "name": "Malden Abdelhafez",
+        "email": "mabdelhafez@edu.hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Malden+Abdelhafez&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 3
     }
 ]

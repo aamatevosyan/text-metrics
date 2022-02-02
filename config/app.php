@@ -182,6 +182,7 @@ return [
          */
         Domain\Admin\Providers\AdminServiceProvider::class,
         Domain\Supervisor\Providers\SupervisorServiceProvider::class,
+        Domain\DocumentProcessing\Providers\DocumentProcessingServiceProvider::class,
 
     ],
 
@@ -238,6 +239,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /**
+         * Domain Model Aliases
+         */
+        'DocumentProcessing' => \Domain\DocumentProcessing\Facades\DocumentProcessing::class,
     ],
 
 ];

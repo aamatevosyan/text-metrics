@@ -1,0 +1,8 @@
+[
+    {
+        "name": "Basic PHP Document Processor",
+        "class": "Domain\\DocumentProcessing\\Processors\\Pdf\\BasicPdfPhpProcessor",
+        "status": 1,
+        "config": null
+    }
+]

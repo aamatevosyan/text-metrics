@@ -8,10 +8,15 @@ use JsonException;
 
 class BaseSeeder extends Seeder
 {
-    protected static function getJson($filename): array
+    protected static function getDataJson(string $filename): array
+    {
+        return self::getJson("data/$filename.json");
+    }
+
+    protected static function getJson(string $filename): array
     {
         try {
-            return json_decode(file_get_contents(database_path("data/$filename.json")), true, 512, JSON_THROW_ON_ERROR);
+            return json_decode(file_get_contents(database_path($filename)), true, 512, JSON_THROW_ON_ERROR);
         } catch (Exception $e) {
             return [];
         }

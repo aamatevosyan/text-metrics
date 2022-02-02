@@ -21,7 +21,9 @@
         "silber/bouncer": "v1.0.0-rc.11",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-translatable": "^5.1",
-        "tightenco/ziggy": "^1.0"
+        "spatie/pdf-to-text": "^1.51",
+        "tightenco/ziggy": "^1.0",
+        "tpetry/laravel-postgresql-enhanced": "^0.9.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",

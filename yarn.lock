@@ -1677,6 +1677,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vue/devtools-api@npm:^6.0.0-beta.11":
+  version: 6.0.0-beta.21.1
+  resolution: "@vue/devtools-api@npm:6.0.0-beta.21.1"
+  checksum: 0ba256aa6e184455ff0e990e765ebb4d8f7cb5509c97d25898d2e98f213c2d2b3d44492b3f92ff50fae22ee4806f684675f15f324ae81260ada89e9b3e12303c
+  languageName: node
+  linkType: hard
+
 "@vue/reactivity-transform@npm:3.2.26":
   version: 3.2.26
   resolution: "@vue/reactivity-transform@npm:3.2.26"
@@ -6536,6 +6543,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"primeicons@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "primeicons@npm:5.0.0"
+  checksum: f391179f0c774064af417c0d4dbee4c37c714165632f23a2b93083322e4362ef9b1978d3c9aa09ed4ef0187c70dc5501a208b7f40c64c1e88a89462801b7e8c0
+  languageName: node
+  linkType: hard
+
+"primevue@npm:^3.11.0":
+  version: 3.11.0
+  resolution: "primevue@npm:3.11.0"
+  peerDependencies:
+    primeicons: ^5.0.0
+    vue: ^3.0.0
+  checksum: 4d6845c8c7e3119db0510e7ea81dc470751f6cd66ea923cc7a215ff73e1ea627d9f0acc5414599ae6f49796788ccb9ef9a2a6ed57011ee71b8fac04343edddc1
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
@@ -6963,9 +6987,12 @@ __metadata:
     lodash: ^4.17.19
     postcss: ^8.1.14
     postcss-import: ^12.0.1
+    primeicons: ^5.0.0
+    primevue: ^3.11.0
     tailwindcss: ^3.0.0
     vue: next
     vue-loader: next
+    vuex: next
     webpack: ^5.66.0
   languageName: unknown
   linkType: soft
@@ -7888,6 +7915,17 @@ __metadata:
     "@vue/server-renderer": 3.2.27
     "@vue/shared": 3.2.27
   checksum: 8af7ea86bd7ae8863c479d38d6908b1004243333fe198138ddc3d277224ed8e28fc7b104d97cb0e7bf2435e25ed45c842672516a12fafef77951c3b031d063ca
+  languageName: node
+  linkType: hard
+
+"vuex@npm:next":
+  version: 4.0.2
+  resolution: "vuex@npm:4.0.2"
+  dependencies:
+    "@vue/devtools-api": ^6.0.0-beta.11
+  peerDependencies:
+    vue: ^3.0.2
+  checksum: d7c03f0afcbad045ef58921a4baa9ec23bc12c71dbaf1317f1df94e7d8740ce839b9fac48ec775955ce7a8893dceb7217bc05e45421fc6bacc559ed3541e6052
   languageName: node
   linkType: hard
 

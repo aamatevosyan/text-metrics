@@ -7,5 +7,32 @@
         "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+Supervisor&color=7F9CF5&background=EBF4FF",
         "password": "secret",
         "branch_id": 8
+    },
+    {
+        "id": 2,
+        "name": "Anna Melikyan",
+        "email": "avmelikyan@hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Anna+Melikyan&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 8
+    },
+    {
+        "id": 3,
+        "name": "Konstantin Degtyarev",
+        "email": "kudegtyarev@hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Konstantin+Degtyarev&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 8
+    },
+    {
+        "id": 4,
+        "name": "Denis Turdakov",
+        "email": "duturdakov@hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Denis+Turdakov&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 10
     }
 ]

@@ -160,7 +160,8 @@ namespace App\Models{
  * @property string $uuid
  * @property int $student_id
  * @property int $supervisor_id
- * @property int $status
+ * @property \App\Enums\CourseWorkType $type
+ * @property \App\Enums\CourseWorkStatus $status
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -178,10 +179,68 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereStudentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereSupervisorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork withUuids(array $uuids)
  */
 	class IdeHelperCourseWork {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Section
+ *
+ * @property int $id
+ * @property int|null $parent_id
+ * @property int $media_id
+ * @property string $uuid
+ * @property string|null $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Media $media
+ * @property-read Section|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|Section newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereMediaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section withUuids(array $uuids)
+ */
+	class IdeHelperSection {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SectionBlock
+ *
+ * @property int $id
+ * @property string $uuid
+ * @property int $section_id
+ * @property string $content
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Section $section
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereSectionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock withUuids(array $uuids)
+ */
+	class IdeHelperSectionBlock {}
 }
 
 namespace App\Models{
@@ -203,6 +262,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
  * @property-read int|null $abilities_count
  * @property-read \App\Models\Branch|null $branch
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CourseWork[] $courseWorks
+ * @property-read int|null $course_works_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles

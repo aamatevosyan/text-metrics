@@ -1,0 +1,16 @@
+[
+    {
+        "course_work_type": null,
+        "branch_id": 8,
+        "document_processor_id": 1,
+        "status": 1,
+        "config": null
+    },
+    {
+        "course_work_type": null,
+        "branch_id": null,
+        "document_processor_id": 1,
+        "status": 1,
+        "config": null
+    }
+]
