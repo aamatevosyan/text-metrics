@@ -3,7 +3,6 @@
 namespace Domain\DocumentProcessing\Models;
 
 use App\Enums\DocumentTypeStatus;
-use App\Models\IdeHelperDocumentType;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;

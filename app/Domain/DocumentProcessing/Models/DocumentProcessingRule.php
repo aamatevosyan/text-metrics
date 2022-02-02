@@ -4,7 +4,6 @@ namespace Domain\DocumentProcessing\Models;
 
 use App\Enums\CourseWorkType;
 use App\Enums\DocumentProcessingRuleStatus;
-use App\Models\IdeHelperDocumentProcessingRule;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;

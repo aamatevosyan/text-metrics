@@ -339,6 +339,114 @@ namespace App\Models{
 	class IdeHelperSupervisor {}
 }
 
+namespace Domain\DocumentProcessing\Models{
+/**
+ * Domain\DocumentProcessing\Models\DocumentProcessingRule
+ *
+ * @property int $id
+ * @property string $uuid
+ * @property \App\Enums\CourseWorkType|null $course_work_type
+ * @property int|null $branch_id
+ * @property int $document_processor_id
+ * @property \App\Enums\DocumentProcessingRuleStatus $status
+ * @property array|null $config
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereBranchId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereConfig($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereCourseWorkType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereDocumentProcessorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule withUuids(array $uuids)
+ */
+	class IdeHelperDocumentProcessingRule {}
+}
+
+namespace Domain\DocumentProcessing\Models{
+/**
+ * Domain\DocumentProcessing\Models\DocumentProcessor
+ *
+ * @property int $id
+ * @property string $uuid
+ * @property string $name
+ * @property string $class
+ * @property \App\Enums\DocumentProcessorStatus $status
+ * @property array|null $config
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereConfig($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor withUuids(array $uuids)
+ */
+	class IdeHelperDocumentProcessor {}
+}
+
+namespace Domain\DocumentProcessing\Models{
+/**
+ * Domain\DocumentProcessing\Models\DocumentProcessorDocumentType
+ *
+ * @property int $id
+ * @property int $document_processor_id
+ * @property int $document_type_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType whereDocumentProcessorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType whereDocumentTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessorDocumentType whereUpdatedAt($value)
+ */
+	class IdeHelperDocumentProcessorDocumentType {}
+}
+
+namespace Domain\DocumentProcessing\Models{
+/**
+ * Domain\DocumentProcessing\Models\DocumentType
+ *
+ * @property int $id
+ * @property string $uuid
+ * @property string $name
+ * @property array $mime_types
+ * @property \App\Enums\DocumentTypeStatus $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereMimeTypes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType withUuids(array $uuids)
+ */
+	class IdeHelperDocumentType {}
+}
+
 namespace Silber\Bouncer\Database{
 /**
  * Silber\Bouncer\Database\Ability
@@ -407,5 +515,62 @@ namespace Silber\Bouncer\Database{
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
  */
 	class IdeHelperRole {}
+}
+
+namespace Spatie\MediaLibrary\MediaCollections\Models{
+/**
+ * Spatie\MediaLibrary\MediaCollections\Models\Media
+ *
+ * @property int $id
+ * @property string $model_type
+ * @property int $model_id
+ * @property string|null $uuid
+ * @property string $collection_name
+ * @property string $name
+ * @property string $file_name
+ * @property string|null $mime_type
+ * @property string $disk
+ * @property string|null $conversions_disk
+ * @property int $size
+ * @property array $manipulations
+ * @property array $custom_properties
+ * @property array $generated_conversions
+ * @property array $responsive_images
+ * @property int|null $order_column
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $extension
+ * @property-read string $human_readable_size
+ * @property-read mixed $original_url
+ * @property-read mixed $preview_url
+ * @property-read string $type
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @method static \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|static[] all($columns = ['*'])
+ * @method static \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|static[] get($columns = ['*'])
+ * @method static \Illuminate\Database\Eloquent\Builder|Media newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media ordered()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereCollectionName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereConversionsDisk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereCustomProperties($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereDisk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereFileName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereGeneratedConversions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereManipulations($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereMimeType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereOrderColumn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereResponsiveImages($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereUuid($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperMedia {}
 }
 

@@ -130,7 +130,9 @@ return [
 
     'model_locations' => [
         'app/Application/Models',
+        'app/Domain/DocumentProcessing/Models',
         'vendor/silber/bouncer/src/Database',
+        'vendor/spatie/laravel-medialibrary/src/MediaCollections/Models',
     ],
 
     /*
