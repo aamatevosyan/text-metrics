@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Barryvdh\Debugbar\ServiceProvider as DebugBarServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Bouncer;
 use Illuminate\Support\ServiceProvider;
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(RayServiceProvider::class);
             $this->app->register(IdeHelperServiceProvider::class);
+            $this->app->register(DebugBarServiceProvider::class);
         }
     }
 

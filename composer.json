@@ -25,14 +25,15 @@
         "tpetry/laravel-postgresql-enhanced": "^0.10.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
+        "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.12",
-        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.18",
         "laravel/sail": "^1.13",
         "mockery/mockery": "^1.5",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.13",
+        "roave/security-advisories": "dev-latest",
+        "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-ray": "^1.29"
     },
     "autoload": {
@@ -80,7 +81,8 @@
         "laravel": {
             "dont-discover": [
                 "spatie/laravel-ray",
-                "barryvdh/laravel-ide-helper"
+                "barryvdh/laravel-ide-helper",
+                "barryvdh/laravel-debugbar"
             ]
         }
     },
