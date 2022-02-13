@@ -18,7 +18,7 @@ class DocumentProcessor extends Model
         'id',
         'uuid',
         'name',
-        'class',
+        'slug',
         'config',
         'status',
     ];

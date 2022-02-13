@@ -71,11 +71,6 @@
         ]
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "no-api": true,
-            "url": "https://github.com/area17/laravel-nestedset"
-        }
     ],
     "extra": {
         "laravel": {

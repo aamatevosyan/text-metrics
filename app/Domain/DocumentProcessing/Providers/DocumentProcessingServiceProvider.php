@@ -7,9 +7,11 @@ use Illuminate\Support\ServiceProvider;
 
 class DocumentProcessingServiceProvider extends ServiceProvider
 {
-    public function boot(): void
+    public function register(): void
     {
+        $this->registerContainerBindings();
 
+        $this->app->register(EventServiceProvider::class);
     }
 
     protected function registerContainerBindings(): void

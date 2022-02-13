@@ -1,7 +1,7 @@
 [
     {
         "name": "Basic PHP Document Processor",
-        "class": "Domain\\DocumentProcessing\\Processors\\Pdf\\BasicPdfPhpProcessor",
+        "slug": "basic-pdf",
         "status": 1,
         "config": null
     }

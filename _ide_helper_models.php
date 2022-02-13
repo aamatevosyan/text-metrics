@@ -352,6 +352,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property array|null $config
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Domain\DocumentProcessing\Models\DocumentProcessor|null $processor
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule query()
@@ -431,6 +432,8 @@ namespace Domain\DocumentProcessing\Models{
  * @property \App\Enums\DocumentTypeStatus $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentProcessor[] $processors
+ * @property-read int|null $processors_count
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType query()
@@ -483,6 +486,7 @@ namespace Silber\Bouncer\Database{
  * @method static \Illuminate\Database\Eloquent\Builder|Ability whereScope($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ability whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ability whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class IdeHelperAbility {}
 }
@@ -513,6 +517,7 @@ namespace Silber\Bouncer\Database{
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereScope($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class IdeHelperRole {}
 }

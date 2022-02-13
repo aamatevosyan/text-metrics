@@ -7,6 +7,7 @@ use App\Enums\DocumentProcessingRuleStatus;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @mixin IdeHelperDocumentProcessingRule
@@ -30,4 +31,9 @@ class DocumentProcessingRule extends Model
         'status' => DocumentProcessingRuleStatus::class,
         'config' => 'array',
     ];
+
+    public function processor(): BelongsTo
+    {
+        return $this->belongsTo(DocumentProcessor::class);
+    }
 }
