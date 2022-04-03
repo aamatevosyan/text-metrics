@@ -28,8 +28,6 @@ class MediaLogger
         $media = $event->media;
         $path = $media->getPath();
 
-        ray($media, $path);
-
         Log::info("file {$path} has been saved for media {$media->id}");
     }
 }

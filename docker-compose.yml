@@ -26,7 +26,7 @@ services:
             - redis
         container_name: 'text_metrics_app'
     pgsql:
-        image: 'postgres:14.1'
+        image: 'postgres:latest'
         ports:
             - '${FORWARD_DB_PORT:-5432}:5432'
         environment:
@@ -36,7 +36,7 @@ services:
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
         volumes:
             - 'sailpgsql:/var/lib/postgresql/data'
-            - ./docker/pgsql/entrypoint.d:/docker-entrypoint-initdb.d
+            - './docker/pgsql/entrypoint.d:/docker-entrypoint-initdb.d'
         networks:
             - sail
         healthcheck:
