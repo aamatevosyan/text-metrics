@@ -16,16 +16,17 @@ import 'primeicons/primeicons.css';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
+InertiaProgress.init()
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => importPageComponent(name, import.meta.glob('./Pages/**/*.vue')),
     setup({el, app, props, plugin}) {
         let vueApp = createApp({render: () => h(app, props)});
+        vueApp.use(plugin);
         vueApp = registerVueComponents(vueApp);
 
         return vueApp
-            .use(plugin)
-            .use(InertiaProgress)
             .use(PrimeVue)
             .use(ToastService)
             .use(store)

@@ -122,9 +122,6 @@ return [
         Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirmPassword' => true,
-        ]),
     ],
 
     // custom
@@ -144,9 +141,6 @@ return [
                 Features::emailVerification(),
                 Features::updateProfileInformation(),
                 Features::updatePasswords(),
-                Features::twoFactorAuthentication([
-                    'confirmPassword' => true,
-                ]),
             ],
             'home' => 'admin.dashboard',  // route name,
             'login' => 'admin.login',  // route name,
@@ -164,9 +158,6 @@ return [
                 Features::emailVerification(),
                 Features::updateProfileInformation(),
                 Features::updatePasswords(),
-                Features::twoFactorAuthentication([
-                    'confirmPassword' => true,
-                ]),
             ],
             'home' => 'supervisor.dashboard',  // route name,
             'login' => 'supervisor.login',  // route name,

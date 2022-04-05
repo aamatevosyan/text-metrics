@@ -37,7 +37,7 @@ class HandleFrontInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            //
+            'rootView' => $this->rootView,
         ]);
     }
 }
