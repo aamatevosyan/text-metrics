@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseWorkController;
 use App\Http\Controllers\CourseWorkMediaController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Application;
@@ -26,7 +27,7 @@ Route::domain(domainFor())
 
         Route::get('/', fn(Request $request) => redirect()->route('front.course-works.index'))->name('dashboard');
 
-        Route::controller(CourseWorkMediaController::class)
+        Route::controller(CourseWorkController::class)
             ->prefix('course-works')
             ->as('course-works.')
             ->group(function () {
