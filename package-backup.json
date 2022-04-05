@@ -1,0 +1,18 @@
+{
+    "private": true,
+    "scripts": {
+        "dev-front": "vite --config vite/vite.front.config.ts",
+        "dev-admin": "vite --config vite/vite.admin.config.ts",
+        "dev-supervisor": "vite --config vite/vite.supervisor.config.ts",
+        "build-front": "vite build --config vite/vite.front.config.ts",
+        "build-admin": "vite build --config vite/vite.admin.config.ts",
+        "build-supervisor": "vite build --config vite/vite.supervisor.config.ts"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.4",
+        "postcss": "^8.4.12",
+        "tailwindcss": "^3.0.23",
+        "vite": "^2.9.1",
+        "vite-plugin-laravel": "^0.2.0-beta.9"
+    }
+}

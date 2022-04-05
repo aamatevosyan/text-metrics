@@ -23,7 +23,7 @@ class CourseWorkDocumentResource extends JsonResource
             'uuid' => $this->uuid,
             'size' => $this->size,
             'hash' => $this->custom_properties['hash'] ?? '',
-            'url' => $this->getUrl(),
+//            'url' => $this->getUrl(),
             'created_at' => $this->created_at,
         ];
     }

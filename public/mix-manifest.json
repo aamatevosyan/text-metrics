@@ -1,8 +1,0 @@
-{
-    "/modules/admin/js/app.js": "/modules/admin/js/app.js",
-    "/modules/supervisor/js/app.js": "/modules/supervisor/js/app.js",
-    "/modules/front/js/app.js": "/modules/front/js/app.js",
-    "/modules/front/css/app.css": "/modules/front/css/app.css",
-    "/modules/supervisor/css/app.css": "/modules/supervisor/css/app.css",
-    "/modules/admin/css/app.css": "/modules/admin/css/app.css"
-}

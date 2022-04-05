@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "types": [
+            "vite/client"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@root/*": [
+                ".//*"
+            ],
+            "@resources/*": [
+                "resources//*"
+            ],
+            "@/*": [
+                "resources/scripts/*"
+            ],
+            "@admin/*": [
+                "resources/themes/admin/scripts/*"
+            ],
+            "@supervisor/*": [
+                "resources/themes/supervisor/scripts/*"
+            ],
+            "@front/*": [
+                "resources/themes/front/scripts/*"
+            ]
+        }
+    },
+    "include": [
+        "resources/**/*"
+    ]
+}
