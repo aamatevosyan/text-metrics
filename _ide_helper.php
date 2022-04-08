@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.6.0.
+ * Generated for Laravel 9.7.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4874,6 +4874,16 @@
         {
                         /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
                         return $instance->query();
+        }
+                    /**
+         * Execute an SQL statement and return the results.
+         *
+         * @static 
+         */ 
+        public static function returningStatement($query, $bindings = [])
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
+                        return $instance->returningStatement($query, $bindings);
         }
                     /**
          * Get the schema state for the connection.
@@ -13318,6 +13328,16 @@
                         return $instance->dropExtensionIfExists(...$name);
         }
                     /**
+         * Create a materialized view on the schema.
+         *
+         * @static 
+         */ 
+        public static function createMaterializedView($name, $query, $withData = true)
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
+                        return $instance->createMaterializedView($name, $query, $withData);
+        }
+                    /**
          * Create a recursive view on the schema.
          *
          * @static 
@@ -13358,6 +13378,26 @@
                         return $instance->createViewOrReplace($name, $query);
         }
                     /**
+         * Drop materialized views from the schema.
+         *
+         * @static 
+         */ 
+        public static function dropMaterializedView(...$name)
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
+                        return $instance->dropMaterializedView(...$name);
+        }
+                    /**
+         * Drop materialized views from the schema if they exist.
+         *
+         * @static 
+         */ 
+        public static function dropMaterializedViewIfExists(...$name)
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
+                        return $instance->dropMaterializedViewIfExists(...$name);
+        }
+                    /**
          * Drop views from the schema.
          *
          * @static 
@@ -13376,6 +13416,16 @@
         {
                         /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
                         return $instance->dropViewIfExists(...$name);
+        }
+                    /**
+         * Refresh materialized of the schema.
+         *
+         * @static 
+         */ 
+        public static function refreshMaterializedView($name, $concurrently = false, $withData = true)
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
+                        return $instance->refreshMaterializedView($name, $concurrently, $withData);
         }
          
     }
@@ -19556,7 +19606,7 @@ namespace  {
                 /**
              * Add a "belongs to" relationship where clause to the query.
              *
-             * @param \Illuminate\Database\Eloquent\Model $related
+             * @param \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection<\Illuminate\Database\Eloquent\Model> $related
              * @param string|null $relationshipName
              * @param string $boolean
              * @return \Illuminate\Database\Eloquent\Builder|static 
@@ -19692,6 +19742,19 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->mergeConstraintsFrom($from);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Tpetry\PostgresqlEnhanced\Eloquent\Mixins\BuilderLazyByCursor::lazyByCursor()
+             * @param int $chunkSize
+             * @return \Illuminate\Support\LazyCollection 
+             * @static 
+             */ 
+            public static function lazyByCursor($chunkSize = 1000)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::lazyByCursor($chunkSize);
             }
              
                 /**
@@ -20723,6 +20786,61 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orWhereJsonDoesntContain($column, $value);
+            }
+             
+                /**
+             * Add a clause that determines if a JSON path exists to the query.
+             *
+             * @param string $column
+             * @param string $boolean
+             * @param bool $not
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function whereJsonContainsKey($column, $boolean = 'and', $not = false)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->whereJsonContainsKey($column, $boolean, $not);
+            }
+             
+                /**
+             * Add an "or" clause that determines if a JSON path exists to the query.
+             *
+             * @param string $column
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function orWhereJsonContainsKey($column)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->orWhereJsonContainsKey($column);
+            }
+             
+                /**
+             * Add a clause that determines if a JSON path does not exist to the query.
+             *
+             * @param string $column
+             * @param string $boolean
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function whereJsonDoesntContainKey($column, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->whereJsonDoesntContainKey($column, $boolean);
+            }
+             
+                /**
+             * Add an "or" clause that determines if a JSON path does not exist to the query.
+             *
+             * @param string $column
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function orWhereJsonDoesntContainKey($column)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->orWhereJsonDoesntContainKey($column);
             }
              
                 /**

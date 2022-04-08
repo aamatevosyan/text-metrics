@@ -71,7 +71,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Kalnoy\Nestedset\Collection|Branch[] $children
  * @property-read int|null $children_count
- * @property-read array $translations
  * @property-read Branch|null $parent
  * @property-read \App\Models\BranchType|null $type
  * @method static \Kalnoy\Nestedset\Collection|static[] all($columns = ['*'])
@@ -140,7 +139,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Branch[] $branches
  * @property-read int|null $branches_count
- * @property-read array $translations
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType query()
@@ -165,7 +163,6 @@ namespace App\Models{
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read array $translations
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \App\Models\Student $student
