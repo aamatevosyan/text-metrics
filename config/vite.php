@@ -47,24 +47,6 @@ return [
             ],
             'build_path' => 'build/supervisor',
         ],
-        'admin' => [
-            'entrypoints' => [
-                'paths' => [
-                    'resources/themes/admin/scripts/app.js',
-                ],
-                'ignore' => '/\\.(d\\.ts|json)$/',
-            ],
-            'dev_server' => [
-                'enabled' => true,
-                'url' => env('DEV_SERVER_URL', 'http://0.0.0.0:3003'),
-                'ping_before_using_manifest' => true,
-                'ping_url' => null,
-                'ping_timeout' => 1,
-                'key' => env('DEV_SERVER_KEY'),
-                'cert' => env('DEV_SERVER_CERT'),
-            ],
-            'build_path' => 'build/admin',
-        ],
     ],
 
     /*
@@ -80,7 +62,6 @@ return [
         '@root' => './',
         '@resources' => 'resources',
         '@' => 'resources/scripts',
-        '@admin' => 'resources/themes/admin/scripts',
         '@supervisor' => 'resources/themes/supervisor/scripts',
         '@front' => 'resources/themes/front/scripts',
     ],

@@ -50,7 +50,6 @@ class Kernel extends HttpKernel
         ],
 
         'admin' => [
-            \App\Http\Middleware\HandleAdminInertiaRequests::class,
         ],
 
         'supervisor' => [

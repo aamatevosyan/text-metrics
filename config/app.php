@@ -173,6 +173,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
@@ -180,7 +181,6 @@ return [
         /*
          * Domain Model Service Providers...
          */
-        Domain\Admin\Providers\AdminServiceProvider::class,
         Domain\Supervisor\Providers\SupervisorServiceProvider::class,
         Domain\DocumentProcessing\Providers\DocumentProcessingServiceProvider::class,
 
