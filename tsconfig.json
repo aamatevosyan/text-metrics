@@ -31,7 +31,7 @@
             ],
             "@front/*": [
                 "resources/themes/front/scripts/*"
-            ],
+            ]
         }
     },
     "include": [

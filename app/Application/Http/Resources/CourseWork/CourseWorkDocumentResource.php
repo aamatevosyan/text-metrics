@@ -4,6 +4,7 @@ namespace App\Http\Resources\CourseWork;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Inertia\Inertia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
@@ -23,7 +24,10 @@ class CourseWorkDocumentResource extends JsonResource
             'uuid' => $this->uuid,
             'size' => $this->size,
             'hash' => $this->custom_properties['hash'] ?? '',
-//            'url' => $this->getUrl(),
+            'url' => route('front.course-works.preview', [
+                'course_work' => $this->model->uuid,
+                'media' => $this->uuid,
+            ]),
             'created_at' => $this->created_at,
         ];
     }

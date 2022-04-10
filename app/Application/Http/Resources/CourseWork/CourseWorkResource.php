@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin CourseWork
  */
-class CourseWorkInListResource extends JsonResource
+class CourseWorkResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.

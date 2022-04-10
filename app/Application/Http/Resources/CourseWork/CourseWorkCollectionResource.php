@@ -8,6 +8,6 @@ class CourseWorkCollectionResource extends CollectionResource
 {
     public static function from($resource)
     {
-        return new self($resource, CourseWorkInListResource::class);
+        return new self($resource, CourseWorkResource::class);
     }
 }

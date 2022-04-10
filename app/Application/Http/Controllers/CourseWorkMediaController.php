@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CourseWorkMediaStoreRequest;
 use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
 use App\Http\Resources\CourseWork\CourseWorkDocumentResource;
-use App\Http\Resources\CourseWork\CourseWorkInListResource;
+use App\Http\Resources\CourseWork\CourseWorkResource;
 use App\Models\CourseWork;
 use App\Models\Student;
 use App\Models\User;
@@ -73,7 +73,7 @@ class CourseWorkMediaController extends InertiaController
      */
     public function show(CourseWork $courseWork)
     {
-        return $this->render('CourseWork/Show', new CourseWorkInListResource($courseWork));
+        return $this->render('CourseWork/Show', new CourseWorkResource($courseWork));
     }
 
     /**

@@ -25,7 +25,7 @@
                                 <i class="pi pi-paperclip"></i>
                                 <span class="ml-2 mr-3">{{document.uuid}}</span>
 
-                                <a :href="document.url" download>Preview</a>
+                                <a :href="document.url" target="_blank" rel="noopener noreferrer">Preview</a>
                             </template>
                             <p>Some content</p>
                         </AccordionTab>

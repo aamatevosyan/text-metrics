@@ -36,6 +36,10 @@ Route::domain(domainFor())
                 Route::get('/{course_work:uuid}', 'show')
                     ->whereUuid('course_work')
                     ->name('show');
+
+                Route::get('/{course_work:uuid}/{media:uuid}', 'preview')
+                    ->whereUuid(['course_work', 'media'])
+                    ->name('preview');
             });
 
         Route::controller(CourseWorkMediaController::class)

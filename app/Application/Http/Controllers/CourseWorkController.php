@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
 use App\Http\Resources\CourseWork\CourseWorkDocumentResource;
+use App\Http\Resources\CourseWork\CourseWorkResource;
 use App\Models\CourseWork;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Inertia\Response as InertiaResponse;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Storage;
+use Symfony\Component\HttpFoundation\File\Stream;
 
 class CourseWorkController extends InertiaController
 {
@@ -57,7 +61,7 @@ class CourseWorkController extends InertiaController
      */
     public function show(CourseWork $courseWork)
     {
-        return $this->render('CourseWork/Show', new CourseWorkDocumentResource($courseWork));
+        return $this->render('CourseWork/Show', new CourseWorkResource($courseWork));
     }
 
     /**
@@ -92,5 +96,22 @@ class CourseWorkController extends InertiaController
     public function destroy(CourseWork $courseWork)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\CourseWork  $courseWork
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function preview(CourseWork $courseWork, Media $media)
+    {
+        if ($media->disk === 'local') {
+            return response()->download($media->getPath(), $media->file_name);
+        }
+
+        $url = $media->getTemporaryUrl(now()->addMinutes(30));
+
+        return redirect($url);
     }
 }

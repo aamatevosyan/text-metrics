@@ -7,6 +7,8 @@ use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Bouncer;
 use Illuminate\Support\ServiceProvider;
 use Spatie\LaravelRay\RayServiceProvider;
+use Storage;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
