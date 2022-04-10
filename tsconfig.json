@@ -26,15 +26,12 @@
             "@/*": [
                 "resources/scripts/*"
             ],
-            "@admin/*": [
-                "resources/themes/admin/scripts/*"
-            ],
             "@supervisor/*": [
                 "resources/themes/supervisor/scripts/*"
             ],
             "@front/*": [
                 "resources/themes/front/scripts/*"
-            ]
+            ],
         }
     },
     "include": [

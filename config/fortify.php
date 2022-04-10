@@ -89,8 +89,12 @@ return [
     */
 
     'limiters' => [
-        'login' => 'login',
-        'two-factor' => 'two-factor',
+        'front.login' => 'login',
+        'front.two-factor' => 'two-factor',
+        'admin.login' => 'login',
+        'admin.two-factor' => 'two-factor',
+        'supervisor.login' => 'login',
+        'supervisor.two-factor' => 'two-factor',
     ],
 
     /*
