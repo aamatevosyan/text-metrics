@@ -19,13 +19,12 @@
                         </template>
                     </Toolbar>
 
-                    <Accordion>
+                    <Accordion class="mt-8 mb-8 ml-2 mr-2 flex flex-col">
                         <AccordionTab v-for="document in courseWork.documents.data" :key="document.uuid">
                             <template #header>
                                 <i class="pi pi-paperclip"></i>
                                 <span class="ml-2 mr-3">{{document.uuid}}</span>
-
-                                <a :href="document.url" target="_blank" rel="noopener noreferrer">Preview</a>
+                                <Button @click.stop="preview(document.url)" label="Preview" class="p-button-link"/>
                             </template>
                             <p>Some content</p>
                         </AccordionTab>
@@ -62,6 +61,10 @@ export default defineComponent({
     },
     setup(props, {attrs}) {
         const courseWork = computed(() => attrs.data);
+
+        const preview = (url) => {
+            window.open(url, '_blank');
+        }
         // const selectedCourseWork = ref(null)
         //
         // return {
@@ -70,7 +73,8 @@ export default defineComponent({
         // }
 
         return {
-            courseWork
+            courseWork,
+            preview
         }
     }
 })
