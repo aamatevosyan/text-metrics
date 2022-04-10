@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
 
         foreach($guards as $guard) {
             if (in_array($guard, $middlewares, true)) {
-                return redirect()->guest(route("($guard}.login"));
+                return redirect()->guest(route("{$guard}.login"));
             }
         }
 
