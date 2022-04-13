@@ -34,6 +34,7 @@ class CreateStudentsTable extends Migration
                 ->after('two_factor_secret')
                 ->nullable();
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

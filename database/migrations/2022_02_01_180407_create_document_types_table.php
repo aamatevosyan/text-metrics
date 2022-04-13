@@ -22,6 +22,7 @@ class CreateDocumentTypesTable extends Migration
             $table->unsignedTinyInteger('status')
                 ->index()
                 ->default(DocumentTypeStatus::Active->value);
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index('mime_types', null, 'gin');

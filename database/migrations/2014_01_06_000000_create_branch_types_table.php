@@ -16,6 +16,7 @@ class CreateBranchTypesTable extends Migration
         Schema::create('branch_types', function (Blueprint $table) {
             $table->id();
             $table->jsonb('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

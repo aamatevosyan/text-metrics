@@ -25,8 +25,10 @@ class CreateBranchesTable extends Migration
 
             $table->foreignId('branch_type_id')
                 ->index()
-                ->constrained('branch_types');
+                ->constrained();
+
             $table->jsonb('name');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index([NestedSet::LFT, NestedSet::RGT, NestedSet::PARENT_ID]);

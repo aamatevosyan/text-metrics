@@ -4,7 +4,8 @@ namespace App\Models;
 
 use App\Traits\HasBaseModel;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NestedSet;
 use Kalnoy\Nestedset\NodeTrait;
 use Spatie\Translatable\HasTranslations;
@@ -17,6 +18,7 @@ class Branch extends Model
     use HasBaseModel;
     use HasTranslations;
     use NodeTrait;
+    use SoftDeletes;
 
     protected $fillable = [
         NestedSet::PARENT_ID,
@@ -30,8 +32,8 @@ class Branch extends Model
         'name'
     ];
 
-    public function type(): HasOne
+    public function branchType(): BelongsTo
     {
-        return $this->hasOne(BranchType::class);
+        return $this->belongsTo(BranchType::class);
     }
 }

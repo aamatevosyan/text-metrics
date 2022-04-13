@@ -23,6 +23,7 @@ class CreateDocumentProcessorsTable extends Migration
                 ->index()
                 ->default(DocumentProcessorStatus::Active->value);
             $table->jsonb('config')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index('config', null, 'gin');

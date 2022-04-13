@@ -17,7 +17,7 @@ class CreateCourseWorksTable extends Migration
     {
         Schema::create('course_works', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
+            $table->uuid()->unique();
             $table->foreignId('student_id')
                 ->index()
                 ->constrained();
@@ -31,6 +31,7 @@ class CreateCourseWorksTable extends Migration
                 ->default(DocumentTypeStatus::Active->value)
                 ->index();
             $table->jsonb('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

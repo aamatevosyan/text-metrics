@@ -8,6 +8,7 @@ use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
@@ -17,7 +18,11 @@ use Spatie\Translatable\HasTranslations;
  */
 class CourseWork extends Model implements HasMedia
 {
-    use HasBaseModel, HasTranslations, InteractsWithMedia, HasUuid;
+    use HasBaseModel;
+    use HasTranslations;
+    use InteractsWithMedia;
+    use HasUuid;
+    use SoftDeletes;
 
     protected $fillable = [
         'uuid',
@@ -39,11 +44,11 @@ class CourseWork extends Model implements HasMedia
 
     public function student(): BelongsTo
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class);
     }
 
     public function supervisor(): BelongsTo
     {
-        return $this->belongsTo(Supervisor::class, 'supervisor_id');
+        return $this->belongsTo(Supervisor::class);
     }
 }

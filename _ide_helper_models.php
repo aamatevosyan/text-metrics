@@ -38,6 +38,7 @@ namespace App\Models{
  * @method static \Database\Factories\AdminFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Admin onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin query()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereCreatedAt($value)
@@ -54,6 +55,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Admin withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Admin withoutTrashed()
  */
 	class IdeHelperAdmin {}
 }
@@ -70,10 +73,10 @@ namespace App\Models{
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\BranchType $branchType
  * @property-read \Kalnoy\Nestedset\Collection|Branch[] $children
  * @property-read int|null $children_count
  * @property-read Branch|null $parent
- * @property-read \App\Models\BranchType|null $type
  * @method static \Kalnoy\Nestedset\Collection|static[] all($columns = ['*'])
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch ancestorsAndSelf($id, array $columns = [])
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch ancestorsOf($id, array $columns = [])
@@ -98,6 +101,7 @@ namespace App\Models{
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch moveNode($key, $position)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch newModelQuery()
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Branch onlyTrashed()
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch orWhereAncestorOf(bool $id, bool $andSelf = false)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch orWhereDescendantOf($id)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch orWhereNodeBetween($values)
@@ -126,7 +130,9 @@ namespace App\Models{
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereRgt($value)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereUpdatedAt($value)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch withDepth(string $as = 'depth')
+ * @method static \Illuminate\Database\Query\Builder|Branch withTrashed()
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch withoutRoot()
+ * @method static \Illuminate\Database\Query\Builder|Branch withoutTrashed()
  */
 	class IdeHelperBranch {}
 }
@@ -144,11 +150,14 @@ namespace App\Models{
  * @method static \Database\Factories\BranchTypeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType newQuery()
+ * @method static \Illuminate\Database\Query\Builder|BranchType onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType query()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|BranchType withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|BranchType withoutTrashed()
  */
 	class IdeHelperBranchType {}
 }
@@ -173,6 +182,7 @@ namespace App\Models{
  * @method static \Database\Factories\CourseWorkFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork newQuery()
+ * @method static \Illuminate\Database\Query\Builder|CourseWork onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork query()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereId($value)
@@ -183,67 +193,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereUuid($value)
+ * @method static \Illuminate\Database\Query\Builder|CourseWork withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork withUuid(string $uuid)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork withUuids(array $uuids)
+ * @method static \Illuminate\Database\Query\Builder|CourseWork withoutTrashed()
  */
 	class IdeHelperCourseWork {}
-}
-
-namespace App\Models{
-/**
- * App\Models\Section
- *
- * @property int $id
- * @property int|null $parent_id
- * @property int $media_id
- * @property string $uuid
- * @property string|null $name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Media $media
- * @property-read Section|null $parent
- * @method static \Database\Factories\SectionFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Section newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Section newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Section query()
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereMediaId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Section withUuid(string $uuid)
- * @method static \Illuminate\Database\Eloquent\Builder|Section withUuids(array $uuids)
- */
-	class IdeHelperSection {}
-}
-
-namespace App\Models{
-/**
- * App\Models\SectionBlock
- *
- * @property int $id
- * @property string $uuid
- * @property int $section_id
- * @property string $content
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Section $section
- * @method static \Database\Factories\SectionBlockFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock query()
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereSectionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock withUuid(string $uuid)
- * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock withUuids(array $uuids)
- */
-	class IdeHelperSectionBlock {}
 }
 
 namespace App\Models{
@@ -264,7 +219,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
  * @property-read int|null $abilities_count
- * @property-read \App\Models\Branch|null $branch
+ * @property-read \App\Models\Branch $branch
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CourseWork[] $courseWorks
  * @property-read int|null $course_works_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
@@ -276,6 +231,7 @@ namespace App\Models{
  * @method static \Database\Factories\StudentFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Student newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Student newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Student onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Student query()
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereCreatedAt($value)
@@ -292,6 +248,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Student withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Student withoutTrashed()
  */
 	class IdeHelperStudent {}
 }
@@ -314,7 +272,9 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
  * @property-read int|null $abilities_count
- * @property-read \App\Models\Branch|null $branch
+ * @property-read \App\Models\Branch $branch
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CourseWork[] $courseWorks
+ * @property-read int|null $course_works_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
@@ -324,6 +284,7 @@ namespace App\Models{
  * @method static \Database\Factories\SupervisorFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Supervisor onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor query()
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereCreatedAt($value)
@@ -340,6 +301,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Supervisor withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Supervisor withoutTrashed()
  */
 	class IdeHelperSupervisor {}
 }

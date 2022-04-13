@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -22,6 +23,7 @@ class Admin extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRolesAndAbilities;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -65,8 +67,8 @@ class Admin extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function branch(): HasOne
+    public function branch(): BelongsTo
     {
-        return $this->hasOne(Branch::class);
+        return $this->belongsTo(Branch::class);
     }
 }
