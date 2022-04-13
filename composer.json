@@ -33,14 +33,18 @@
         "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.18",
+        "fidum/laravel-blueprint-pestphp-addon": "^2.2",
+        "jasonmccreary/laravel-test-assertions": "^2.1",
+        "laravel-shift/blueprint": "^2.3",
         "laravel/sail": "^1.13",
         "mockery/mockery": "^1.5",
+        "naoray/blueprint-nova-addon": "dev-patch-1",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.13",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-ray": "^1.29",
-        "worksome/envy": "^0.3.1"
+        "worksome/envy": "^0.4.0"
     },
     "autoload": {
         "files": [
@@ -80,6 +84,14 @@
         "nova": {
             "type": "path",
             "url": "./nova"
+        },
+        "efrontsa/blueprint-nova-addon": {
+            "type": "vcs",
+            "url": "https://github.com/efrontsa/blueprint-nova-addon"
+        },
+        "shepherdscribe/laravel-blueprint-streamlined-test-addon": {
+            "type": "vcs",
+            "url": "https://github.com/shepherdscribe/laravel-blueprint-streamlined-test-addon"
         }
     },
     "extra": {
