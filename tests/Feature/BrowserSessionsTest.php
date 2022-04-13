@@ -1,23 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+use App\Models\Student;
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+test('other browser sessions can be logged out', function () {
+    $this->actingAs($user = Student::factory()->create());
 
-class BrowserSessionsTest extends TestCase
-{
-    use RefreshDatabase;
+    $response = $this->delete('/user/other-browser-sessions', [
+        'password' => 'password',
+    ]);
 
-    public function test_other_browser_sessions_can_be_logged_out()
-    {
-        $this->actingAs($user = User::factory()->create());
-
-        $response = $this->delete('/user/other-browser-sessions', [
-            'password' => 'password',
-        ]);
-
-        $response->assertSessionHasNoErrors();
-    }
-}
+    $response->assertSessionHasNoErrors();
+});

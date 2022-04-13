@@ -16,7 +16,6 @@ class Section extends Model
     use HasBaseModel, HasUuid;
 
     protected $fillable = [
-        'id',
         'parent_id',
         'uuid',
         'media_id',

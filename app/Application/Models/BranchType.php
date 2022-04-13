@@ -16,7 +16,6 @@ class BranchType extends Model
     use HasTranslations;
 
     protected $fillable = [
-        'id',
         'name'
     ];
 

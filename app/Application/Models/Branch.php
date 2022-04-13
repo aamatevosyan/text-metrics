@@ -19,7 +19,6 @@ class Branch extends Model
     use NodeTrait;
 
     protected $fillable = [
-        'id',
         NestedSet::PARENT_ID,
         NestedSet::LFT,
         NestedSet::RGT,

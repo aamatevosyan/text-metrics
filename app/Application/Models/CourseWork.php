@@ -20,7 +20,6 @@ class CourseWork extends Model implements HasMedia
     use HasBaseModel, HasTranslations, InteractsWithMedia, HasUuid;
 
     protected $fillable = [
-        'id',
         'uuid',
         'name',
         'student_id',

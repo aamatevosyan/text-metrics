@@ -58,6 +58,17 @@ abstract class ModelSeeder extends BaseSeeder
         return true;
     }
 
+    public function getExcludedFields(): array
+    {
+        $excluded = ['id'];
+
+        if ($this->withoutTimestamps()) {
+            array_push($excluded, 'created_at', 'updated_at');
+        }
+
+        return $excluded;
+    }
+
     /**
      * @param  array  $data
      * @return array
@@ -65,10 +76,10 @@ abstract class ModelSeeder extends BaseSeeder
     public function prepareData(array $data): array
     {
         if ($this->withoutTimestamps()) {
-            return Arr::except($data, ['created_at', 'updated_at']);
+            $data = Arr::except($data, ['created_at', 'updated_at']);
         }
 
-        return $data;
+        return Arr::except($data, $this->getExcludedFields());
     }
 
     /**

@@ -17,7 +17,6 @@ class DocumentProcessingRule extends Model
     use HasBaseModel, HasUuid;
 
     protected $fillable = [
-        'id',
         'uuid',
         'course_work_type',
         'branch_id',

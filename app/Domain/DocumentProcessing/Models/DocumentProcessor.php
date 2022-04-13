@@ -15,7 +15,6 @@ class DocumentProcessor extends Model
     use HasBaseModel, HasUuid;
 
     protected $fillable = [
-        'id',
         'uuid',
         'name',
         'slug',

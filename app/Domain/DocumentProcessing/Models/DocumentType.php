@@ -16,7 +16,6 @@ class DocumentType extends Model
     use HasBaseModel, HasUuid;
 
     protected $fillable = [
-        'id',
         'uuid',
         'name',
         'mime_types',

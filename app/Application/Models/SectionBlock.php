@@ -15,7 +15,6 @@ class SectionBlock extends Model
     use HasBaseModel, HasUuid;
 
     protected $fillable = [
-      'id',
       'uuid',
       'section_id',
       'content',
