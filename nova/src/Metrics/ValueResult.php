@@ -9,14 +9,14 @@ class ValueResult implements JsonSerializable
     /**
      * The value of the result.
      *
-     * @var mixed
+     * @var int|float|numeric-string|null
      */
     public $value;
 
     /**
      * The previous value.
      *
-     * @var mixed
+     * @var int|float|numeric-string|null
      */
     public $previous;
 
@@ -65,7 +65,7 @@ class ValueResult implements JsonSerializable
     /**
      * Create a new value result instance.
      *
-     * @param  mixed  $value
+     * @param  int|float|numeric-string|null  $value
      * @return void
      */
     public function __construct($value)
@@ -76,7 +76,7 @@ class ValueResult implements JsonSerializable
     /**
      * Set the previous value for the metric.
      *
-     * @param  mixed  $previous
+     * @param  int|float|numeric-string|null  $previous
      * @param  string  $label
      * @return $this
      */
@@ -177,10 +177,9 @@ class ValueResult implements JsonSerializable
     /**
      * Prepare the metric result for JSON serialization.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'value' => $this->value,

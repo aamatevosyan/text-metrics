@@ -3,7 +3,6 @@
 namespace Laravel\Nova\Testing\Browser\Pages;
 
 use Laravel\Dusk\Browser;
-use Laravel\Nova\Nova;
 
 class UpdateAttached extends Page
 {
@@ -27,6 +26,8 @@ class UpdateAttached extends Page
         $this->relatedId = $relatedId;
         $this->resourceId = $resourceId;
         $this->resourceName = $resourceName;
+
+        $this->setNovaPage("/resources/{$this->resourceName}/{$this->resourceId}/edit-attached/{$this->relation}/{$this->relatedId}");
     }
 
     /**
@@ -36,7 +37,9 @@ class UpdateAttached extends Page
      */
     public function url()
     {
-        return Nova::path().'/resources/'.$this->resourceName.'/'.$this->resourceId.'/edit-attached/'.$this->relation.'/'.$this->relatedId.'?viaRelationship='.$this->relation;
+        return $this->novaPageUrl.'?'.http_build_query([
+            'viaRelationship' => $this->relation,
+        ]);
     }
 
     /**
@@ -71,17 +74,6 @@ class UpdateAttached extends Page
      */
     public function assert(Browser $browser)
     {
-        $browser->pause(500)
-                ->waitFor('#nova .content form', 25);
-    }
-
-    /**
-     * Get the element shortcuts for the page.
-     *
-     * @return array
-     */
-    public function elements()
-    {
-        return [];
+        $browser->assertOk()->waitFor('@nova-form');
     }
 }

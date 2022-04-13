@@ -5,6 +5,9 @@ namespace Laravel\Nova\Fields;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Util;
 
+/**
+ * @method static static make(mixed $name = null, string|null $attribute = null, callable|null $resolveCallback = null)
+ */
 class ID extends Field
 {
     /**
@@ -26,7 +29,7 @@ class ID extends Field
      *
      * @param  string|null  $name
      * @param  string|null  $attribute
-     * @param  mixed|null  $resolveCallback
+     * @param  (callable(mixed, mixed, ?string):mixed)|null  $resolveCallback
      * @return void
      */
     public function __construct($name = null, $attribute = null, $resolveCallback = null)
@@ -93,7 +96,7 @@ class ID extends Field
     protected function resolveAttribute($resource, $attribute)
     {
         if (! is_null($resource)) {
-            $pivotValue = optional($resource->pivot)->getKey();
+            $pivotValue = isset($resource->pivot) ? optional($resource->pivot)->getKey() : null;
 
             if (is_int($pivotValue) || is_string($pivotValue)) {
                 $this->pivotValue = $pivotValue;
@@ -137,10 +140,9 @@ class ID extends Field
     /**
      * Prepare the field for JSON serialization.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return array_merge(parent::jsonSerialize(), array_filter([
             'pivotValue' => $this->pivotValue ?? null,

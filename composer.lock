@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3e7bac5a4688a200b5cbd7bbbdba125",
+    "content-hash": "5eb4b68454a6912da87e68ba3b054391",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -59,6 +59,80 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.7"
             },
             "time": "2022-03-14T02:02:36+00:00"
+        },
+        {
+            "name": "box/spout",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/box/spout.git",
+                "reference": "9bdb027d312b732515b884a341c0ad70372c6295"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/box/spout/zipball/9bdb027d312b732515b884a341c0ad70372c6295",
+                "reference": "9bdb027d312b732515b884a341c0ad70372c6295",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-xmlreader": "*",
+                "ext-zip": "*",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2",
+                "phpunit/phpunit": "^8"
+            },
+            "suggest": {
+                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-intl\" is not already installed or is too limited)",
+                "ext-intl": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Box\\Spout\\": "src/Spout"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Adrien Loison",
+                    "email": "adrien@box.com"
+                }
+            ],
+            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
+            "homepage": "https://www.github.com/box/spout",
+            "keywords": [
+                "OOXML",
+                "csv",
+                "excel",
+                "memory",
+                "odf",
+                "ods",
+                "office",
+                "open",
+                "php",
+                "read",
+                "scale",
+                "spreadsheet",
+                "stream",
+                "write",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/box/spout/issues",
+                "source": "https://github.com/box/spout/tree/v3.3.0"
+            },
+            "time": "2021-05-14T21:18:09+00:00"
         },
         {
             "name": "brick/math",
@@ -180,65 +254,6 @@
                 }
             ],
             "time": "2021-10-10T11:59:43+00:00"
-        },
-        {
-            "name": "cakephp/chronos",
-            "version": "2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakephp/chronos.git",
-                "reference": "3ecd6e7ae191c676570cd1bed51fd561de4606dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/3ecd6e7ae191c676570cd1bed51fd561de4606dd",
-                "reference": "3ecd6e7ae191c676570cd1bed51fd561de4606dd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "^4.5",
-                "phpunit/phpunit": "^8.0 || ^9.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/carbon_compat.php"
-                ],
-                "psr-4": {
-                    "Cake\\Chronos\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Brian Nesbitt",
-                    "email": "brian@nesbot.com",
-                    "homepage": "http://nesbot.com"
-                },
-                {
-                    "name": "The CakePHP Team",
-                    "homepage": "http://cakephp.org"
-                }
-            ],
-            "description": "A simple API extension for DateTime.",
-            "homepage": "http://cakephp.org",
-            "keywords": [
-                "date",
-                "datetime",
-                "time"
-            ],
-            "support": {
-                "irc": "irc://irc.freenode.org/cakephp",
-                "issues": "https://github.com/cakephp/chronos/issues",
-                "source": "https://github.com/cakephp/chronos"
-            },
-            "time": "2021-10-17T02:44:05+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -2750,19 +2765,21 @@
         },
         {
             "name": "laravel/nova",
-            "version": "3.31.0",
+            "version": "4.1.0",
             "dist": {
                 "type": "path",
                 "url": "./nova",
-                "reference": "fb879f1706a29ce15f8a76a4e74a7482aadb11f2"
+                "reference": "b9b0e8e28266566d86245b95552d5f80928ca766"
             },
             "require": {
                 "brick/money": "^0.5.0",
-                "cakephp/chronos": "^1.0|^2.0",
                 "doctrine/dbal": "^2.13.3|^3.1.2",
-                "illuminate/support": "^8.67|^9.0",
+                "illuminate/support": "^8.83.4|^9.3.1",
+                "inertiajs/inertia-laravel": "^0.4.5|^0.5.2",
                 "laravel/ui": "^3.3",
+                "nesbot/carbon": "^2.53.1",
                 "php": "^7.3|^8.0",
+                "rap2hpoutre/fast-excel": "^3.2",
                 "spatie/once": "^1.1|^2.0|^3.0",
                 "symfony/console": "^5.4|^6.0",
                 "symfony/finder": "^5.4|^6.0",
@@ -2770,12 +2787,12 @@
                 "symfony/process": "^5.4|^6.0"
             },
             "require-dev": {
-                "laravel/legacy-factories": "^1.3",
-                "laravel/nova-dusk-suite": "8.3.x-dev|9.3.x-dev",
+                "laravel/nova-dusk-suite": "8.4.x-dev|9.4.x-dev",
                 "mockery/mockery": "^1.4.4",
-                "orchestra/testbench-dusk": "^6.23|^7.0",
+                "nunomaduro/larastan": "^1.0.1|^2.0",
+                "orchestra/testbench-dusk": "^6.24|^7.0",
                 "phpunit/phpunit": "^9.5.10",
-                "predis/predis": "^1.1"
+                "predis/predis": "^1.1.9"
             },
             "type": "library",
             "extra": {
@@ -2809,17 +2826,21 @@
                     "./vendor/bin/testbench-dusk package:discover"
                 ],
                 "dusk:dev-assets": [
-                    "yarn install",
-                    "yarn run dev",
-                    "./vendor/bin/testbench-dusk nova:publish"
+                    "npm ci",
+                    "TAILWIND_MODE=build npm run dev",
+                    "./vendor/bin/testbench-dusk nova:publish --force"
                 ],
                 "dusk:assets": [
-                    "yarn install",
-                    "yarn run prod",
-                    "./vendor/bin/testbench-dusk nova:publish"
+                    "npm ci",
+                    "TAILWIND_MODE=build npm run prod",
+                    "./vendor/bin/testbench-dusk nova:publish --force"
                 ],
                 "dusk:test": [
+                    "./vendor/bin/testbench-dusk package:dusk-purge",
                     "./vendor/bin/phpunit -c phpunit.dusk.xml"
+                ],
+                "dusk:filter": [
+                    "./vendor/bin/testbench-dusk package:dusk-purge && ./vendor/bin/phpunit -c phpunit.dusk.xml --filter"
                 ]
             },
             "license": [
@@ -6199,6 +6220,69 @@
             "time": "2022-03-27T21:42:02+00:00"
         },
         {
+            "name": "rap2hpoutre/fast-excel",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rap2hpoutre/fast-excel.git",
+                "reference": "28183f3a90179386bfadcd0083129c247ce49fbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/28183f3a90179386bfadcd0083129c247ce49fbe",
+                "reference": "28183f3a90179386bfadcd0083129c247ce49fbe",
+                "shasum": ""
+            },
+            "require": {
+                "box/spout": "^3",
+                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0|^9.0",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.20.12 || ^7.30.4 || ^8.24.0|^9.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rap2hpoutre\\FastExcel\\Providers\\FastExcelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions/fastexcel.php"
+                ],
+                "psr-4": {
+                    "Rap2hpoutre\\FastExcel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rap2h",
+                    "email": "raphaelht@gmail.com"
+                }
+            ],
+            "description": "Fast Excel import/export for Laravel",
+            "keywords": [
+                "csv",
+                "excel",
+                "laravel",
+                "xls",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/rap2hpoutre/fast-excel/issues",
+                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v3.2.0"
+            },
+            "time": "2022-02-09T16:04:44+00:00"
+        },
+        {
             "name": "rize/uri-template",
             "version": "0.3.4",
             "source": {
@@ -7222,16 +7306,16 @@
         },
         {
             "name": "silber/bouncer",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JosephSilber/bouncer.git",
-                "reference": "84f3768a782072f2bc6621e9447d420eee42ed9e"
+                "reference": "ea1b7961b16b9556dfdf0a02522ed9f7b2cb1907"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JosephSilber/bouncer/zipball/84f3768a782072f2bc6621e9447d420eee42ed9e",
-                "reference": "84f3768a782072f2bc6621e9447d420eee42ed9e",
+                "url": "https://api.github.com/repos/JosephSilber/bouncer/zipball/ea1b7961b16b9556dfdf0a02522ed9f7b2cb1907",
+                "reference": "ea1b7961b16b9556dfdf0a02522ed9f7b2cb1907",
                 "shasum": ""
             },
             "require": {
@@ -7253,7 +7337,6 @@
                 "illuminate/console": "Allows running the bouncer:clean artisan command",
                 "illuminate/events": "Required for multi-tenancy support"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -7292,9 +7375,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JosephSilber/bouncer/issues",
-                "source": "https://github.com/JosephSilber/bouncer/tree/master"
+                "source": "https://github.com/JosephSilber/bouncer/tree/v1.0.0"
             },
-            "time": "2022-03-07T06:10:38+00:00"
+            "time": "2022-02-21T13:39:05+00:00"
         },
         {
             "name": "spatie/image",
@@ -10535,6 +10618,60 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "yadahan/nova-bouncer",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yadahan/nova-bouncer.git",
+                "reference": "edf281041b48a1419c74661e68633b4411c00f34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yadahan/nova-bouncer/zipball/edf281041b48a1419c74661e68633b4411c00f34",
+                "reference": "edf281041b48a1419c74661e68633b4411c00f34",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "*",
+                "php": "^7.2|^8.0",
+                "silber/bouncer": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yadahan\\BouncerTool\\BouncerToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yadahan\\BouncerTool\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yaakov Dahan",
+                    "email": "yakidehan@gmail.com"
+                }
+            ],
+            "description": "A Laravel Nova tool for managing Bouncer roles and abilities.",
+            "keywords": [
+                "bouncer",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/yadahan/nova-bouncer/issues",
+                "source": "https://github.com/yadahan/nova-bouncer/tree/v1.0.0"
+            },
+            "time": "2022-02-23T13:35:00+00:00"
         }
     ],
     "packages-dev": [
@@ -13271,7 +13408,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "silber/bouncer": 20,
         "naoray/blueprint-nova-addon": 20,
         "roave/security-advisories": 20
     },

@@ -2,6 +2,11 @@
 
 namespace App\Http;
 
+use Laravel\Nova\Http\Middleware\Authenticate;
+use Laravel\Nova\Http\Middleware\Authorize;
+use Laravel\Nova\Http\Middleware\BootTools;
+use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
+use Laravel\Nova\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

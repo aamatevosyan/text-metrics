@@ -18494,6 +18494,75 @@
      
 }
 
+    namespace Illuminate\Database\Eloquent\Relations { 
+            /**
+     * 
+     *
+     */ 
+        class Relation {
+                    /**
+         * 
+         *
+         * @see \Laravel\Nova\Query\Mixin\BelongsToMany::getDefaultPivotAttributes()
+         * @static 
+         */ 
+        public static function getDefaultPivotAttributes()
+        {
+                        return \Illuminate\Database\Eloquent\Relations\Relation::getDefaultPivotAttributes();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Nova\Query\Mixin\BelongsToMany::applyDefaultPivotQuery()
+         * @param mixed $query
+         * @static 
+         */ 
+        public static function applyDefaultPivotQuery($query)
+        {
+                        return \Illuminate\Database\Eloquent\Relations\Relation::applyDefaultPivotQuery($query);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class BelongsToMany {
+         
+    }
+     
+}
+
+    namespace Laravel\Nova\Http\Requests { 
+            /**
+     * 
+     *
+     * @property-read string|null $resource
+     * @property-read mixed|null $resourceId
+     * @property-read string|null $relatedResource
+     * @property-read mixed|null $relatedResourceId
+     * @property-read string|null $viaResource
+     * @property-read mixed|null $viaResourceId
+     * @property-read string|null $viaRelationship
+     * @property-read string|null $relationshipType
+     */ 
+        class NovaRequest {
+         
+    }
+     
+}
+
+    namespace Illuminate\Foundation\Http { 
+            /**
+     * 
+     *
+     */ 
+        class FormRequest {
+         
+    }
+     
+}
+
 
 namespace  { 
             class App extends \Illuminate\Support\Facades\App {}

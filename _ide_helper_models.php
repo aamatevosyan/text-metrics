@@ -35,6 +35,7 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @method static \Database\Factories\AdminFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin query()
@@ -82,6 +83,7 @@ namespace App\Models{
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch defaultOrder(string $dir = 'asc')
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch descendantsAndSelf($id, array $columns = [])
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch descendantsOf($id, array $columns = [], $andSelf = false)
+ * @method static \Database\Factories\BranchFactory factory(...$parameters)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch fixSubtree($root)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch fixTree($root = null)
  * @method static \Kalnoy\Nestedset\Collection|static[] get($columns = ['*'])
@@ -139,6 +141,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Branch[] $branches
  * @property-read int|null $branches_count
+ * @method static \Database\Factories\BranchTypeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType query()
@@ -167,6 +170,7 @@ namespace App\Models{
  * @property-read int|null $media_count
  * @property-read \App\Models\Student $student
  * @property-read \App\Models\Supervisor $supervisor
+ * @method static \Database\Factories\CourseWorkFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork query()
@@ -198,6 +202,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Media $media
  * @property-read Section|null $parent
+ * @method static \Database\Factories\SectionFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Section newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Section newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Section query()
@@ -225,6 +230,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Section $section
+ * @method static \Database\Factories\SectionBlockFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SectionBlock query()
@@ -267,6 +273,7 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @method static \Database\Factories\StudentFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Student newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Student newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Student query()
@@ -314,6 +321,7 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @method static \Database\Factories\SupervisorFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor query()
