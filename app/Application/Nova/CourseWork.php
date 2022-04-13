@@ -4,10 +4,11 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 
 class CourseWork extends Resource
 {
@@ -46,13 +47,7 @@ class CourseWork extends Resource
             ID::make()->sortable(),
 
             Text::make('Uuid')
-                ->rules('required', 'string'),
-
-            Number::make('Student id')
-                ->rules('required', 'integer'),
-
-            Number::make('Supervisor id')
-                ->rules('required', 'integer'),
+                ->rules('required'),
 
             Number::make('Type')
                 ->rules('required', 'integer'),
@@ -60,9 +55,13 @@ class CourseWork extends Resource
             Number::make('Status')
                 ->rules('required', 'integer'),
 
-            Code::make('Name')
-                ->rules('required', 'json')
-                ->json(),
+            Text::make('Name')
+                ->rules('required'),
+
+            BelongsTo::make('Student'),
+            BelongsTo::make('Supervisor'),
+
+            BelongsToMany::make('Media'),
 
             DateTime::make('Created at'),
             DateTime::make('Updated at'),

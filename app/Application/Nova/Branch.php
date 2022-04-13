@@ -4,9 +4,10 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Branch extends Resource
 {
@@ -44,21 +45,17 @@ class Branch extends Resource
         return [
             ID::make()->sortable(),
 
-            Number::make('Parent id')
-                ->rules('integer'),
-
             Number::make(' lft')
                 ->rules('required', 'integer'),
 
             Number::make(' rgt')
                 ->rules('required', 'integer'),
 
-            Number::make('Branch type id')
-                ->rules('required', 'integer'),
+            Text::make('Name')
+                ->rules('required'),
 
-            Code::make('Name')
-                ->rules('required', 'json')
-                ->json(),
+            BelongsTo::make('Parent', 'parent', Branch::class),
+            BelongsTo::make('BranchType'),
 
             DateTime::make('Created at'),
             DateTime::make('Updated at'),

@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Branch;
-use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Branch;
 use App\Models\Student;
 
 class StudentFactory extends Factory
@@ -25,7 +24,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'branch_id' => Branch::query()->first()->id,
+            'branch_id' => Branch::factory(),
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'email_verified_at' => $this->faker->dateTime(),

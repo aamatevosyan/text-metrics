@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Branch;
+use App\Models\BranchType;
 
 class BranchFactory extends Factory
 {
@@ -23,10 +24,10 @@ class BranchFactory extends Factory
     public function definition(): array
     {
         return [
-            'parent_id' => $this->faker->numberBetween(-100000, 100000),
+            'parent_id' => Branch::factory(),
             '_lft' => $this->faker->numberBetween(-100000, 100000),
             '_rgt' => $this->faker->numberBetween(-100000, 100000),
-            'branch_type_id' => $this->faker->numberBetween(-100000, 100000),
+            'branch_type_id' => BranchType::factory(),
             'name' => '{}',
         ];
     }

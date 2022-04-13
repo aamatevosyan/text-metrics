@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Branch;
 use App\Models\Supervisor;
 
 class SupervisorFactory extends Factory
@@ -23,7 +24,7 @@ class SupervisorFactory extends Factory
     public function definition(): array
     {
         return [
-            'branch_id' => $this->faker->numberBetween(-100000, 100000),
+            'branch_id' => Branch::factory(),
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'email_verified_at' => $this->faker->dateTime(),

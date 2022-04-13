@@ -4,10 +4,9 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Supervisor extends Resource
 {
@@ -45,9 +44,6 @@ class Supervisor extends Resource
         return [
             ID::make()->sortable(),
 
-            Number::make('Branch id')
-                ->rules('required', 'integer'),
-
             Text::make('Name')
                 ->rules('required', 'string'),
 
@@ -71,19 +67,10 @@ class Supervisor extends Resource
             Text::make('Two factor recovery codes')
                 ->rules('string'),
 
+            BelongsTo::make('Branch'),
+
             DateTime::make('Created at'),
             DateTime::make('Updated at'),
-
-            MorphToMany::make('Roles', 'roles', 'Yadahan\BouncerTool\Nova\Role')->fields(function () {
-                return [
-                    Text::make('Scope')
-                        ->sortable()
-                        ->rules('nullable', 'integer'),
-                ];
-            }),
-
-            MorphToMany::make('Abilities', 'abilities', 'Yadahan\BouncerTool\Nova\Ability')
-                ->fields(new \Yadahan\BouncerTool\Nova\PermissionsFields),
         ];
     }
 

@@ -4,7 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
 
 class BranchType extends Resource
@@ -43,9 +43,8 @@ class BranchType extends Resource
         return [
             ID::make()->sortable(),
 
-            Code::make('Name')
-                ->rules('required', 'json')
-                ->json(),
+            Text::make('Name')
+                ->rules('required'),
 
             DateTime::make('Created at'),
             DateTime::make('Updated at'),

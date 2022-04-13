@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Admin;
+use App\Models\Branch;
 
 class AdminFactory extends Factory
 {
@@ -23,7 +24,7 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            'branch_id' => $this->faker->numberBetween(-100000, 100000),
+            'branch_id' => Branch::factory(),
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'email_verified_at' => $this->faker->dateTime(),

@@ -16,6 +16,4 @@ yarn-error.log
 /.vscode
 .DS_Store
 .yarn
-/draft.yaml
-/.blueprint
 /.env.testing
