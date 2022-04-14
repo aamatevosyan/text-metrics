@@ -29,7 +29,8 @@
         "spatie/pdf-to-text": "^1.51",
         "tightenco/ziggy": "^1.4",
         "tpetry/laravel-postgresql-enhanced": "^0.13",
-        "yadahan/nova-bouncer": "^1.0"
+        "yadahan/nova-bouncer": "^1.0",
+        "zanysoft/laravel-zip": "dev-patch-1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -96,6 +97,10 @@
         "shepherdscribe/laravel-blueprint-streamlined-test-addon": {
             "type": "vcs",
             "url": "https://github.com/shepherdscribe/laravel-blueprint-streamlined-test-addon"
+        },
+        "cbekir/laravel-zip": {
+            "type": "vcs",
+            "url": "https://github.com/cbekir/laravel-zip"
         }
     },
     "extra": {

@@ -27,7 +27,7 @@ class DocumentType extends Model
         'status' => DocumentTypeStatus::class,
     ];
 
-    public function processors(): BelongsToMany
+    public function documentProcessor(): BelongsToMany
     {
         return $this->belongsToMany(DocumentProcessor::class);
     }

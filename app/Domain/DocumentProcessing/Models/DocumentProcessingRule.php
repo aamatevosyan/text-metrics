@@ -31,7 +31,7 @@ class DocumentProcessingRule extends Model
         'config' => 'array',
     ];
 
-    public function processor(): BelongsTo
+    public function documentProcessor(): BelongsTo
     {
         return $this->belongsTo(DocumentProcessor::class);
     }

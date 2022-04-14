@@ -4,7 +4,9 @@
         "branch_id": 8,
         "document_processor_id": 1,
         "status": 1,
-        "config": null
+        "config": {
+            "excluded_pages": [0, 1, 2]
+        }
     },
     {
         "course_work_type": null,

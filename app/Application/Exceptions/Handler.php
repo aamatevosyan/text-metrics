@@ -59,5 +59,6 @@ class Handler extends ExceptionHandler
             }
         }
 
+        return redirect()->guest(route(config('fortify.login')));
     }
 }

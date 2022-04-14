@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        ZanySoft\Zip\ZipServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -243,6 +244,11 @@ return [
          * Domain Model Aliases
          */
         'DocumentProcessing' => \Domain\DocumentProcessing\Facades\DocumentProcessing::class,
+
+        /*
+         * Packages
+         */
+        'Zip' => ZanySoft\Zip\ZipFacade::class,
     ],
 
 ];

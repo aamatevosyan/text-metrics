@@ -2,6 +2,7 @@
 
 namespace Domain\DocumentProcessing\Listeners;
 
+use App\Jobs\ApplyDocumentProcessingJob;
 use Log;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAdded;
 
@@ -29,5 +30,7 @@ class MediaLogger
         $path = $media->getPath();
 
         Log::info("file {$path} has been saved for media {$media->id}");
+
+        ApplyDocumentProcessingJob::dispatch($media)->onQueue('document-processing');
     }
 }

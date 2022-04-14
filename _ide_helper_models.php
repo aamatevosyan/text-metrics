@@ -24,6 +24,7 @@ namespace App\Models{
  * @property string $profile_photo_url
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
@@ -42,6 +43,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Admin query()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Admin whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereId($value)
@@ -71,6 +73,7 @@ namespace App\Models{
  * @property int $_rgt
  * @property int $branch_type_id
  * @property array $name
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\BranchType $branchType
@@ -115,6 +118,7 @@ namespace App\Models{
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereAncestorOrSelf($id)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereBranchTypeId($value)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereCreatedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereDeletedAt($value)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereDescendantOf($id, $boolean = 'and', $not = false, $andSelf = false)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereDescendantOrSelf(string $id, string $boolean = 'and', string $not = false)
  * @method static \Kalnoy\Nestedset\QueryBuilder|Branch whereId($value)
@@ -143,6 +147,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property array $name
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Branch[] $branches
@@ -153,6 +158,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|BranchType onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType query()
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BranchType whereUpdatedAt($value)
@@ -173,6 +179,7 @@ namespace App\Models{
  * @property \App\Enums\CourseWorkType $type
  * @property \App\Enums\CourseWorkStatus $status
  * @property array $name
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
@@ -185,6 +192,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|CourseWork onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork query()
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CourseWork whereStatus($value)
@@ -203,6 +211,38 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Document
+ *
+ * @property int $id
+ * @property string $uuid
+ * @property int $media_id
+ * @property array $content
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Media $media
+ * @method static \Database\Factories\DocumentFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Document onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereMediaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereUuid($value)
+ * @method static \Illuminate\Database\Query\Builder|Document withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document withUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document withUuids(array $uuids)
+ * @method static \Illuminate\Database\Query\Builder|Document withoutTrashed()
+ */
+	class IdeHelperDocument {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Student
  *
  * @property int $id
@@ -215,6 +255,7 @@ namespace App\Models{
  * @property string $profile_photo_url
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
@@ -235,6 +276,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Student query()
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Student whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereId($value)
@@ -268,6 +310,7 @@ namespace App\Models{
  * @property string $profile_photo_url
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
@@ -288,6 +331,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor query()
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereBranchId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Supervisor whereId($value)
@@ -320,7 +364,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property array|null $config
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Domain\DocumentProcessing\Models\DocumentProcessor|null $processor
+ * @property-read \Domain\DocumentProcessing\Models\DocumentProcessor $documentProcessor
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule query()
@@ -349,6 +393,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property string $slug
  * @property \App\Enums\DocumentProcessorStatus $status
  * @property array|null $config
+ * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor newModelQuery()
@@ -356,6 +401,7 @@ namespace Domain\DocumentProcessing\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor query()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereConfig($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor whereSlug($value)
@@ -398,14 +444,16 @@ namespace Domain\DocumentProcessing\Models{
  * @property string $name
  * @property array $mime_types
  * @property \App\Enums\DocumentTypeStatus $status
+ * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentProcessor[] $processors
- * @property-read int|null $processors_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentProcessor[] $documentProcessor
+ * @property-read int|null $document_processor_count
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType query()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereMimeTypes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType whereName($value)
@@ -513,6 +561,7 @@ namespace Spatie\MediaLibrary\MediaCollections\Models{
  * @property array $generated_conversions
  * @property array $responsive_images
  * @property int|null $order_column
+ * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
@@ -526,6 +575,7 @@ namespace Spatie\MediaLibrary\MediaCollections\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Media whereConversionsDisk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Media whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Media whereCustomProperties($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Media whereDisk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Media whereFileName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Media whereGeneratedConversions($value)

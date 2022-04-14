@@ -9329,6 +9329,83 @@
                         return $instance->setConnectionName($name);
         }
                     /**
+         * Release a reserved job back onto the queue after (n) seconds.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\DatabaseJobRecord $job
+         * @param int $delay
+         * @return mixed 
+         * @static 
+         */ 
+        public static function release($queue, $job, $delay)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->release($queue, $job, $delay);
+        }
+                    /**
+         * Delete a reserved job from the queue.
+         *
+         * @param string $queue
+         * @param string $id
+         * @return void 
+         * @throws \Throwable
+         * @static 
+         */ 
+        public static function deleteReserved($queue, $id)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        $instance->deleteReserved($queue, $id);
+        }
+                    /**
+         * Delete a reserved job from the reserved queue and release it.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\DatabaseJob $job
+         * @param int $delay
+         * @return void 
+         * @static 
+         */ 
+        public static function deleteAndRelease($queue, $job, $delay)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        $instance->deleteAndRelease($queue, $job, $delay);
+        }
+                    /**
+         * Delete all of the jobs from the queue.
+         *
+         * @param string $queue
+         * @return int 
+         * @static 
+         */ 
+        public static function clear($queue)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->clear($queue);
+        }
+                    /**
+         * Get the queue or return the default.
+         *
+         * @param string|null $queue
+         * @return string 
+         * @static 
+         */ 
+        public static function getQueue($queue)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->getQueue($queue);
+        }
+                    /**
+         * Get the underlying database instance.
+         *
+         * @return \Illuminate\Database\Connection 
+         * @static 
+         */ 
+        public static function getDatabase()
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->getDatabase();
+        }
+                    /**
          * Get the backoff for an object-based queue handler.
          *
          * @param mixed $job
@@ -9337,7 +9414,7 @@
          */ 
         public static function getJobBackoff($job)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getJobBackoff($job);
         }
                     /**
@@ -9349,7 +9426,7 @@
          */ 
         public static function getJobExpiration($job)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getJobExpiration($job);
         }
                     /**
@@ -9361,7 +9438,7 @@
          */ 
         public static function createPayloadUsing($callback)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        \Illuminate\Queue\SyncQueue::createPayloadUsing($callback);
+                        \Illuminate\Queue\DatabaseQueue::createPayloadUsing($callback);
         }
                     /**
          * Get the container instance being used by the connection.
@@ -9371,7 +9448,7 @@
          */ 
         public static function getContainer()
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getContainer();
         }
                     /**
@@ -9383,7 +9460,7 @@
          */ 
         public static function setContainer($container)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         $instance->setContainer($container);
         }
          
@@ -16687,6 +16764,26 @@
                         /** @var \Domain\DocumentProcessing\Services\DocumentProcessingService $instance */
                         return $instance->getDocumentProcessingRule($branchId, $courseWorkType, $mimeType);
         }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getDocumentProcessingRuleFromMedia($media)
+        {
+                        /** @var \Domain\DocumentProcessing\Services\DocumentProcessingService $instance */
+                        return $instance->getDocumentProcessingRuleFromMedia($media);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function process($media)
+        {
+                        /** @var \Domain\DocumentProcessing\Services\DocumentProcessingService $instance */
+                        return $instance->process($media);
+        }
          
     }
      
@@ -18186,6 +18283,266 @@
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
                         return $instance->group($groupName, $properties);
+        }
+         
+    }
+     
+}
+
+    namespace ZanySoft\Zip { 
+            /**
+     * ZanySoft\Zip - ZipArchive toolbox
+     * 
+     * This class provide methods to handle single zip archive
+     *
+     * @package ZanySoft\Zip
+     * @author ZanySoft <info@zanysoft.co>
+     * @license MIT
+     */ 
+        class ZipFacade {
+                    /**
+         * Open a zip archive
+         *
+         * @param string $zip_file ZIP file name
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function open($zip_file)
+        {
+                        return \ZanySoft\Zip\Zip::open($zip_file);
+        }
+                    /**
+         * Check a zip archive
+         *
+         * @param string $zip_file ZIP file name
+         * @return bool 
+         * @static 
+         */ 
+        public static function check($zip_file)
+        {
+                        return \ZanySoft\Zip\Zip::check($zip_file);
+        }
+                    /**
+         * Create a new zip archive
+         *
+         * @param string $zip_file ZIP file name
+         * @param bool $overwrite overwrite existing file (if any)
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function create($zip_file, $overwrite = false)
+        {
+                        return \ZanySoft\Zip\Zip::create($zip_file, $overwrite);
+        }
+                    /**
+         * Set files to skip
+         *
+         * @param string $mode [HIDDEN, ZANYSOFT, ALL, NONE]
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function setSkipped($mode)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->setSkipped($mode);
+        }
+                    /**
+         * Get current skip mode (HIDDEN, ZANYSOFT, ALL, NONE)
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getSkipped()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getSkipped();
+        }
+                    /**
+         * Set extraction password
+         *
+         * @param string $password
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function setPassword($password)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->setPassword($password);
+        }
+                    /**
+         * Get current extraction password
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getPassword()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getPassword();
+        }
+                    /**
+         * Set current base path (just to add relative files to zip archive)
+         *
+         * @param string $path
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function setPath($path)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->setPath($path);
+        }
+                    /**
+         * Get current base path
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getPath()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getPath();
+        }
+                    /**
+         * Set extraction folder mask
+         *
+         * @param int $mask
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function setMask($mask)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->setMask($mask);
+        }
+                    /**
+         * Get current extraction folder mask
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function getMask()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getMask();
+        }
+                    /**
+         * Set the current ZipArchive object
+         *
+         * @param \ZipArchive $zip
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function setArchive($zip)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->setArchive($zip);
+        }
+                    /**
+         * Get current ZipArchive object
+         *
+         * @return \ZipArchive 
+         * @static 
+         */ 
+        public static function getArchive()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getArchive();
+        }
+                    /**
+         * Get current zip file
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getZipFile()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getZipFile();
+        }
+                    /**
+         * Get an SplFileObject for the zip file
+         *
+         * @return \SplFileObject 
+         * @static 
+         */ 
+        public static function getFileObject()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->getFileObject();
+        }
+                    /**
+         * Get a list of files in archive (array)
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function listFiles()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->listFiles();
+        }
+                    /**
+         * Check if zip archive has a file
+         *
+         * @param string $file File
+         * @param int $flags (optional) ZipArchive::FL_NOCASE, ZipArchive::FL_NODIR seperated by bitwise OR
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($file, $flags = 0)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->has($file, $flags);
+        }
+                    /**
+         * Extract files from zip archive
+         *
+         * @param string $destination Destination path
+         * @param mixed $files (optional) a filename or an array of filenames
+         * @return bool 
+         * @static 
+         */ 
+        public static function extract($destination, $files = null)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->extract($destination, $files);
+        }
+                    /**
+         * Add files to zip archive
+         *
+         * @param mixed $file_name_or_array filename to add or an array of filenames
+         * @param bool $flatten_root_folder in case of directory, specify if root folder should be flatten or not
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function add($file_name_or_array, $flatten_root_folder = false)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->add($file_name_or_array, $flatten_root_folder);
+        }
+                    /**
+         * Delete files from zip archive
+         *
+         * @param mixed $file_name_or_array filename to delete or an array of filenames
+         * @return \ZanySoft\Zip\Zip 
+         * @static 
+         */ 
+        public static function delete($file_name_or_array)
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->delete($file_name_or_array);
+        }
+                    /**
+         * Close the zip archive
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function close()
+        {
+                        /** @var \ZanySoft\Zip\Zip $instance */
+                        return $instance->close();
         }
          
     }
@@ -22258,6 +22615,7 @@ namespace  {
             class Nova extends \Laravel\Nova\Nova {}
             class Bouncer extends \Silber\Bouncer\BouncerFacade {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class Zip extends \ZanySoft\Zip\ZipFacade {}
      
 }
 
