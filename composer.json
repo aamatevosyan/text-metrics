@@ -30,7 +30,8 @@
         "tightenco/ziggy": "^1.4",
         "tpetry/laravel-postgresql-enhanced": "^0.13",
         "yadahan/nova-bouncer": "^1.0",
-        "zanysoft/laravel-zip": "dev-patch-1"
+        "zanysoft/laravel-zip": "dev-patch-1",
+        "aamatevosyan/user-profile-tool": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -101,6 +102,10 @@
         "cbekir/laravel-zip": {
             "type": "vcs",
             "url": "https://github.com/cbekir/laravel-zip"
+        },
+        "0": {
+            "type": "path",
+            "url": "./nova-components/UserProfileTool"
         }
     },
     "extra": {

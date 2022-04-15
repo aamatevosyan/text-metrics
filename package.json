@@ -6,7 +6,9 @@
         "dev-supervisor": "vite --config vite.supervisor.config.ts",
         "build-front": "vite build --config vite.front.config.ts",
         "build-admin": "vite build --config vite.admin.config.ts",
-        "build-supervisor": "vite build --config vite.supervisor.config.ts"
+        "build-supervisor": "vite build --config vite.supervisor.config.ts",
+        "build-user-profile-tool": "cd nova-components/UserProfileTool && npm run dev",
+        "build-user-profile-tool-prod": "cd nova-components/UserProfileTool && npm run prod"
     },
     "devDependencies": {
         "@inertiajs/progress": "^0.2.7",
