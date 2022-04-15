@@ -92,23 +92,42 @@ abstract class ModelSeeder extends BaseSeeder
         return Arr::only($data, $keys);
     }
 
+    public function beforeUpdateOrCreate(array $data): void
+    {
+
+    }
+
     /**
      * @param  array  $data
      * @return Model
      */
     public function updateOrCreate(array $data): Model
     {
+        $this->beforeUpdateOrCreate($data);
+
         $keys = $this->getDistinctKeys();
         $modelClass = $this->getModelClass();
+        $fillable = $this->getModelClassInstance()->getFillable();
+
+        $modelData = $fillable ? Arr::only($data, $this->getModelClassInstance()->getFillable()) : $data;
 
         if ($keys && $distinctData = $this->getDistinctData($data, $keys)) {
             return $modelClass::updateOrCreate(
                 $distinctData,
-                $data
+                $modelData
             );
         }
 
-        return $modelClass::create($data);
+        $model = $modelClass::create($modelData);
+
+        $this->afterUpdateOrCreate($data, $model);
+
+        return $model;
+    }
+
+    public function afterUpdateOrCreate(array $data, Model $model): void
+    {
+
     }
 
     public function afterSeed(): void

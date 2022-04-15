@@ -5,7 +5,8 @@
         "email": "superadmin@hse.ru",
         "email_verified_at": "2022-01-05T12:52:15.000000Z",
         "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+SuperAdmin&color=7F9CF5&background=EBF4FF",
-        "password": "secret"
+        "password": "secret",
+        "role": "super-admin"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "email": "admin@hse.ru",
         "email_verified_at": "2022-01-05T12:52:15.000000Z",
         "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+Admin&color=7F9CF5&background=EBF4FF",
-        "password": "secret"
+        "password": "secret",
+        "role": "admin"
     },
     {
         "id": 3,
@@ -21,6 +23,7 @@
         "email": "manager@hse.ru",
         "email_verified_at": "2022-01-05T12:52:15.000000Z",
         "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Some+Manager&color=7F9CF5&background=EBF4FF",
-        "password": "secret"
+        "password": "secret",
+        "role": "manager"
     }
 ]
