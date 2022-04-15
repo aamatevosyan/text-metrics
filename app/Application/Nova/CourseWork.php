@@ -2,13 +2,20 @@
 
 namespace App\Nova;
 
+use App\Enums\CourseWorkStatus;
+use App\Enums\CourseWorkType;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Spatie\NovaTranslatable\Translatable;
+use Str;
+use Suleymanozev\EnumField\Enum;
 
 class CourseWork extends Resource
 {
@@ -24,7 +31,7 @@ class CourseWork extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -32,7 +39,7 @@ class CourseWork extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -47,24 +54,27 @@ class CourseWork extends Resource
             ID::make()->sortable(),
 
             Text::make('Uuid')
-                ->rules('required'),
+                ->rules('required')
+                ->hideFromIndex(),
 
-            Number::make('Type')
-                ->rules('required', 'integer'),
+            Enum::make('Type')->attach(CourseWorkType::class)->sortable()->filterable(),
 
-            Number::make('Status')
-                ->rules('required', 'integer'),
+            Enum::make('Status')->attach(CourseWorkStatus::class)->sortable()->filterable(),
 
-            Text::make('Name')
-                ->rules('required'),
+            Translatable::make([
+                Text::make('Name')
+                    ->rules('required')
+                    ->stacked()
+                    ->sortable(),
+            ]),
 
-            BelongsTo::make('Student'),
-            BelongsTo::make('Supervisor'),
+            BelongsTo::make('Student')->searchable()->withSubtitles()->sortable()->filterable(),
+            BelongsTo::make('Supervisor')->searchable()->withSubtitles()->sortable()->filterable(),
 
-            BelongsToMany::make('Media'),
+//            BelongsToMany::make('Media'),
 
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
+            Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
+            Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
         ];
     }
 

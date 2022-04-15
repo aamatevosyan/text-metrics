@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\PasswordConfirmation;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
 
 class Supervisor extends Resource
@@ -22,7 +24,7 @@ class Supervisor extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -30,7 +32,11 @@ class Supervisor extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
+    ];
+
+    public static $with = [
+        'branch',
     ];
 
     /**
@@ -45,32 +51,24 @@ class Supervisor extends Resource
             ID::make()->sortable(),
 
             Text::make('Name')
-                ->rules('required', 'string'),
+                ->rules('required', 'string')
+                ->sortable(),
 
             Text::make('Email')
-                ->rules('required', 'email'),
+                ->rules('required', 'email')
+                ->sortable(),
 
-            DateTime::make('Email verified at'),
+            Password::make('Password')
+                ->onlyOnForms()
+                ->creationRules('required', 'alpha_num', 'min:8', 'confirmed')
+                ->updateRules('nullable', 'alpha_num', 'min:8', 'confirmed'),
 
-            Text::make('Password')
-                ->rules('required', 'password'),
+            PasswordConfirmation::make('Password Confirmation'),
 
-            Text::make('Remember token')
-                ->rules('string', 'max:100'),
+            BelongsTo::make('Branch')->searchable()->sortable()->filterable(),
 
-            Text::make('Profile photo url')
-                ->rules('string', 'max:2048'),
-
-            Text::make('Two factor secret')
-                ->rules('string'),
-
-            Text::make('Two factor recovery codes')
-                ->rules('string'),
-
-            BelongsTo::make('Branch'),
-
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
+            Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
+            Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
         ];
     }
 
@@ -116,5 +114,10 @@ class Supervisor extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    public function subtitle(): string
+    {
+        return $this->branch->name;
     }
 }

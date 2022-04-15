@@ -8,7 +8,8 @@
         "build-admin": "vite build --config vite.admin.config.ts",
         "build-supervisor": "vite build --config vite.supervisor.config.ts",
         "build-user-profile-tool": "cd nova-components/UserProfileTool && npm run dev",
-        "build-user-profile-tool-prod": "cd nova-components/UserProfileTool && npm run prod"
+        "build-user-profile-tool-prod": "cd nova-components/UserProfileTool && npm run prod",
+        "watch-user-profile-tool": "cd nova-components/UserProfileTool && npm run watch"
     },
     "devDependencies": {
         "@inertiajs/progress": "^0.2.7",

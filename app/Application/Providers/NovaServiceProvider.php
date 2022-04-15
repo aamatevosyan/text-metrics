@@ -10,6 +10,7 @@ use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Spatie\NovaTranslatable\Translatable;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -21,6 +22,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Translatable::defaultLocales(['en', 'ru']);
     }
 
     /**

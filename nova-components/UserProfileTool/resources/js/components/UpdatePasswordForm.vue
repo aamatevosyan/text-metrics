@@ -71,7 +71,7 @@
 
         methods: {
             updatePassword() {
-                this.form.put(route('admin.user-password.update'), {
+                this.form.put(Nova.request().route('admin.user-password.update'), {
                     errorBag: 'updatePassword',
                     preserveScroll: true,
                     onSuccess: () => this.form.reset(),

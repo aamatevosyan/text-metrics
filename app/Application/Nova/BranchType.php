@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
+use Spatie\NovaTranslatable\Translatable;
 
 class BranchType extends Resource
 {
@@ -21,7 +23,7 @@ class BranchType extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -29,7 +31,7 @@ class BranchType extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -43,11 +45,14 @@ class BranchType extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')
-                ->rules('required'),
+            Translatable::make([
+                Text::make('Name')
+                    ->rules('required')
+                    ->sortable(),
+            ]),
 
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
+            Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
+            Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
         ];
     }
 

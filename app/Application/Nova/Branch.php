@@ -2,12 +2,14 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
+use Spatie\NovaTranslatable\Translatable;
 
 class Branch extends Resource
 {
@@ -23,7 +25,7 @@ class Branch extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,7 +33,7 @@ class Branch extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -46,19 +48,28 @@ class Branch extends Resource
             ID::make()->sortable(),
 
             Number::make(' lft')
-                ->rules('required', 'integer'),
+                ->rules('required', 'integer')
+                ->hideWhenCreating()
+                ->hideWhenUpdating()
+                ->sortable(),
 
             Number::make(' rgt')
-                ->rules('required', 'integer'),
+                ->rules('required', 'integer')
+                ->hideWhenCreating()
+                ->hideWhenUpdating()
+                ->sortable(),
 
-            Text::make('Name')
-                ->rules('required'),
+            Translatable::make([
+                Text::make('Name')
+                    ->rules('required')
+                    ->sortable(),
+            ]),
 
-            BelongsTo::make('Parent', 'parent', Branch::class),
-            BelongsTo::make('BranchType'),
+            BelongsTo::make('Parent', 'parent', self::class)->nullable()->sortable()->searchable()->filterable(),
+            BelongsTo::make('BranchType')->sortable()->searchable()->filterable(),
 
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
+            Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
+            Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
         ];
     }
 

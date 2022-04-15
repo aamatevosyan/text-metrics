@@ -208,7 +208,7 @@ __webpack_require__.r(__webpack_exports__);
     updatePassword: function updatePassword() {
       var _this = this;
 
-      this.form.put(route('admin.user-password.update'), {
+      this.form.put(Nova.request().route('admin.user-password.update'), {
         errorBag: 'updatePassword',
         preserveScroll: true,
         onSuccess: function onSuccess() {
@@ -291,7 +291,7 @@ __webpack_require__.r(__webpack_exports__);
         this.form.photo = this.$refs.photo.files[0];
       }
 
-      this.form.post(route('admin.user-profile-information.update'), {
+      this.form.post(Nova.route('admin.user-profile-information.update'), {
         errorBag: 'updateProfileInformation',
         preserveScroll: true,
         onSuccess: function onSuccess() {
@@ -318,7 +318,7 @@ __webpack_require__.r(__webpack_exports__);
     deletePhoto: function deletePhoto() {
       var _this3 = this;
 
-      this.$inertia["delete"](route('admin.current-user-photo.destroy'), {
+      this.$inertia["delete"](Nova.route('admin.current-user-photo.destroy'), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           _this3.photoPreview = null;
@@ -1037,6 +1037,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("User Profile Tool");
 
+var _hoisted_2 = {
+  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+};
+var _hoisted_3 = {
+  key: 0
+};
+var _hoisted_4 = {
+  key: 1
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -1044,9 +1053,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_update_profile_information_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-profile-information-form");
 
-  var _component_update_password_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-password-form");
+  var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
 
-  var _component_Card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Card");
+  var _component_update_password_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-password-form");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "User Profile Tool"
@@ -1059,26 +1068,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card, {
-    "class": "flex flex-col items-center justify-center",
-    style: {
-      "min-height": "300px"
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_ctx.$page.props.jetstream.canUpdateProfileInformation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_update_profile_information_form, {
-        key: 0,
-        user: _ctx.$page.props.user
-      }, null, 8
-      /* PROPS */
-      , ["user"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canUpdatePassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_update_password_form, {
-        key: 1
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_ctx.$page.props.jetstream.canUpdateProfileInformation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_profile_information_form, {
+    user: _ctx.$page.props.user
+  }, null, 8
+  /* PROPS */
+  , ["user"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canUpdatePassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_password_form, {
+    "class": "mt-10 sm:mt-0"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <Card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            class=\"flex flex-col items-center justify-center\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            style=\"min-height: 300px\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        >"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <update-profile-information-form v-if=\"$page.props.jetstream.canUpdateProfileInformation\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                             :user=\"$page.props.user\"/>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <update-password-form v-if=\"$page.props.jetstream.canUpdatePassword\"/>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </Card>")]);
 }
 
 /***/ }),

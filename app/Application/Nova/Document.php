@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -47,14 +49,14 @@ class Document extends Resource
             Text::make('Uuid')
                 ->rules('required'),
 
-            Text::make('Content')
+            Code::make('Content')
+                ->json()
                 ->rules('required'),
 
-            BelongsTo::make('Media'),
+//            BelongsTo::make('Media'),
 
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
-            DateTime::make('Deleted at'),
+            Date::make('Created at')->hideWhenCreating()->hideWhenUpdating(),
+            Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating(),
         ];
     }
 

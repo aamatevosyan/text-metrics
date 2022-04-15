@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "aamatevosyan/user-profile-tool": "*",
         "coderello/laravel-nova-lang": "^1.8",
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.4",
@@ -26,12 +27,13 @@
         "spatie/laravel-google-cloud-storage": "^2.0",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-translatable": "^6.0",
+        "spatie/nova-translatable": "^3.0",
         "spatie/pdf-to-text": "^1.51",
+        "suleymanozev/enum-field": "^1.0",
         "tightenco/ziggy": "^1.4",
         "tpetry/laravel-postgresql-enhanced": "^0.13",
         "yadahan/nova-bouncer": "^1.0",
-        "zanysoft/laravel-zip": "dev-patch-1",
-        "aamatevosyan/user-profile-tool": "*"
+        "zanysoft/laravel-zip": "dev-patch-1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

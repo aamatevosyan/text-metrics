@@ -110,7 +110,7 @@
                     this.form.photo = this.$refs.photo.files[0]
                 }
 
-                this.form.post(route('admin.user-profile-information.update'), {
+                this.form.post(Nova.route('admin.user-profile-information.update'), {
                     errorBag: 'updateProfileInformation',
                     preserveScroll: true,
                     onSuccess: () => (this.clearPhotoFileInput()),
@@ -136,7 +136,7 @@
             },
 
             deletePhoto() {
-                this.$inertia.delete(route('admin.current-user-photo.destroy'), {
+                this.$inertia.delete(Nova.route('admin.current-user-photo.destroy'), {
                     preserveScroll: true,
                     onSuccess: () => {
                         this.photoPreview = null;
