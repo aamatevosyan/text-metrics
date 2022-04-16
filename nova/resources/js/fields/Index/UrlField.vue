@@ -1,13 +1,14 @@
 <template>
   <div :class="`text-${field.textAlign}`">
     <template v-if="hasValue">
-      <div v-if="field.asHtml" v-html="field.value"></div>
+      <div v-if="field.asHtml" @click.stop v-html="field.value"></div>
       <span v-else class="whitespace-nowrap">
         <a
           class="text-primary-500 hover:text-primary-400 font-bold no-underline"
           :href="field.value"
           rel="noreferrer noopener"
           target="_blank"
+          @click.stop
         >
           {{ field.displayedAs }}
         </a>

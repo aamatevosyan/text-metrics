@@ -1,7 +1,7 @@
 <template>
   <div :class="`text-${field.textAlign}`">
     <template v-if="hasValue">
-      <div v-if="field.asHtml" v-html="field.value"></div>
+      <div v-if="field.asHtml" @click.stop v-html="field.value"></div>
       <span v-else class="whitespace-nowrap">{{ field.value }}</span>
     </template>
     <p v-else>&mdash;</p>

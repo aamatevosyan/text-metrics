@@ -137,31 +137,29 @@ class Builder implements QueryBuilder
     }
 
     /**
-     * Set the "take" for the search query.
+     * Set the "take" directly to Scout or Eloquent builder.
      *
      * @param  int  $limit
      * @return $this
      */
     public function take($limit)
     {
-        return $this->limit($limit);
+        $this->queryBuilder->take($limit);
+
+        return $this;
     }
 
     /**
-     * Set the "limit" for the search query.
+     * Defer setting a "limit" using query callback and only executed via Eloquent builder.
      *
      * @param  int  $limit
      * @return $this
      */
     public function limit($limit)
     {
-        if ($this->queryBuilder instanceof ScoutBuilder) {
-            $this->queryBuilder->take($limit);
-        } else {
-            $this->queryBuilder->limit($limit);
-        }
-
-        return $this;
+        return $this->tap(function ($query) use ($limit) {
+            $query->limit($limit);
+        });
     }
 
     /**

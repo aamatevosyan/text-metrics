@@ -11,7 +11,13 @@
     </button>
 
     <teleport to="body">
-      <div v-show="show" ref="menu" class="relative z-40" @click="handleClick">
+      <div
+        v-show="show"
+        ref="menu"
+        class="relative z-40"
+        :data-menu-open="show"
+        @click="handleClick"
+      >
         <slot name="menu" />
       </div>
     </teleport>

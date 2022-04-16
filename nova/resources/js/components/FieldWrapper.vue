@@ -1,7 +1,7 @@
 <template>
   <div
-    class="field-wrapper flex flex-col md:flex-row border-b border-gray-100 dark:border-gray-700"
-    :class="{ 'flex-col': stacked }"
+    class="field-wrapper flex border-b border-gray-100 dark:border-gray-700"
+    :class="{ 'md:flex-row': !stacked }"
   >
     <slot />
   </div>

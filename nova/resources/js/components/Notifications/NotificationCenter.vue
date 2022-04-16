@@ -10,7 +10,7 @@
 
       <span
         v-if="unreadNotifications"
-        class="absolute border-[3px] border-white dark:border-gray-800 top-[-3px] right-[-4px] inline-block bg-red-500 rounded-full w-4 h-4"
+        class="absolute border-[3px] border-white dark:border-gray-800 top-[3px] right-[4px] inline-block bg-red-500 rounded-full w-4 h-4"
       />
     </button>
   </div>

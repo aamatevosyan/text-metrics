@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="hasDropdownItems">
     <Dropdown>
       <span class="sr-only">{{ __('Resource Row Dropdown') }}</span>
       <DropdownTrigger
@@ -19,18 +19,6 @@
             class="divide-y divide-gray-100 dark:divide-gray-800 divide-solid"
           >
             <div class="py-1">
-              <!-- Preview Resource Link -->
-              <DropdownMenuItem
-                v-if="resource.authorizedToView"
-                :data-testid="`${resource.id.value}-preview-button`"
-                :dusk="`${resource.id.value}-preview-button`"
-                as="button"
-                @click.prevent="openPreviewModal"
-                :title="__('Preview')"
-              >
-                {{ __('Preview') }}
-              </DropdownMenuItem>
-
               <!-- Replicate Resource Link -->
               <DropdownMenuItem
                 v-if="resource.authorizedToReplicate"
@@ -49,9 +37,7 @@
               <!-- Impersonate Resource Button -->
               <DropdownMenuItem
                 as="button"
-                v-if="
-                  currentUser.canImpersonate && resource.authorizedToImpersonate
-                "
+                v-if="canBeImpersonated"
                 :dusk="`${resource.id.value}-impersonate-button`"
                 @click.prevent="
                   startImpersonating({
@@ -327,6 +313,23 @@ export default {
 
     currentTrashed() {
       return ''
+    },
+
+    hasDropdownItems() {
+      return (
+        this.actions.length > 0 ||
+        this.resource.authorizedToReplicate ||
+        this.canBeImpersonated ||
+        (this.resource.authorizedToDelete && !this.resource.softDeleted) ||
+        (this.resource.authorizedToRestore && this.resource.softDeleted) ||
+        this.resource.authorizedToForceDelete
+      )
+    },
+
+    canBeImpersonated() {
+      return (
+        this.currentUser.canImpersonate && this.resource.authorizedToImpersonate
+      )
     },
 
     selectedResources() {

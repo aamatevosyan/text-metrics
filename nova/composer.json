@@ -29,6 +29,7 @@
   },
   "require-dev": {
     "laravel/nova-dusk-suite": "8.4.x-dev|9.4.x-dev",
+    "laravel/scout": "^9.4",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/larastan": "^1.0.1|^2.0",
     "orchestra/testbench-dusk": "^6.24|^7.0",
@@ -101,5 +102,5 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "version": "4.1.0"
+  "version": "4.2.1"
 }

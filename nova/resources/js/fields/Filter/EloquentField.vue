@@ -1,5 +1,5 @@
 <template>
-  <FilterContainer>
+  <FilterContainer v-if="!isSearchable && availableResources.length > 0">
     <span>{{ filter.name }}</span>
 
     <template #filter>
@@ -56,10 +56,10 @@
       </SearchInput>
 
       <SelectControl
-        v-else
+        v-else-if="availableResources.length > 0"
         :dusk="`${field.uniqueKey}-filter`"
-        v-model:selected="value"
-        @change="value = $event"
+        v-model:selected="selectedResourceId"
+        @change="selectedResourceId = $event"
         :options="availableResources"
         label="display"
       >
@@ -95,12 +95,11 @@ export default {
   data: () => ({
     availableResources: [],
     selectedResource: null,
-    selectedResourceId: null,
+    selectedResourceId: '',
     softDeletes: false,
     withTrashed: false,
     search: '',
 
-    value: null,
     debouncedHandleChange: null,
   }),
 
@@ -112,7 +111,6 @@ export default {
 
   created() {
     this.debouncedHandleChange = debounce(() => this.handleChange(), 500)
-    this.value = this.filter.currentValue
   },
 
   beforeUnmount() {
@@ -122,14 +120,14 @@ export default {
   watch: {
     selectedResource(resource) {
       if (!isNil(resource) && resource !== '') {
-        this.value = resource.value
+        this.selectedResourceId = resource.selectedResourceId
       } else {
-        this.value = ''
+        this.selectedResourceId = ''
         this.initializeComponent()
       }
     },
 
-    value() {
+    selectedResourceId() {
       this.debouncedHandleChange()
     },
   },
@@ -142,8 +140,8 @@ export default {
       let filter = this.filter
       let shouldSelectInitialResource = false
 
-      if (filter.currentValue) {
-        this.selectedResourceId = filter.currentValue
+      if (this.filter.currentValue) {
+        this.selectedResourceId = this.filter.currentValue
 
         if (this.isSearchable === true) {
           shouldSelectInitialResource = true
@@ -200,7 +198,7 @@ export default {
     handleChange() {
       this.$store.commit(`${this.resourceName}/updateFilterState`, {
         filterClass: this.filterKey,
-        value: this.value,
+        value: this.selectedResourceId,
       })
 
       this.$emit('change')
@@ -211,8 +209,7 @@ export default {
         return
       }
 
-      this.value = this.filter.currentValue
-      this.selectedResourceId = null
+      this.selectedResourceId = ''
       this.selectedResource = null
       this.availableResources = []
 
@@ -243,20 +240,13 @@ export default {
     },
 
     /**
-     * Determine if initializing with existing filtered resource
-     */
-    initializingWithExistingResource() {
-      return this.selectedResourceId && this.isSearchable
-    },
-
-    /**
      * Get the query params for getting available resources
      */
     queryParams() {
       return {
         params: {
           current: this.selectedResourceId,
-          first: this.initializingWithExistingResource,
+          first: this.selectedResourceId && this.isSearchable,
           search: this.search,
           withTrashed: this.withTrashed,
         },

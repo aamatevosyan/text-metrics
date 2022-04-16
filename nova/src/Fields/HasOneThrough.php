@@ -72,7 +72,7 @@ class HasOneThrough extends Field implements ListableField, RelatableField
 
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();
-        $this->hasOneThroughRelationship = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
+        $this->hasOneThroughRelationship = $this->attribute = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
         $this->singularLabel = $resource::singularLabel();
 
         $this->alreadyFilledWhen(function ($request) {

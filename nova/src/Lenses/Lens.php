@@ -11,7 +11,6 @@ use Illuminate\Http\Resources\DelegatesToResource;
 use Illuminate\Support\Str;
 use JsonSerializable;
 use Laravel\Nova\AuthorizedToSee;
-use Laravel\Nova\Contracts\FilterableField;
 use Laravel\Nova\Fields\FieldCollection;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\LensRequest;
@@ -135,7 +134,7 @@ abstract class Lens implements ArrayAccess, JsonSerializable, UrlRoutable
     public function filterableFields(NovaRequest $request)
     {
         return $this->availableFields($request)
-                    ->whereInstanceOf(FilterableField::class)
+                    ->withOnlyFilterableFields()
                     ->authorized($request);
     }
 

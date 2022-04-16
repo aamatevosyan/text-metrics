@@ -29,9 +29,9 @@ trait Filterable
             throw new InvalidArgumentException('$filterableCallback needs to be callable/Closure');
         }
 
-        $this->filterableCallback = ! is_null($filterableCallback)
-                                        ? $filterableCallback
-                                        : $this->defaultFilterableCallback();
+        $this->filterableCallback = !is_null($filterableCallback)
+            ? $filterableCallback
+            : $this->defaultFilterableCallback();
 
         return $this;
     }

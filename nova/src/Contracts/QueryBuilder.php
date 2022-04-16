@@ -32,7 +32,7 @@ interface QueryBuilder
                                       $withTrashed = TrashedStatus::DEFAULT);
 
     /**
-     * Set the "take" for the search query.
+     * Set the "take" directly to Scout or Eloquent builder.
      *
      * @param  int  $limit
      * @return $this
@@ -40,7 +40,7 @@ interface QueryBuilder
     public function take($limit);
 
     /**
-     * Set the "limit" for the search query.
+     * Defer setting a "limit" using query callback and only executed via Eloquent builder.
      *
      * @param  int  $limit
      * @return $this

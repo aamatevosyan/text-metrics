@@ -13,7 +13,7 @@
       <DividerLine />
 
       <div class="mb-6">
-        <label class="block mb-2" for="email">Email Address</label>
+        <label class="block mb-2" for="email">{{ __('Email Address') }}</label>
         <input
           v-model="form.email"
           class="form-control form-input form-input-bordered w-full"

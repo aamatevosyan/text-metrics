@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="field.authorizedToCreate">
     <Heading :level="4" :class="panel.helpText ? 'mb-2' : 'mb-3'">{{
       panel.name
     }}</Heading>
@@ -104,6 +104,12 @@ export default {
   data: () => ({
     relationFormUniqueId: uid(),
   }),
+
+  mounted() {
+    if (!this.field.authorizedToCreate) {
+      this.field.fill = () => {}
+    }
+  },
 
   computed: {
     field() {

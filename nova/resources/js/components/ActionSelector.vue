@@ -7,6 +7,7 @@
     :options="actionsForSelect"
     data-testid="action-select"
     dusk="action-select"
+    selected=""
     :class="{ 'max-w-[6rem]': width == 'auto', 'w-full': width == 'full' }"
     :aria-label="__('Select Action')"
     ref="selectControl"

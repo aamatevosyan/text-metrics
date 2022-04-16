@@ -4,7 +4,6 @@ namespace Laravel\Nova;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -29,10 +28,6 @@ class NovaServiceProvider extends ServiceProvider
         $this->registerCollectionMacros();
         $this->registerRelationsMacros();
         $this->registerJsonVariables();
-
-        Nova::serving(function () {
-            JsonResource::withoutWrapping();
-        });
     }
 
     /**

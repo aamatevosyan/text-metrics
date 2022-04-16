@@ -12,8 +12,9 @@
         'py-2': !shouldShowTight,
         'border-r': shouldShowColumnBorders,
         'border-t border-gray-100 dark:border-gray-700 px-2': true,
+        'cursor-pointer': resource.authorizedToView,
       }"
-      class="td-fit cursor-pointer pl-5 pr-5 dark:bg-gray-800 group-hover:bg-gray-50 dark:group-hover:bg-gray-900"
+      class="td-fit pl-5 pr-5 dark:bg-gray-800 group-hover:bg-gray-50 dark:group-hover:bg-gray-900"
       @click.stop
     >
       <Checkbox
@@ -37,8 +38,9 @@
         'border-r': shouldShowColumnBorders,
         'border-t border-gray-100 dark:border-gray-700': true,
         'whitespace-nowrap': !field.wrapping,
+        'cursor-pointer': resource.authorizedToView,
       }"
-      class="cursor-pointer dark:bg-gray-800 group-hover:bg-gray-50 dark:group-hover:bg-gray-900"
+      class="dark:bg-gray-800 group-hover:bg-gray-50 dark:group-hover:bg-gray-900"
     >
       <component
         :is="'index-' + field.component"
@@ -55,8 +57,9 @@
       :class="{
         'py-2': !shouldShowTight,
         'border-t border-gray-100 dark:border-gray-700': true,
+        'cursor-pointer': resource.authorizedToView,
       }"
-      class="px-2 td-fit cursor-pointer text-right align-middle dark:bg-gray-800 group-hover:bg-gray-50 dark:group-hover:bg-gray-900"
+      class="px-2 td-fit text-right align-middle dark:bg-gray-800 group-hover:bg-gray-50 dark:group-hover:bg-gray-900"
     >
       <div class="flex items-center space-x-0 text-gray-400">
         <InlineActionDropdown
@@ -253,6 +256,10 @@ export default {
     },
 
     navigateToDetail(e) {
+      if (!this.resource.authorizedToView) {
+        return
+      }
+
       this.commandPressed
         ? window.open(this.viewURL, '_blank')
         : Inertia.visit(this.viewURL)

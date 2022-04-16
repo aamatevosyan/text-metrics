@@ -6,6 +6,8 @@ use JsonSerializable;
 
 class ValueResult implements JsonSerializable
 {
+    use TransformsResults;
+
     /**
      * The value of the result.
      *
@@ -182,8 +184,8 @@ class ValueResult implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'value' => $this->value,
-            'previous' => $this->previous,
+            'value' => $this->resolveTransformedValue($this->value),
+            'previous' => $this->resolveTransformedValue($this->previous),
             'previousLabel' => $this->previousLabel,
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,

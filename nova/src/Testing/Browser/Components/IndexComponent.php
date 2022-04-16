@@ -144,20 +144,6 @@ class IndexComponent extends Component
     }
 
     /**
-     * Set the per page value for the index.
-     *
-     * @param  \Laravel\Dusk\Browser  $browser
-     * @return void
-     */
-    public function setPerPage(Browser $browser, $value)
-    {
-        $browser->openFilterSelector()
-                    ->elsewhereWhenAvailable('select[dusk="per-page-select"]', function ($browser) use ($value) {
-                        $browser->select('', $value);
-                    })->closeCurrentDropdown();
-    }
-
-    /**
      * Set the given filter and filter value for the index.
      *
      * @param  \Laravel\Dusk\Browser  $browser
@@ -169,12 +155,27 @@ class IndexComponent extends Component
         $browser->openFilterSelector()->pause(500);
 
         if (! is_null($fieldCallback)) {
-            $browser->elsewhere('', function ($browser) use ($fieldCallback) {
+            $browser->elsewhere('[data-menu-open="true"]', function ($browser) use ($fieldCallback) {
                 $fieldCallback($browser);
             });
         }
 
         $browser->closeCurrentDropdown()->pause(1000);
+    }
+
+    /**
+     * Set the per page value for the index.
+     *
+     * @param  \Laravel\Dusk\Browser  $browser
+     * @return void
+     */
+    public function setPerPage(Browser $browser, $value)
+    {
+        $this->runFilter($browser, function ($browser) use ($value) {
+            $browser->whenAvailable('select[dusk="per-page-select"]', function ($browser) use ($value) {
+                $browser->select('', $value);
+            });
+        });
     }
 
     /**
@@ -202,10 +203,11 @@ class IndexComponent extends Component
      */
     public function withoutTrashed(Browser $browser)
     {
-        $browser->openFilterSelector()
-                ->elsewhereWhenAvailable('[dusk="filter-soft-deletes"]', function ($browser) {
-                    $browser->select('select[dusk="trashed-select"]', '');
-                })->closeCurrentDropdown();
+        $this->runFilter($browser, function ($browser) {
+            $browser->whenAvailable('[dusk="filter-soft-deletes"]', function ($browser) {
+                $browser->select('select[dusk="trashed-select"]', '');
+            });
+        });
     }
 
     /**
@@ -216,10 +218,11 @@ class IndexComponent extends Component
      */
     public function onlyTrashed(Browser $browser)
     {
-        $browser->openFilterSelector()
-                ->elsewhereWhenAvailable('[dusk="filter-soft-deletes"]', function ($browser) {
-                    $browser->select('select[dusk="trashed-select"]', 'only');
-                })->closeCurrentDropdown();
+        $this->runFilter($browser, function ($browser) {
+            $browser->whenAvailable('[dusk="filter-soft-deletes"]', function ($browser) {
+                $browser->select('select[dusk="trashed-select"]', 'only');
+            });
+        });
     }
 
     /**
@@ -230,10 +233,11 @@ class IndexComponent extends Component
      */
     public function withTrashed(Browser $browser)
     {
-        $browser->openFilterSelector()
-                ->elsewhereWhenAvailable('[dusk="filter-soft-deletes"]', function ($browser) {
-                    $browser->select('select[dusk="trashed-select"]', 'with');
-                })->closeCurrentDropdown();
+        $this->runFilter($browser, function ($browser) {
+            $browser->whenAvailable('[dusk="filter-soft-deletes"]', function ($browser) {
+                $browser->select('select[dusk="trashed-select"]', 'with');
+            });
+        });
     }
 
     /**
@@ -516,11 +520,16 @@ class IndexComponent extends Component
      *
      * @param  \Laravel\Dusk\Browser  $browser
      * @param  int|string  $id
+     * @param  int|string|null  $pivotId
      * @return void
      */
-    public function assertSeeResource(Browser $browser, $id)
+    public function assertSeeResource(Browser $browser, $id, $pivotId = null)
     {
-        $browser->assertVisible('@'.$id.'-row');
+        if (! is_null($pivotId)) {
+            $browser->assertVisible('[dusk="'.$id.'-row"][data-pivot-id="'.$pivotId.'"]');
+        } else {
+            $browser->assertVisible('@'.$id.'-row');
+        }
     }
 
     /**
@@ -528,11 +537,16 @@ class IndexComponent extends Component
      *
      * @param  \Laravel\Dusk\Browser  $browser
      * @param  int|string  $id
+     * @param  int|string|null  $pivotId
      * @return void
      */
-    public function assertDontSeeResource(Browser $browser, $id)
+    public function assertDontSeeResource(Browser $browser, $id, $pivotId = null)
     {
-        $browser->assertMissing('@'.$id.'-row');
+        if (! is_null($pivotId)) {
+            $browser->assertMissing('[dusk="'.$id.'-row"][data-pivot-id="'.$pivotId.'"]');
+        } else {
+            $browser->assertMissing('@'.$id.'-row');
+        }
     }
 
     /**

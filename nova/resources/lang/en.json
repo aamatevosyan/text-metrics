@@ -409,6 +409,7 @@
   "Show All Fields": "Show All Fields",
   "There was a problem submitting the form.": "There was a problem submitting the form.",
   "There was a problem executing the action.": "There was a problem executing the action.",
+  "There was a problem fetching the resource.": "There was a problem fetching the resource.",
   "Do you really want to leave? You have unsaved changes.": "Do you really want to leave? You have unsaved changes.",
   "*": "*",
   "—": "—",
@@ -441,6 +442,5 @@
   "Light": "Light",
   "Dark": "Dark",
   "System": "System",
-  "Are you sure you want to stop impersonating?": "Are you sure you want to stop impersonating?",
   "There are no fields to display.": "There are no fields to display."
 }

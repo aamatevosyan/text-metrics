@@ -2,6 +2,7 @@
   <div class="flex relative" :class="$attrs.class">
     <select
       v-bind="defaultAttributes"
+      v-model="selected"
       @change="handleChange"
       class="w-full block form-control form-select"
       :multiple="multiple"

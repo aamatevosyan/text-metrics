@@ -46,7 +46,9 @@ export default {
      */
     setInitialValue() {
       if (!isNil(this.currentField.value)) {
-        let isoDate = DateTime.fromISO(this.currentField.value)
+        let isoDate = DateTime.fromISO(this.currentField.value, {
+          zone: Nova.config('timezone'),
+        })
 
         this.value = isoDate.toString()
 
@@ -54,7 +56,7 @@ export default {
 
         this.formattedDate = [
           isoDate.toISODate(),
-          isoDate.toLocaleString(DateTime.TIME_24_WITH_SECONDS),
+          isoDate.toFormat('HH:mm:ss'),
         ].join('T')
       }
     },
@@ -70,11 +72,15 @@ export default {
      * Update the field's internal value
      */
     handleChange(event) {
-      let value = event?.target?.value || event
+      let value = event?.target?.value ?? event
 
-      this.value = DateTime.fromISO(value, { zone: this.timezone })
-        .setZone(Nova.config('timezone'))
-        .toString()
+      if (filled(value)) {
+        this.value = DateTime.fromISO(value, { zone: this.timezone })
+          .setZone(Nova.config('timezone'))
+          .toString()
+      } else {
+        this.value = ''
+      }
 
       if (this.field) {
         this.emitFieldValueChange(this.field.attribute, this.value)
@@ -87,5 +93,9 @@ export default {
       return Nova.config('userTimezone') || Nova.config('timezone')
     },
   },
+}
+
+function filled(value) {
+  return !isNil(value) && value !== ''
 }
 </script>

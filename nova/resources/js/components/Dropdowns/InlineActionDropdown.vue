@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="hasDropdownItems">
     <Dropdown>
       <span class="sr-only">{{ __('Resource Row Dropdown') }}</span>
       <DropdownTrigger
@@ -48,9 +48,7 @@
               <!-- Impersonate Resource Button -->
               <DropdownMenuItem
                 as="button"
-                v-if="
-                  currentUser.canImpersonate && resource.authorizedToImpersonate
-                "
+                v-if="canBeImpersonated"
                 :dusk="`${resource.id.value}-impersonate-button`"
                 @click.prevent="
                   startImpersonating({
@@ -168,6 +166,21 @@ export default {
 
     currentTrashed() {
       return ''
+    },
+
+    hasDropdownItems() {
+      return (
+        this.actions.length > 0 ||
+        this.resource.authorizedToView ||
+        this.resource.authorizedToReplicate ||
+        this.canBeImpersonated
+      )
+    },
+
+    canBeImpersonated() {
+      return (
+        this.currentUser.canImpersonate && this.resource.authorizedToImpersonate
+      )
     },
 
     selectedResources() {

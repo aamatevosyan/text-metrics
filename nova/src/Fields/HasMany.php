@@ -63,7 +63,7 @@ class HasMany extends Field implements ListableField, RelatableField
 
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();
-        $this->hasManyRelationship = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
+        $this->hasManyRelationship = $this->attribute = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
     }
 
     /**

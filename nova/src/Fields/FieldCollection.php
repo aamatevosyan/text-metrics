@@ -5,6 +5,7 @@ namespace Laravel\Nova\Fields;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Laravel\Nova\Contracts\FilterableField;
 use Laravel\Nova\Contracts\ListableField;
 use Laravel\Nova\Contracts\RelatableField;
 use Laravel\Nova\Contracts\Resolvable;
@@ -188,6 +189,18 @@ class FieldCollection extends Collection
     {
         return $this->filter(function ($field) {
             return $field instanceof BelongsToMany || $field instanceof MorphToMany;
+        });
+    }
+
+    /**
+     * Reject if the field supports Filterable Field.
+     *
+     * @return static<int, \Laravel\Nova\Fields\MorphToMany|\Laravel\Nova\Fields\BelongsToMany>
+     */
+    public function withOnlyFilterableFields()
+    {
+        return $this->filter(function ($field) {
+            return $field instanceof FilterableField && $field->attribute !== 'ComputedField';
         });
     }
 

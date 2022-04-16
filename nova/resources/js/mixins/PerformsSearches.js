@@ -66,7 +66,7 @@ export default {
         return
       }
 
-      this.debouncer(() => {
+      this.searchDebouncer(() => {
         this.getAvailableResources(trimmedSearch)
       }, 500)
     },
@@ -74,6 +74,6 @@ export default {
     /**
      * Debounce function for the search handler
      */
-    debouncer: debounce(callback => callback(), 500),
+    searchDebouncer: debounce(callback => callback(), 500),
   },
 }

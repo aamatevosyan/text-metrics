@@ -124,7 +124,7 @@ class MorphTo extends Field implements FilterableField, RelatableField
     {
         parent::__construct($name, $attribute);
 
-        $this->morphToRelationship = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
+        $this->morphToRelationship = $this->attribute = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
     }
 
     /**

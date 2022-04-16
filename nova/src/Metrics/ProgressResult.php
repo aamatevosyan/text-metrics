@@ -7,6 +7,7 @@ use JsonSerializable;
 class ProgressResult implements JsonSerializable
 {
     use RoundingPrecision;
+    use TransformsResults;
 
     /**
      * The current value of the result.
@@ -164,9 +165,11 @@ class ProgressResult implements JsonSerializable
      */
     public function jsonSerialize(): array
     {
+        $target = max($this->value, $this->target);
+
         return [
-            'value' => $this->value,
-            'target' => $target = max($this->value, $this->target),
+            'value' => $this->resolveTransformedValue($this->value),
+            'target' => $this->resolveTransformedValue($target),
             'percentage' => round(($this->value / $target) * 100, $this->roundingPrecision, $this->roundingMode),
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,

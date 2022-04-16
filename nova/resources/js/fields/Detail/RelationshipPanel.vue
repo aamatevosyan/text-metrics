@@ -3,7 +3,6 @@
     <!-- <h4 class="text-90 font-normal text-2xl mb-3">{{ panel.name }}</h4> -->
 
     <component
-      v-for="field in panel.fields"
       :key="`${field.attribute}:${resourceId}`"
       :is="'detail-' + field.component"
       :resource-name="resourceName"
@@ -20,5 +19,11 @@ import { BehavesAsPanel } from '@/mixins'
 
 export default {
   mixins: [BehavesAsPanel],
+
+  computed: {
+    field() {
+      return this.panel.fields[0]
+    },
+  },
 }
 </script>

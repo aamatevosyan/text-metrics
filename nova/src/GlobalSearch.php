@@ -58,7 +58,7 @@ class GlobalSearch
             );
 
             yield from $query->limit($resourceClass::$globalSearchResults)
-                ->lazy()
+                ->cursor()
                 ->mapInto($resourceClass)
                 ->map(function ($resource) use ($resourceClass) {
                     return $this->transformResult($resourceClass, $resource);

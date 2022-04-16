@@ -9,7 +9,6 @@ use Laravel\Nova\Contracts\BehavesAsPanel;
 use Laravel\Nova\Contracts\Cover;
 use Laravel\Nova\Contracts\Deletable;
 use Laravel\Nova\Contracts\Downloadable;
-use Laravel\Nova\Contracts\FilterableField;
 use Laravel\Nova\Contracts\ListableField;
 use Laravel\Nova\Contracts\RelatableField;
 use Laravel\Nova\Contracts\Resolvable;
@@ -82,12 +81,7 @@ trait ResolvesFields
      */
     public function deletableFields(NovaRequest $request)
     {
-        $methods = collect(['fieldsForIndex', 'fieldsForDetail'])
-            ->filter(function ($method) {
-                return method_exists($this, $method);
-            })->all();
-
-        return $this->buildAvailableFields($request, $methods)
+        return $this->availableFieldsOnIndexOrDetail($request)
             ->when($request->viaRelationship(), $this->fieldResolverCallback($request))
             ->whereInstanceOf(Deletable::class)
             ->unique(function ($field) {
@@ -105,12 +99,7 @@ trait ResolvesFields
      */
     public function downloadableFields(NovaRequest $request)
     {
-        $methods = collect(['fieldsForIndex', 'fieldsForDetail'])
-            ->filter(function ($method) {
-                return method_exists($this, $method);
-            })->all();
-
-        return $this->buildAvailableFields($request, $methods)
+        return $this->availableFieldsOnIndexOrDetail($request)
             ->when($request->viaRelationship(), $this->fieldResolverCallback($request))
             ->whereInstanceOf(Downloadable::class)
             ->unique(function ($field) {
@@ -128,18 +117,41 @@ trait ResolvesFields
      */
     public function filterableFields(NovaRequest $request)
     {
-        $methods = collect(['fieldsForIndex', 'fieldsForDetail'])
-            ->filter(function ($method) {
-                return method_exists($this, $method);
-            })->all();
+        return $this->availableFieldsOnIndexOrDetail($request)
+            ->when($request->viaRelationship(), function ($fields) use ($request) {
+                $relatedField = $request->findParentResource()->relatableField($request, $request->viaRelationship);
 
-        return $this->buildAvailableFields($request, $methods)
-            ->when($request->viaRelationship(), $this->relatedFieldResolverCallback($request))
-            ->whereInstanceOf(FilterableField::class)
+                if (! is_null($relatedField)) {
+                    $fields->prepend($relatedField);
+                }
+
+                return call_user_func($this->relatedFieldResolverCallback($request), $fields);
+            })
+            ->withOnlyFilterableFields()
             ->unique(function ($field) {
                 return $field->attribute;
             })
             ->authorized($request);
+    }
+
+    /**
+     * Get related field from resource by attribute.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  string  $attribute
+     * @return \Laravel\Nova\Fields\Field|null
+     */
+    public function relatableField(NovaRequest $request, $attribute)
+    {
+        return $this->availableFieldsOnIndexOrDetail($request)
+            ->when($request->viaRelationship(), $this->fieldResolverCallback($request))
+            ->whereInstanceOf(RelatableField::class)
+            ->when($this->shouldAddActionsField($request), function ($fields) {
+                return $fields->push($this->actionfield());
+            })
+            ->first(function ($field) use ($attribute) {
+                return $field->attribute === $attribute;
+            });
     }
 
     /**
@@ -151,20 +163,7 @@ trait ResolvesFields
      */
     public function hasRelatableField(NovaRequest $request, $attribute)
     {
-        $methods = collect(['fieldsForIndex', 'fieldsForDetail'])
-            ->filter(function ($method) {
-                return method_exists($this, $method);
-            })->all();
-
-        return $this->buildAvailableFields($request, $methods)
-            ->when($request->viaRelationship(), $this->fieldResolverCallback($request))
-            ->whereInstanceOf(RelatableField::class)
-            ->when($this->shouldAddActionsField($request), function ($fields) {
-                return $fields->push($this->actionfield());
-            })
-            ->first(function ($field) use ($attribute) {
-                return $field->attribute === $attribute;
-            }) !== null;
+        return $this->relatableField($request, $attribute) !== null;
     }
 
     /**
@@ -582,6 +581,22 @@ trait ResolvesFields
         $method = $this->fieldsMethod($request);
 
         return FieldCollection::make(array_values($this->filter($this->{$method}($request))));
+    }
+
+    /**
+     * Get the fields that are available on "index" or "detail" for the given request.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @return \Laravel\Nova\Fields\FieldCollection<int, \Laravel\Nova\Fields\Field>
+     */
+    public function availableFieldsOnIndexOrDetail(NovaRequest $request)
+    {
+        $methods = collect(['fieldsForIndex', 'fieldsForDetail'])
+            ->filter(function ($method) {
+                return method_exists($this, $method);
+            })->all();
+
+        return $this->buildAvailableFields($request, $methods);
     }
 
     /**

@@ -42,9 +42,9 @@
           @click="addRowAndSelect"
           :dusk="`${field.attribute}-add-key-value`"
           type="button"
-          class="cursor-pointer rounded-lg mx-auto text-gray-500 mt-3 px-3 rounded-b-lg flex items-center"
+          class="cursor-pointer focus:outline-none focus:ring focus:ring-offset-4 dark:focus:ring-offset-gray-800 rounded-lg mx-auto text-primary-500 font-bold link-default mt-3 px-3 rounded-b-lg flex items-center"
         >
-          <Icon type="document-add" />
+          <Icon type="plus-circle" />
           <span class="ml-1">{{ currentField.actionText }}</span>
         </button>
       </div>

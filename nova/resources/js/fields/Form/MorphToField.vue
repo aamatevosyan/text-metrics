@@ -217,7 +217,8 @@ export default {
     /**
      * Select a resource using the <select> control
      */
-    selectResourceFromSelectControl(e) {
+    selectResourceFromSelectControl(value) {
+      this.selectedResourceId = value
       this.selectInitialResource()
 
       if (this.field) {
@@ -290,7 +291,7 @@ export default {
      * Handle the changing of the resource type.
      */
     async refreshResourcesForTypeChange(event) {
-      this.resourceType = event?.target?.value || event
+      this.resourceType = event?.target?.value ?? event
       this.availableResources = []
       this.selectedResource = ''
       this.selectedResourceId = ''

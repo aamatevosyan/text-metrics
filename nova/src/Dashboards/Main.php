@@ -14,7 +14,7 @@ class Main extends Dashboard
      *
      * @return string
      */
-    public function label()
+    public function name()
     {
         return class_basename($this);
     }

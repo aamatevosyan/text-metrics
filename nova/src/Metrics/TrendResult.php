@@ -6,6 +6,8 @@ use JsonSerializable;
 
 class TrendResult implements JsonSerializable
 {
+    use TransformsResults;
+
     /**
      * The value of the result.
      *
@@ -186,7 +188,7 @@ class TrendResult implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'value' => $this->value,
+            'value' => $this->resolveTransformedValue($this->value),
             'trend' => $this->trend,
             'prefix' => $this->prefix,
             'suffix' => $this->suffix,

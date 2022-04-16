@@ -1,5 +1,5 @@
 <template>
-  <card>
+  <Card>
     <LoadingView :loading="loading">
       <template v-if="isEditing">
         <component
@@ -38,7 +38,7 @@
         </button>
       </div>
     </LoadingView>
-  </card>
+  </Card>
 </template>
 
 <script>
@@ -144,9 +144,8 @@ export default {
           },
         })
         .catch(error => {
-          if (error.response.status == 404) {
-            this.$router.push({ name: '404' })
-            return
+          if ([403, 404].includes(error.response.status)) {
+            Nova.error(this.__('There was a problem fetching the resource.'))
           }
         })
 

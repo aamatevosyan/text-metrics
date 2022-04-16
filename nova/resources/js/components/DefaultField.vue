@@ -1,8 +1,8 @@
 <template>
   <FieldWrapper :stacked="field.stacked" v-if="field.visible">
     <div
-      class="px-8 mt-2 md:mt-0 w-full md:w-1/5"
-      :class="field.stacked ? 'md:pt-5 w-full' : 'md:py-5'"
+      class="px-8 mt-2 md:mt-0"
+      :class="field.stacked ? 'md:pt-5 w-full' : 'w-full md:w-1/5 md:py-5'"
     >
       <slot>
         <FormLabel
@@ -18,8 +18,8 @@
     </div>
 
     <div
-      class="w-full md:w-3/5 mt-1 md:mt-0 pb-5 md:py-5 px-8"
-      :class="fieldClasses"
+      class="mt-1 md:mt-0 pb-5 px-8"
+      :class="field.stacked ? 'md:pt-5 w-full' : 'w-full md:w-3/5 md:py-5'"
     >
       <slot name="field" />
 
@@ -62,17 +62,6 @@ export default {
       }
 
       return this.fieldName || this.field.name || this.field.singularLabel
-    },
-
-    /**
-     * Return the classes that should be used for the field content.
-     */
-    fieldClasses() {
-      // return this.fullWidthContent
-      //   ? this.field.stacked
-      //     ? 'w-full'
-      //     : 'md:w-4/5'
-      //   : 'md:w-1/2'
     },
   },
 }

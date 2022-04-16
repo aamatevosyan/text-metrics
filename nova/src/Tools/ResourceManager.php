@@ -34,7 +34,7 @@ class ResourceManager extends Tool
                 ? $this->groupedMenu($resources)
                 : $this->unGroupedMenu($resources);
 
-            return tap(MenuSection::make('Resources', $resources), function ($section) use ($resources) {
+            return tap(MenuSection::make(__('Resources'), $resources), function ($section) use ($resources) {
                 if ($resources->count() > 1) {
                     $section->collapsable();
                 }

@@ -64,7 +64,7 @@ export default {
      * Update the field's internal value
      */
     handleChange(event) {
-      let value = event?.target?.value || event
+      let value = event?.target?.value ?? event
 
       this.value = DateTime.fromISO(value).toISODate()
 

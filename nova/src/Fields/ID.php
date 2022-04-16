@@ -47,13 +47,8 @@ class ID extends Field
     {
         $model = $resource->model();
 
-        $methods = collect(['fieldsForIndex', 'fieldsForDetail'])
-            ->filter(function ($method) use ($resource) {
-                return method_exists($resource, $method);
-            })->all();
-
         $field = transform(
-            $resource->buildAvailableFields(app(NovaRequest::class), $methods)
+            $resource->availableFieldsOnIndexOrDetail(app(NovaRequest::class))
                     ->whereInstanceOf(self::class)
                     ->first(),
             function ($field) use ($model) {

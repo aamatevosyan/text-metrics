@@ -52,6 +52,13 @@ class HasOne extends Field implements RelatableField, BehavesAsPanel
     public $singularLabel;
 
     /**
+     * The resolved HasOne Resource.
+     *
+     * @var \Laravel\Nova\Resource|null
+     */
+    public $hasOneResource;
+
+    /**
      * The name of the Eloquent "has one" relationship.
      *
      * @var string
@@ -102,7 +109,7 @@ class HasOne extends Field implements RelatableField, BehavesAsPanel
 
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();
-        $this->hasOneRelationship = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
+        $this->hasOneRelationship = $this->attribute = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
         $this->singularLabel = $resource::singularLabel();
 
         $this->alreadyFilledWhen(function ($request) {
@@ -194,9 +201,9 @@ class HasOne extends Field implements RelatableField, BehavesAsPanel
                 return optional($value)->exists;
             });
 
-            $related = new $this->resourceClass($value);
+            $this->hasOneResource = new $this->resourceClass($value);
 
-            $this->hasOneId = optional(ID::forResource($related))->value ?? $value->getKey();
+            $this->hasOneId = optional(ID::forResource($this->hasOneResource))->value ?? $value->getKey();
 
             $this->value = $this->hasOneId;
         }
@@ -246,6 +253,7 @@ class HasOne extends Field implements RelatableField, BehavesAsPanel
                 'relatable' => true,
                 'singularLabel' => $this->singularLabel,
                 'alreadyFilled' => $this->alreadyFilled($request),
+                'authorizedToView' => optional($this->hasOneResource)->authorizedToView($request) ?? true,
                 'authorizedToCreate' => $this->ofManyRelationship === true ? false : $this->resourceClass::authorizedToCreate($request),
                 'createButtonLabel' => $this->resourceClass::createButtonLabel(),
                 'from' => array_filter([

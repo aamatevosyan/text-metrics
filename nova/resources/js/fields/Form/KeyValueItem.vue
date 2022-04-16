@@ -18,7 +18,7 @@
           style="background-clip: border-box"
           :class="{
             'bg-white dark:bg-gray-800': !isEditable || readOnlyKeys,
-            'hover:bg-20 focus:bg-white dark:bg-gray-800 dark:focus:bg-gray-800':
+            'hover:bg-20 focus:bg-white dark:bg-gray-900 dark:focus:bg-gray-900':
               isEditable && !readOnlyKeys,
           }"
         />
@@ -38,7 +38,7 @@
           :disabled="!isEditable"
           :class="{
             'bg-white dark:bg-gray-800': !isEditable,
-            'hover:bg-20 focus:bg-white dark:bg-gray-800 dark:focus:bg-gray-800':
+            'hover:bg-20 focus:bg-white dark:bg-gray-900 dark:focus:bg-gray-900 dark:focus:ring':
               isEditable,
           }"
         />
@@ -50,16 +50,16 @@
       class="flex justify-center h-11 w-11 absolute"
       style="right: -50px"
     >
-      <button
+      <BasicButton
         @click="$emit('remove-row', item.id)"
         :dusk="`remove-key-value-${index}`"
         type="button"
-        tabindex="-1"
-        class="flex appearance-none cursor-pointer text-70 hover:text-gray-500 active:outline-none active:ring focus:outline-none focus:ring"
+        tabindex="0"
+        class="flex items-center appearance-none cursor-pointer text-red-500 hover:text-red-600 active:outline-none active:ring focus:outline-none focus:ring"
         title="Delete"
       >
-        <Icon type="document-remove" />
-      </button>
+        <Icon type="minus-circle" />
+      </BasicButton>
     </div>
   </div>
 </template>

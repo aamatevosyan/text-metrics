@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="hasValue">
-      <div v-if="field.asHtml" v-html="field.value"></div>
+      <div v-if="field.asHtml" @click.stop v-html="field.value"></div>
       <span v-else>{{ field.value }}</span>
     </template>
     <p v-else>&mdash;</p>

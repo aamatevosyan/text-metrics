@@ -12,6 +12,13 @@ class URL extends Text
     public $component = 'url-field';
 
     /**
+     * The text used for the link.
+     *
+     * @var string
+     */
+    public $displayedAs;
+
+    /**
      * Create a new field.
      *
      * @param  string  $name
@@ -25,13 +32,6 @@ class URL extends Text
 
         $this->textAlign(Field::CENTER_ALIGN);
     }
-
-    /**
-     * The text used for the link.
-     *
-     * @var string
-     */
-    public $displayedAs;
 
     /**
      * Define the callback that should be used to display the field's value.

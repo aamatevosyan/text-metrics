@@ -101,7 +101,7 @@ class BelongsToMany extends Field implements DeletableContract, FilterableField,
 
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();
-        $this->manyToManyRelationship = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
+        $this->manyToManyRelationship = $this->attribute = $attribute ?? ResourceRelationshipGuesser::guessRelation($name);
         $this->deleteCallback = $this->detachmentCallback();
 
         $this->fieldsCallback = function () {
@@ -363,7 +363,7 @@ class BelongsToMany extends Field implements DeletableContract, FilterableField,
     protected function defaultFilterableCallback()
     {
         return function (NovaRequest $request, $query, $value, $attribute) {
-            $query->whereRelation($this->manyToManyRelationship, $attribute, '=', $value);
+            $query->whereKey($value);
         };
     }
 

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="field.authorizedToView"
     class="relative"
     :dusk="field.resourceName + '-index-component'"
     :data-relationship="viaRelationship"
