@@ -3,9 +3,9 @@
 namespace Domain\DocumentProcessing\Models;
 
 use App\Enums\CourseWorkType;
-use App\Enums\DocumentProcessingRuleStatus;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
+use Domain\DocumentProcessing\Enums\DocumentProcessingRuleStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

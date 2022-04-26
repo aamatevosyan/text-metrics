@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Resources\CourseWork;
+namespace Domain\Front\Http\Resources\CourseWork;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Inertia\Inertia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**

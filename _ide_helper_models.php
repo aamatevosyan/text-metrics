@@ -493,7 +493,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property \App\Enums\CourseWorkType|null $course_work_type
  * @property int|null $branch_id
  * @property int $document_processor_id
- * @property \App\Enums\DocumentProcessingRuleStatus $status
+ * @property \Domain\DocumentProcessing\Enums\DocumentProcessingRuleStatus $status
  * @property array|null $config
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -524,7 +524,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property string $uuid
  * @property string $name
  * @property string $slug
- * @property \App\Enums\DocumentProcessorStatus $status
+ * @property \Domain\DocumentProcessing\Enums\DocumentProcessorStatus $status
  * @property array|null $config
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -576,7 +576,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property string $uuid
  * @property string $name
  * @property array $mime_types
- * @property \App\Enums\DocumentTypeStatus $status
+ * @property \Domain\DocumentProcessing\Enums\DocumentTypeStatus $status
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

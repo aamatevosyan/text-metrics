@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\DocumentProcessingRuleStatus;
+use Domain\DocumentProcessing\Enums\DocumentProcessingRuleStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

@@ -124,7 +124,7 @@ return [
     'features' => [
         Features::resetPasswords(),
         Features::emailVerification(),
-        Features::updateProfileInformation(),
+//        Features::updateProfileInformation(),
         Features::updatePasswords(),
     ],
 
@@ -143,7 +143,7 @@ return [
             'features' => [
                 Features::resetPasswords(),
                 Features::emailVerification(),
-                Features::updateProfileInformation(),
+//                Features::updateProfileInformation(),
                 Features::updatePasswords(),
             ],
             'home' => 'admin.dashboard',  // route name,
@@ -160,7 +160,7 @@ return [
             'features' => [
                 Features::resetPasswords(),
                 Features::emailVerification(),
-                Features::updateProfileInformation(),
+//                Features::updateProfileInformation(),
                 Features::updatePasswords(),
             ],
             'home' => 'supervisor.dashboard',  // route name,

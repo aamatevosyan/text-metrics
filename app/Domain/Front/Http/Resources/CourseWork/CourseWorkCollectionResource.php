@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\CourseWork;
+namespace Domain\Front\Http\Resources\CourseWork;
 
 use App\Http\Resources\CollectionResource;
 

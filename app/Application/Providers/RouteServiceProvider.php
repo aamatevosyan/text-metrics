@@ -43,14 +43,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->name('api.')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
-
-            Route::middleware(['web', 'front'])
-                ->name('front.')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-
-            FortifyServiceProvider::registerRoutes('front');
-            JetstreamServiceProvider::registerRoutes('front');
         });
     }
 

@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Domain\Front\Http\Controllers;
 
-use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
-use App\Http\Resources\CourseWork\CourseWorkDocumentResource;
-use App\Http\Resources\CourseWork\CourseWorkResource;
+use App\Http\Controllers\InertiaController;
 use App\Models\CourseWork;
 use App\Models\Student;
+use Domain\Front\Http\Resources\CourseWork\CourseWorkCollectionResource;
+use Domain\Front\Http\Resources\CourseWork\CourseWorkResource;
 use Illuminate\Http\Request;
 use Inertia\Response as InertiaResponse;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Storage;
-use Symfony\Component\HttpFoundation\File\Stream;
 
 class CourseWorkController extends InertiaController
 {

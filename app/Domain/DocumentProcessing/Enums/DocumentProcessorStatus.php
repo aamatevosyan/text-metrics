@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace Domain\DocumentProcessing\Enums;
 
 enum DocumentProcessorStatus: int
 {

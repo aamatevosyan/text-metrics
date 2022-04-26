@@ -2,10 +2,8 @@
     "private": true,
     "scripts": {
         "dev-front": "vite --config vite.front.config.ts",
-        "dev-admin": "vite --config vite.admin.config.ts",
         "dev-supervisor": "vite --config vite.supervisor.config.ts",
         "build-front": "vite build --config vite.front.config.ts",
-        "build-admin": "vite build --config vite.admin.config.ts",
         "build-supervisor": "vite build --config vite.supervisor.config.ts",
         "build-user-profile-tool": "cd nova-components/UserProfileTool && npm run dev",
         "build-user-profile-tool-prod": "cd nova-components/UserProfileTool && npm run prod",

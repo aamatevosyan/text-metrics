@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Domain\Front\Http\Controllers;
 
-use App\Http\Requests\CourseWorkMediaStoreRequest;
-use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
-use App\Http\Resources\CourseWork\CourseWorkDocumentResource;
-use App\Http\Resources\CourseWork\CourseWorkResource;
+use App\Http\Controllers\InertiaController;
 use App\Models\CourseWork;
 use App\Models\Student;
-use App\Models\User;
+use Domain\Front\Http\Requests\CourseWorkMediaStoreRequest;
+use Domain\Front\Http\Resources\CourseWork\CourseWorkCollectionResource;
+use Domain\Front\Http\Resources\CourseWork\CourseWorkResource;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Inertia\Response as InertiaResponse;

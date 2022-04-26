@@ -26,7 +26,7 @@
                     <jet-section-border />
                 </div>
 
-                <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
+<!--                <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />-->
 
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
                     <jet-section-border />
@@ -43,7 +43,7 @@
     import AppLayout from '@supervisor/Layouts/AppLayout.vue'
     import DeleteUserForm from '@supervisor/Pages/Profile/Partials/DeleteUserForm.vue'
     import JetSectionBorder from '@/Components/Jetstream/SectionBorder.vue'
-    import LogoutOtherBrowserSessionsForm from '@supervisor/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
+    // import LogoutOtherBrowserSessionsForm from '@supervisor/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
     import TwoFactorAuthenticationForm from '@supervisor/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
     import UpdatePasswordForm from '@supervisor/Pages/Profile/Partials/UpdatePasswordForm.vue'
     import UpdateProfileInformationForm from '@supervisor/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
@@ -55,7 +55,7 @@
             AppLayout,
             DeleteUserForm,
             JetSectionBorder,
-            LogoutOtherBrowserSessionsForm,
+            // LogoutOtherBrowserSessionsForm,
             TwoFactorAuthenticationForm,
             UpdatePasswordForm,
             UpdateProfileInformationForm,

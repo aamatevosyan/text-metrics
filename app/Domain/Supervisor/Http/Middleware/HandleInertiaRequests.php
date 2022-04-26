@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Domain\Supervisor\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
-class HandleSupervisorInertiaRequests extends Middleware
+class HandleInertiaRequests extends Middleware
 {
     /**
      * The root template that's loaded on the first page visit.

@@ -182,6 +182,7 @@ return [
         /*
          * Domain Model Service Providers...
          */
+        Domain\Front\Providers\FrontServiceProvider::class,
         Domain\Supervisor\Providers\SupervisorServiceProvider::class,
         Domain\DocumentProcessing\Providers\DocumentProcessingServiceProvider::class,
 

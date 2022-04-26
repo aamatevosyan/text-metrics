@@ -2,11 +2,6 @@
 
 namespace App\Http;
 
-use Laravel\Nova\Http\Middleware\Authenticate;
-use Laravel\Nova\Http\Middleware\Authorize;
-use Laravel\Nova\Http\Middleware\BootTools;
-use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
-use Laravel\Nova\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -51,14 +46,14 @@ class Kernel extends HttpKernel
         ],
 
         'front' => [
-            \App\Http\Middleware\HandleFrontInertiaRequests::class,
+            \Domain\Front\Http\Middleware\HandleInertiaRequests::class,
         ],
 
         'admin' => [
         ],
 
         'supervisor' => [
-            \App\Http\Middleware\HandleSupervisorInertiaRequests::class,
+            \Domain\Supervisor\Http\Middleware\HandleInertiaRequests::class,
         ],
     ];
 
