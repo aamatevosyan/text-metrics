@@ -116,8 +116,8 @@ class Admin extends Resource
         return [];
     }
 
-    public function subtitle(): string
+    public function subtitle(): ?string
     {
-        return $this->branch->name;
+        return $this->branch?->name;
     }
 }

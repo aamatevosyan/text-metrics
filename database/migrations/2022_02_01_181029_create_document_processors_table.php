@@ -17,7 +17,7 @@ class CreateDocumentProcessorsTable extends Migration
         Schema::create('document_processors', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->string('name')->index();
+            $table->string('name')->index()->fulltext();
             $table->string('slug')->unique();
             $table->unsignedTinyInteger('status')
                 ->index()

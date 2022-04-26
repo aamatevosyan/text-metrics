@@ -18,8 +18,17 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->foreignId('media_id')->constrained('media')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->text('content');
+            $table->foreignId('course_work_id')
+                ->index()
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+            $table->foreignId('media_id')
+                ->index()
+                ->constrained('media')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+            $table->longText('content');
             $table->softDeletes();
             $table->timestamps();
         });

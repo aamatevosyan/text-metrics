@@ -57,19 +57,19 @@ class CourseWork extends Resource
                 ->rules('required')
                 ->hideFromIndex(),
 
-            Enum::make('Type')->attach(CourseWorkType::class)->sortable()->filterable(),
-
-            Enum::make('Status')->attach(CourseWorkStatus::class)->sortable()->filterable(),
-
             Translatable::make([
                 Text::make('Name')
                     ->rules('required')
                     ->stacked()
-                    ->sortable(),
+                    ->sortable()
             ]),
+
+            Enum::make('Type')->attach(CourseWorkType::class)->sortable()->filterable(),
 
             BelongsTo::make('Student')->searchable()->withSubtitles()->sortable()->filterable(),
             BelongsTo::make('Supervisor')->searchable()->withSubtitles()->sortable()->filterable(),
+
+            Enum::make('Status')->attach(CourseWorkStatus::class)->sortable()->filterable(),
 
 //            BelongsToMany::make('Media'),
 

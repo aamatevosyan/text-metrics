@@ -49,6 +49,8 @@ class Document extends Resource
             Text::make('Uuid')
                 ->rules('required'),
 
+            BelongsTo::make('CourseWork'),
+
             Code::make('Content')
                 ->json()
                 ->rules('required'),

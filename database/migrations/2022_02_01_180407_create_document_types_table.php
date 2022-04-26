@@ -16,8 +16,8 @@ class CreateDocumentTypesTable extends Migration
     {
         Schema::create('document_types', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
-            $table->string('name')->unique();
+            $table->uuid()->unique();
+            $table->string('name')->unique()->fulltext();
             $table->jsonb('mime_types');
             $table->unsignedTinyInteger('status')
                 ->index()

@@ -26,6 +26,7 @@ class Document extends Model
     protected $fillable = [
         'uuid',
         'media_id',
+        'course_work_id',
         'content',
     ];
 
@@ -36,6 +37,7 @@ class Document extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'course_work_id' => 'integer',
         'media_id' => 'integer',
         'content' => 'array',
     ];
@@ -46,5 +48,13 @@ class Document extends Model
     public function media(): BelongsTo
     {
         return $this->belongsTo(Media::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function courseWork(): BelongsTo
+    {
+        return $this->belongsTo(CourseWork::class);
     }
 }

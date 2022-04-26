@@ -30,7 +30,7 @@ class CreateCourseWorksTable extends Migration
             $table->unsignedTinyInteger('status')
                 ->default(DocumentTypeStatus::Active->value)
                 ->index();
-            $table->jsonb('name');
+            $table->jsonb('name')->fulltext();
             $table->softDeletes();
             $table->timestamps();
         });

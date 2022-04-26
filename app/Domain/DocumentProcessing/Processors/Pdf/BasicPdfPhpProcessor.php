@@ -189,6 +189,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
 
         return Document::create([
             'media_id' => $media->id,
+            'course_work_id' => $media->model_id,
             'content' => $results,
         ]);
     }

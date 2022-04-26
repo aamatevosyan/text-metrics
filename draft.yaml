@@ -1,0 +1,26 @@
+models:
+  TextMetric:
+    name: jsonb
+    text_metric_computer_id: id foreign:text_metric_computers
+    description: nullable jsonb
+    slug: string unique
+    numeric: boolean default:false
+    monitored: boolean default:false
+    softDeletes
+  TextMetricComputer:
+    name: string unique
+    slug: string unique
+    class: string
+    softDeletes
+  MonitoredMetricResult:
+    course_work_id: id foreign:course_works
+    results: jsonb nullable
+    softDeletes
+  DocumentMetricResult:
+    course_work_id: id foreign:course_works
+    document_id: id foreign:documents
+    results: jsonb nullable
+    detailed_results: jsonb nullable
+    softDeletes
+controllers:
+  # ...

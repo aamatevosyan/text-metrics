@@ -1,0 +1,29 @@
+created:
+    - database/factories/TextMetricFactory.php
+    - database/factories/TextMetricComputerFactory.php
+    - database/factories/MonitoredMetricResultFactory.php
+    - database/factories/DocumentMetricResultFactory.php
+    - database/migrations/2022_04_18_070613_create_text_metrics_table.php
+    - database/migrations/2022_04_18_070614_create_text_metric_computers_table.php
+    - database/migrations/2022_04_18_070615_create_monitored_metric_results_table.php
+    - database/migrations/2022_04_18_070616_create_document_metric_results_table.php
+    - app/Application/Models/TextMetric.php
+    - app/Application/Models/TextMetricComputer.php
+    - app/Application/Models/MonitoredMetricResult.php
+    - app/Application/Models/DocumentMetricResult.php
+    - app/Application/Nova/TextMetric.php
+    - app/Application/Nova/TextMetricComputer.php
+    - app/Application/Nova/MonitoredMetricResult.php
+    - app/Application/Nova/DocumentMetricResult.php
+models:
+    Admin: { branch_id: 'biginteger nullable', name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', profile_photo_url: 'string:2048 nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable' }
+    Branch: { parent_id: 'biginteger nullable', _lft: 'biginteger default:0', _rgt: 'biginteger default:0', branch_type_id: biginteger, name: json }
+    BranchType: { name: json }
+    CourseWork: { uuid: string, student_id: biginteger, supervisor_id: biginteger, type: 'smallinteger default:0', status: 'smallinteger default:1', name: json }
+    Document: { uuid: string, media_id: biginteger, content: text }
+    Student: { branch_id: biginteger, name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', profile_photo_url: 'string:2048 nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable' }
+    Supervisor: { branch_id: biginteger, name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', profile_photo_url: 'string:2048 nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable' }
+    TextMetric: { name: jsonb, text_metric_computer_id: 'id foreign:text_metric_computers', description: 'nullable jsonb', slug: 'string unique', numeric: 'boolean default:false', monitored: 'boolean default:false', softdeletes: softDeletes }
+    TextMetricComputer: { name: 'string unique', slug: 'string unique', class: string, softdeletes: softDeletes }
+    MonitoredMetricResult: { course_work_id: 'id foreign:course_works', results: 'jsonb nullable', softdeletes: softDeletes }
+    DocumentMetricResult: { course_work_id: 'id foreign:course_works', document_id: 'id foreign:documents', results: 'jsonb nullable', detailed_results: 'jsonb nullable', softdeletes: softDeletes }

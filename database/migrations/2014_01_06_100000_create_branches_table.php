@@ -17,6 +17,7 @@ class CreateBranchesTable extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->foreignId(NestedSet::PARENT_ID)
+                ->index()
                 ->nullable()
                 ->constrained('branches');
 
@@ -27,7 +28,7 @@ class CreateBranchesTable extends Migration
                 ->index()
                 ->constrained();
 
-            $table->jsonb('name');
+            $table->jsonb('name')->fulltext();
             $table->softDeletes();
             $table->timestamps();
 

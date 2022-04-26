@@ -16,7 +16,7 @@ class CreateDocumentProcessingRulesTable extends Migration
     {
         Schema::create('document_processing_rules', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
+            $table->uuid()->unique();
             $table->unsignedTinyInteger('course_work_type')
                 ->nullable()
                 ->index();
