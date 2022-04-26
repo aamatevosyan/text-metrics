@@ -1,4 +1,9 @@
 models:
+  TextMetricComputer:
+    name: string unique
+    slug: string unique
+    class: string
+    softDeletes
   TextMetric:
     name: jsonb
     text_metric_computer_id: id foreign:text_metric_computers
@@ -6,11 +11,6 @@ models:
     slug: string unique
     numeric: boolean default:false
     monitored: boolean default:false
-    softDeletes
-  TextMetricComputer:
-    name: string unique
-    slug: string unique
-    class: string
     softDeletes
   MonitoredMetricResult:
     course_work_id: id foreign:course_works

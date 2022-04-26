@@ -215,11 +215,13 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $uuid
+ * @property int $course_work_id
  * @property int $media_id
  * @property array $content
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\CourseWork $courseWork
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Media $media
  * @method static \Database\Factories\DocumentFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()
@@ -227,6 +229,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Document onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Document query()
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereCourseWorkId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Document whereId($value)
@@ -239,6 +242,69 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Document withoutTrashed()
  */
 	class IdeHelperDocument {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DocumentMetricResult
+ *
+ * @property int $id
+ * @property int $course_work_id
+ * @property int $document_id
+ * @property string $results
+ * @property string $detailed_results
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\CourseWork $courseWork
+ * @property-read \App\Models\Document $document
+ * @method static \Database\Factories\DocumentMetricResultFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult newQuery()
+ * @method static \Illuminate\Database\Query\Builder|DocumentMetricResult onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereCourseWorkId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereDetailedResults($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereDocumentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereResults($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentMetricResult whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|DocumentMetricResult withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|DocumentMetricResult withoutTrashed()
+ * @mixin \Eloquent
+ */
+	class IdeHelperDocumentMetricResult {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\MonitoredMetricResult
+ *
+ * @property int $id
+ * @property int $course_work_id
+ * @property string $results
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\CourseWork $courseWork
+ * @method static \Database\Factories\MonitoredMetricResultFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult newQuery()
+ * @method static \Illuminate\Database\Query\Builder|MonitoredMetricResult onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult whereCourseWorkId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult whereResults($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonitoredMetricResult whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MonitoredMetricResult withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|MonitoredMetricResult withoutTrashed()
+ * @mixin \Eloquent
+ */
+	class IdeHelperMonitoredMetricResult {}
 }
 
 namespace App\Models{
@@ -349,6 +415,73 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Supervisor withoutTrashed()
  */
 	class IdeHelperSupervisor {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TextMetric
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $text_metric_computer_id
+ * @property string $description
+ * @property string $slug
+ * @property bool $numeric
+ * @property bool $monitored
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\TextMetricComputer $textMetricComputer
+ * @method static \Database\Factories\TextMetricFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric newQuery()
+ * @method static \Illuminate\Database\Query\Builder|TextMetric onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereMonitored($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereNumeric($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereTextMetricComputerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetric whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|TextMetric withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|TextMetric withoutTrashed()
+ * @mixin \Eloquent
+ */
+	class IdeHelperTextMetric {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TextMetricComputer
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property string $class
+ * @property \Carbon\Carbon $deleted_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Database\Factories\TextMetricComputerFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer newQuery()
+ * @method static \Illuminate\Database\Query\Builder|TextMetricComputer onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TextMetricComputer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|TextMetricComputer withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|TextMetricComputer withoutTrashed()
+ * @mixin \Eloquent
+ */
+	class IdeHelperTextMetricComputer {}
 }
 
 namespace Domain\DocumentProcessing\Models{

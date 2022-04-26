@@ -1,18 +1,18 @@
 created:
-    - database/factories/TextMetricFactory.php
     - database/factories/TextMetricComputerFactory.php
+    - database/factories/TextMetricFactory.php
     - database/factories/MonitoredMetricResultFactory.php
     - database/factories/DocumentMetricResultFactory.php
-    - database/migrations/2022_04_18_070613_create_text_metrics_table.php
-    - database/migrations/2022_04_18_070614_create_text_metric_computers_table.php
-    - database/migrations/2022_04_18_070615_create_monitored_metric_results_table.php
-    - database/migrations/2022_04_18_070616_create_document_metric_results_table.php
-    - app/Application/Models/TextMetric.php
+    - database/migrations/2022_04_26_151813_create_text_metric_computers_table.php
+    - database/migrations/2022_04_26_151814_create_text_metrics_table.php
+    - database/migrations/2022_04_26_151815_create_monitored_metric_results_table.php
+    - database/migrations/2022_04_26_151816_create_document_metric_results_table.php
     - app/Application/Models/TextMetricComputer.php
+    - app/Application/Models/TextMetric.php
     - app/Application/Models/MonitoredMetricResult.php
     - app/Application/Models/DocumentMetricResult.php
-    - app/Application/Nova/TextMetric.php
     - app/Application/Nova/TextMetricComputer.php
+    - app/Application/Nova/TextMetric.php
     - app/Application/Nova/MonitoredMetricResult.php
     - app/Application/Nova/DocumentMetricResult.php
 models:
