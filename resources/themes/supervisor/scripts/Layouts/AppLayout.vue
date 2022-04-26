@@ -17,7 +17,6 @@
                                 </Link>
                             </div>
 
-                            <!-- Navigation Links -->
                             <navigation-menu :routes="routes"/>
                         </div>
 
@@ -280,7 +279,7 @@ import JetNavLink from '@/Components/Jetstream/NavLink.vue'
 import JetResponsiveNavLink from '@/Components/Jetstream/ResponsiveNavLink.vue'
 import {Head, Link} from '@inertiajs/inertia-vue3';
 import NavigationMenu from "@/Components/Navigation/Menu.vue";
-import routes from "@supervisor/Misc/routes";
+import {mapGetters} from "vuex";
 
 export default defineComponent({
     props: {
@@ -301,23 +300,18 @@ export default defineComponent({
 
     data() {
         return {
-            showingNavigationDropdown: false,
-            routes: routes,
+            showingNavigationDropdown: true,
         }
     },
 
     methods: {
-        switchToTeam(team) {
-            this.$inertia.put(route('supervisor.current-team.update'), {
-                'team_id': team.id
-            }, {
-                preserveState: false
-            })
-        },
-
         logout() {
             this.$inertia.post(route('supervisor.logout'));
         },
-    }
+    },
+
+    computed: {
+        ...mapGetters(['routes']),
+    },
 })
 </script>

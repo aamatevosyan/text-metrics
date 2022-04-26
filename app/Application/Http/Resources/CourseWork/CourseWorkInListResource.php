@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Front\Http\Resources\CourseWork;
+namespace App\Http\Resources\CourseWork;
 
 use App\Models\CourseWork;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin CourseWork
  */
-class CourseWorkResource extends JsonResource
+class CourseWorkInListResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.

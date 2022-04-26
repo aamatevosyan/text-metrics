@@ -1,18 +1,17 @@
 <?php
 
-namespace Domain\Front\Http\Controllers;
+namespace Domain\Supervisor\Http\Controllers;
 
 use App\Http\Controllers\InertiaController;
 use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
 use App\Http\Resources\CourseWork\CourseWorkResource;
 use App\Models\CourseWork;
-use App\Models\Student;
-use Domain\Front\Http\Requests\CourseWorkMediaStoreRequest;
+use App\Models\Supervisor;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 use Inertia\Response as InertiaResponse;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class CourseWorkMediaController extends InertiaController
+class CourseWorkController extends InertiaController
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +20,11 @@ class CourseWorkMediaController extends InertiaController
      */
     public function index(): array|InertiaResponse
     {
-        /** @var Student $student */
-        $student = $this->user();
+        /** @var Supervisor $supervisor */
+        $supervisor = $this->user();
 
         return $this->render('CourseWork/Index', CourseWorkCollectionResource::from(
-            $student->courseWorks()
+            $supervisor->courseWorks()
                 ->orderBy('id')
                 ->paginate(CourseWork::getItemsPerPage())
         ));
@@ -47,21 +46,9 @@ class CourseWorkMediaController extends InertiaController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseWork $courseWork, CourseWorkMediaStoreRequest $request)
+    public function store(Request $request)
     {
-        $hash = hash_file('sha256', $request->file('uploaded_file')?->getRealPath());
-
-        if ($courseWork->media()->whereJsonContains('custom_properties->hash', $hash)->first()) {
-            throw ValidationException::withMessages([
-                'uploaded_file' => 'The document has already been uploaded.',
-            ]);
-        }
-
-        $courseWork
-            ->addMediaFromRequest('uploaded_file')
-            ->withCustomProperties(compact('hash')) //middle method
-            ->preservingOriginal() //middle method
-            ->toMediaCollection('documents'); //finishing method
+        //
     }
 
     /**
@@ -107,5 +94,22 @@ class CourseWorkMediaController extends InertiaController
     public function destroy(CourseWork $courseWork)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\CourseWork  $courseWork
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function preview(CourseWork $courseWork, Media $media)
+    {
+        if ($media->disk === 'local') {
+            return response()->download($media->getPath(), $media->file_name);
+        }
+
+        $url = $media->getTemporaryUrl(now()->addMinutes(30));
+
+        return redirect($url);
     }
 }

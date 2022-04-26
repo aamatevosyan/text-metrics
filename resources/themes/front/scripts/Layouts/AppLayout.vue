@@ -279,7 +279,6 @@ import JetNavLink from '@/Components/Jetstream/NavLink.vue'
 import JetResponsiveNavLink from '@/Components/Jetstream/ResponsiveNavLink.vue'
 import {Head, Link} from '@inertiajs/inertia-vue3';
 import NavigationMenu from "@/Components/Navigation/Menu.vue";
-import routes from "@front/Misc/routes";
 import {mapGetters} from "vuex";
 
 export default defineComponent({

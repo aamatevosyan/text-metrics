@@ -10,15 +10,6 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Toolbar>
-                        <template #start>
-                            <document-upload :uuid="courseWork.uuid"></document-upload>
-                        </template>
-
-                        <template #end>
-                        </template>
-                    </Toolbar>
-
                     <Accordion class="mt-8 mb-8 ml-2 mr-2 flex flex-col">
                         <AccordionTab v-for="document in courseWork.documents.data" :key="document.uuid">
                             <template #header>
@@ -37,8 +28,7 @@
 
 <script>
 import {defineComponent, computed, ref} from 'vue'
-import AppLayout from '@front/Layouts/AppLayout.vue'
-import DocumentUpload from "@front/Components/DocumentUpload.vue"
+import AppLayout from '@supervisor/Layouts/AppLayout.vue'
 import Toast from "primevue/toast";
 import Accordion from "primevue/accordion";
 import AccordionTab from "primevue/accordiontab";

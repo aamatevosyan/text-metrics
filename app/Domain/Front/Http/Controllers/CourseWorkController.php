@@ -3,10 +3,10 @@
 namespace Domain\Front\Http\Controllers;
 
 use App\Http\Controllers\InertiaController;
+use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
+use App\Http\Resources\CourseWork\CourseWorkResource;
 use App\Models\CourseWork;
 use App\Models\Student;
-use Domain\Front\Http\Resources\CourseWork\CourseWorkCollectionResource;
-use Domain\Front\Http\Resources\CourseWork\CourseWorkResource;
 use Illuminate\Http\Request;
 use Inertia\Response as InertiaResponse;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;

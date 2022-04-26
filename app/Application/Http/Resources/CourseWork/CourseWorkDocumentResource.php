@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Front\Http\Resources\CourseWork;
+namespace App\Http\Resources\CourseWork;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -19,11 +19,13 @@ class CourseWorkDocumentResource extends JsonResource
      */
     public function toArray($request): array
     {
+        $guard = config('fortify.guard');
+
         return [
             'uuid' => $this->uuid,
             'size' => $this->size,
             'hash' => $this->custom_properties['hash'] ?? '',
-            'url' => route('front.course-works.preview', [
+            'url' => route("{$guard}.course-works.preview", [
                 'course_work' => $this->model->uuid,
                 'media' => $this->uuid,
             ]),

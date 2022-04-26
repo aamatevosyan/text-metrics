@@ -7,6 +7,7 @@ import {InertiaProgress} from '@inertiajs/progress';
 import registerVueComponents from "./Misc/register-vue-components";
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
+import store from './store';
 
 import '@resources/css/tailwind.css';
 import 'primevue/resources/themes/tailwind-light/theme.css';
