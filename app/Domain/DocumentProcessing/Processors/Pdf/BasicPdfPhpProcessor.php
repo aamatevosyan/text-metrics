@@ -6,6 +6,7 @@ use App\Enums\DocumentElementType;
 use App\Models\Document;
 use Arr;
 use Domain\DocumentProcessing\Processors\AbstractDocumentProcessor;
+use ForceUTF8\Encoding;
 use JetBrains\PhpStorm\ArrayShape;
 use Log;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -86,7 +87,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
     {
         $path = $item['Path'];
 
-        foreach ($this->getSupportedElements() as $priority => $key) {
+        foreach (array_reverse($this->getSupportedElements(), true) as $priority => $key) {
             if (Str::contains($path, $key)) {
                 return $priority;
             }
@@ -101,10 +102,19 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
     ): void {
         foreach ($results as &$item) {
             $new = [
-                'element_type' => $this->getDocumentElementType($item)->value,
+                'type' => $this->getDocumentElementType($item)->value,
+                'uuid' => Str::orderedUuid()->toString(),
                 'page' => $item['Page'] ?? null,
                 'text' => $item['Text'] ?? null,
             ];
+
+//            if (mb_check_encoding($new['text'], 'CP1251')) {
+//                // convert back to source string via CP1252 single-byte encoding
+//                $new['text'] = mb_convert_encoding($new['text'], 'CP1252', 'UTF-8');
+//
+//                // correctly convert source string to UTF8 using CP1251
+//                $new['text'] = mb_convert_encoding($new['text'], 'UTF-8', 'CP1251');
+//            }
 
             if (isset($item['children'])) {
                 $this->transformResults($item['children']);
@@ -186,6 +196,13 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
         });
 
         $this->transformResults($results);
+
+        $results = [
+            'type' => DocumentElementType::Document->value,
+            'uuid' => Str::orderedUuid()->toString(),
+            'text' => null,
+            'children' => $results,
+        ];
 
         return Document::create([
             'media_id' => $media->id,

@@ -50,6 +50,7 @@ import Button from "primevue/button";
 export default defineComponent({
     components: {
         AppLayout,
+        DocumentUpload,
         Toast,
         Accordion,
         AccordionTab,

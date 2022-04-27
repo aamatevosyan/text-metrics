@@ -8,6 +8,7 @@ use Cache;
 use Spatie\MediaLibrary\MediaCollections\Filesystem;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\TemporaryDirectory;
+use Str;
 
 abstract class AbstractDocumentProcessor
 {
@@ -33,7 +34,7 @@ abstract class AbstractDocumentProcessor
 
         $temporaryDirectory = TemporaryDirectory::create();
 
-        $temporaryFile = $temporaryDirectory->path('/').DIRECTORY_SEPARATOR.$media->file_name;
+        $temporaryFile = $temporaryDirectory->path('/').DIRECTORY_SEPARATOR.Str::orderedUuid().'.'.$media->extension;
 
         /** @var \Spatie\MediaLibrary\MediaCollections\Filesystem $filesystem */
         $filesystem = app(Filesystem::class);

@@ -21,13 +21,20 @@ console.log(argv.input, argv.output);
  */
 try {
     // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
+    const credentials = PDFServicesSdk.Credentials
         .serviceAccountCredentialsBuilder()
         .fromFile("pdfservices-api-credentials.json")
         .build();
 
+    // set time outs to 2 minutes
+    const clientConfig = PDFServicesSdk.ClientConfig
+        .clientConfigBuilder()
+        .withConnectTimeout(6000000)
+        .withReadTimeout(6000000)
+        .build();
+
     // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials, clientConfig);
 
     // Build extractPDF options
     const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
@@ -49,7 +56,7 @@ try {
     extractPDFOperation.execute(executionContext)
         .then(result => result.saveAsFile(argv.output))
         .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+            if (err instanceof PDFServicesSdk.Error.ServiceApiError
                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
                 console.log('Exception encountered while executing operation', err);
             } else {

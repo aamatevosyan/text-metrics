@@ -28,6 +28,15 @@
     },
     {
         "id": 4,
+        "name": "Tsolak Ghukasyan",
+        "email": "tsolakghukasyan@hse.ru",
+        "email_verified_at": "2022-01-05T12:52:15.000000Z",
+        "profile_photo_url": "https:\/\/ui-avatars.com\/api\/?name=Tsolak+Ghukasyan&color=7F9CF5&background=EBF4FF",
+        "password": "secret",
+        "branch_id": 10
+    },
+    {
+        "id": 5,
         "name": "Denis Turdakov",
         "email": "duturdakov@hse.ru",
         "email_verified_at": "2022-01-05T12:52:15.000000Z",

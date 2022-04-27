@@ -21,6 +21,7 @@
         "laravel/nova": "*",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "neitanod/forceutf8": "dev-master",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
         "silber/bouncer": "^1.0",
@@ -104,6 +105,10 @@
         "cbekir/laravel-zip": {
             "type": "vcs",
             "url": "https://github.com/cbekir/laravel-zip"
+        },
+        "maxiwheat/forceutf8": {
+            "type": "vcs",
+            "url": "https://github.com/maxiwheat/forceutf8"
         },
         "0": {
             "type": "path",

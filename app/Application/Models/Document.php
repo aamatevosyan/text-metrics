@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\DocumentElementType;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
@@ -56,5 +57,32 @@ class Document extends Model
     public function courseWork(): BelongsTo
     {
         return $this->belongsTo(CourseWork::class);
+    }
+
+    public function getParagraphs(): array
+    {
+        $func = static function ($element, &$data) use (&$func) {
+            if ($element['type'] === DocumentElementType::Paragraph->value
+                || $element['type'] === DocumentElementType::ListItem->value) {
+                $data[$element['uuid']] = $element['text'];
+            }
+
+            if (!empty($element['children'])) {
+                foreach ($element['children'] as $child) {
+                   $func($child, $data);
+                }
+            }
+        };
+
+        $data = [];
+
+        $func($this->content, $data);
+
+        return $data;
+    }
+
+    public function getParagraphsText(): string
+    {
+        return implode('\n', $this->getParagraphs());
     }
 }
