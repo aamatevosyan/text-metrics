@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Automated Readability Index",
+            "ru": "Автоматический индекс удобочитаемости"
+        },
+        "slug": "automated_readability_index",
+        "description": {
+            "en": "Automated Readability Index",
+            "ru": "Автоматический индекс удобочитаемости"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 2,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Coleman-Liau Index",
+            "ru": "Индекс Колман-Лиау"
+        },
+        "slug": "coleman_liau_index",
+        "description": {
+            "en": "Coleman-Liau Index",
+            "ru": "Индекс Колман-Лиау"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 3,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Flesch-Kincaid Grade Level",
+            "ru": "Тест Флеша-Кинкайда"
+        },
+        "slug": "flesch_kincaid_grade",
+        "description": {
+            "en": "Flesch-Kincaid Grade Level",
+            "ru": "Тест Флеша-Кинкайда"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 4,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "SMOG Index",
+            "ru": "Индекс SMOG"
+        },
+        "slug": "smog_index",
+        "description": {
+            "en": "SMOG Index",
+            "ru": "Индекс SMOG"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 5,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Flesch Reading Eas",
+            "ru": "Индекс удобочитаемости Флеша"
+        },
+        "slug": "flesch_reading_easy",
+        "description": {
+            "en": "Flesch Reading Eas",
+            "ru": "Индекс удобочитаемости Флеша"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 6,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "LIX readability measure",
+            "ru": "Индекс удобочитаемости LIX"
+        },
+        "slug": "lix",
+        "description": {
+            "en": "LIX readability measure",
+            "ru": "Индекс удобочитаемости LIX"
+        },
+        "numeric": true,
+        "monitored": true
+    }
+]

@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\CourseWork;
-use App\Models\MonitoredMetricResult;
+use Domain\Metrics\Models\MonitoredMetricResult;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MonitoredMetricResultFactory extends Factory
 {

@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Metrics\TextMetricComputerSeeder;
+use Database\Seeders\Metrics\TextMetricSeeder;
 use Database\Seeders\Processing\DocumentProcessingRuleSeeder;
 use Database\Seeders\Processing\DocumentProcessorSeeder;
 use Database\Seeders\Processing\DocumentProcessorDocumentTypeSeeder;
 use Database\Seeders\Processing\DocumentTypeSeeder;
-use Domain\DocumentProcessing\Models\DocumentProcessor;
-use Domain\DocumentProcessing\Models\DocumentProcessorDocumentType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,5 +34,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CourseWorkSeeder::class);
         $this->call(CourseWorkMediaSeeder::class);
+
+        $this->call(TextMetricComputerSeeder::class);
+        $this->call(TextMetricSeeder::class);
     }
 }

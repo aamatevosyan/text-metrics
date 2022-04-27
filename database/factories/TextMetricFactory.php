@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
+use Domain\Metrics\Models\TextMetric;
+use Domain\Metrics\Models\TextMetricComputer;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\TextMetric;
-use App\Models\TextMetricComputer;
 
 class TextMetricFactory extends Factory
 {

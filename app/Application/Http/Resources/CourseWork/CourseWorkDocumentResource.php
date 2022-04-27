@@ -21,6 +21,10 @@ class CourseWorkDocumentResource extends JsonResource
     {
         $guard = config('fortify.guard');
 
+        if ($guard === 'web') {
+            $guard = 'front';
+        }
+
         return [
             'uuid' => $this->uuid,
             'size' => $this->size,

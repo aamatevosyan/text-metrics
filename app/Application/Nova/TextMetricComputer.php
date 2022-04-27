@@ -2,10 +2,10 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 
 class TextMetricComputer extends Resource
 {
@@ -14,7 +14,7 @@ class TextMetricComputer extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\TextMetricComputer::class;
+    public static $model = \Domain\Metrics\Models\TextMetricComputer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Metrics\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\IdeHelperTextMetric;
+use App\Traits\HasBaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Translatable\HasTranslations;
 
 /**
  * @property int $id
@@ -21,7 +23,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class TextMetric extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasBaseModel;
+    use SoftDeletes;
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -47,6 +51,11 @@ class TextMetric extends Model
         'text_metric_computer_id' => 'integer',
         'numeric' => 'boolean',
         'monitored' => 'boolean',
+    ];
+
+    protected array $translatable = [
+        'name',
+        'description',
     ];
 
     /**

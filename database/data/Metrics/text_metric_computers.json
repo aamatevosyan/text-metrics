@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "RuTS",
+        "slug": "ruts",
+        "class": "Domain\\Metrics\\Services\\Computers\\RuTSComputer",
+        "config": null
+    }
+]

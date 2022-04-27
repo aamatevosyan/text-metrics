@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 
 class TextMetric extends Resource
 {
@@ -16,7 +16,7 @@ class TextMetric extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\TextMetric::class;
+    public static $model = \Domain\Metrics\Models\TextMetric::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

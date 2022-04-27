@@ -245,7 +245,10 @@ namespace App\Models{
 }
 
 namespace App\Models{
-/**
+
+    use Domain\Metrics\Models\DocumentMetricResult;
+
+    /**
  * App\Models\DocumentMetricResult
  *
  * @property int $id
@@ -279,7 +282,10 @@ namespace App\Models{
 }
 
 namespace App\Models{
-/**
+
+    use Domain\Metrics\Models\MonitoredMetricResult;
+
+    /**
  * App\Models\MonitoredMetricResult
  *
  * @property int $id
@@ -418,7 +424,10 @@ namespace App\Models{
 }
 
 namespace App\Models{
-/**
+
+    use Domain\Metrics\Models\TextMetric;
+
+    /**
  * App\Models\TextMetric
  *
  * @property int $id
@@ -431,7 +440,7 @@ namespace App\Models{
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \App\Models\TextMetricComputer $textMetricComputer
+ * @property-read \Domain\Metrics\Models\TextMetricComputer $textMetricComputer
  * @method static \Database\Factories\TextMetricFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|TextMetric newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TextMetric newQuery()
@@ -455,7 +464,10 @@ namespace App\Models{
 }
 
 namespace App\Models{
-/**
+
+    use Domain\Metrics\Models\TextMetricComputer;
+
+    /**
  * App\Models\TextMetricComputer
  *
  * @property int $id

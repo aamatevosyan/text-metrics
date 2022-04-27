@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Metrics\Models;
 
+use App\Models\CourseWork;
+use App\Models\Document;
+use App\Models\IdeHelperDocumentMetricResult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,13 +12,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property int $id
  * @property int $course_work_id
+ * @property int $document_id
  * @property string $results
+ * @property string $detailed_results
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @mixin IdeHelperMonitoredMetricResult
+ * @mixin IdeHelperDocumentMetricResult
  */
-class MonitoredMetricResult extends Model
+class DocumentMetricResult extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -26,7 +31,9 @@ class MonitoredMetricResult extends Model
      */
     protected $fillable = [
         'course_work_id',
+        'document_id',
         'results',
+        'detailed_results',
     ];
 
     /**
@@ -37,6 +44,7 @@ class MonitoredMetricResult extends Model
     protected $casts = [
         'id' => 'integer',
         'course_work_id' => 'integer',
+        'document_id' => 'integer',
     ];
 
     /**
@@ -45,5 +53,13 @@ class MonitoredMetricResult extends Model
     public function courseWork(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(CourseWork::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function document(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Document::class);
     }
 }

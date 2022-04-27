@@ -18,6 +18,7 @@ class CreateTextMetricComputersTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('class');
+            $table->jsonb('config')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

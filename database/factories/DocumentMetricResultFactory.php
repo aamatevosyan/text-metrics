@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\CourseWork;
 use App\Models\Document;
-use App\Models\DocumentMetricResult;
+use Domain\Metrics\Models\DocumentMetricResult;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DocumentMetricResultFactory extends Factory
 {

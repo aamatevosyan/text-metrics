@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Metrics\Models;
 
+use App\Models\CourseWork;
+use App\Models\IdeHelperMonitoredMetricResult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
- * @property string $name
- * @property string $slug
- * @property string $class
+ * @property int $course_work_id
+ * @property string $results
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @mixin IdeHelperTextMetricComputer
+ * @mixin IdeHelperMonitoredMetricResult
  */
-class TextMetricComputer extends Model
+class MonitoredMetricResult extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -26,9 +27,8 @@ class TextMetricComputer extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'slug',
-        'class',
+        'course_work_id',
+        'results',
     ];
 
     /**
@@ -38,5 +38,14 @@ class TextMetricComputer extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'course_work_id' => 'integer',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function courseWork(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(CourseWork::class);
+    }
 }
