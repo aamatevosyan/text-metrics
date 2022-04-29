@@ -2,7 +2,7 @@
 
 namespace Domain\DocumentProcessing\Listeners;
 
-use App\Jobs\ApplyDocumentProcessingJob;
+use Domain\DocumentProcessing\Jobs\ApplyDocumentProcessingJob;
 use Log;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAdded;
 

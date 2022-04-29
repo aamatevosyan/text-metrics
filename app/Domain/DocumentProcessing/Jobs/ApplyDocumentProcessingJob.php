@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Jobs;
+namespace Domain\DocumentProcessing\Jobs;
 
 use Domain\DocumentProcessing\Facades\DocumentProcessing;
-use Domain\DocumentProcessing\Processors\AbstractDocumentProcessor;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

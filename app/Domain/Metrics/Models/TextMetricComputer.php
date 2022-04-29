@@ -2,9 +2,9 @@
 
 namespace Domain\Metrics\Models;
 
-use App\Models\IdeHelperTextMetricComputer;
 use App\Traits\HasBaseModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -43,4 +43,9 @@ class TextMetricComputer extends Model
         'id' => 'integer',
         'config' => 'array'
     ];
+
+    public function textMetrics(): HasMany
+    {
+        return $this->hasMany(TextMetric::class);
+    }
 }

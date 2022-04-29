@@ -5,6 +5,7 @@ namespace Domain\Metrics\Models;
 use App\Models\CourseWork;
 use App\Models\Document;
 use App\Models\IdeHelperDocumentMetricResult;
+use App\Traits\HasBaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class DocumentMetricResult extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasBaseModel, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -34,6 +35,7 @@ class DocumentMetricResult extends Model
         'document_id',
         'results',
         'detailed_results',
+        'section_results',
     ];
 
     /**
@@ -45,6 +47,9 @@ class DocumentMetricResult extends Model
         'id' => 'integer',
         'course_work_id' => 'integer',
         'document_id' => 'integer',
+        'results' => 'array',
+        'detailed_results' => 'array',
+        'section_results' => 'array',
     ];
 
     /**

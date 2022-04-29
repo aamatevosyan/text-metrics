@@ -5,8 +5,11 @@ namespace App\Models;
 use App\Enums\DocumentElementType;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
+use Domain\Metrics\Models\DocumentMetricResult;
+use Domain\Metrics\Models\MonitoredMetricResult;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -57,6 +60,16 @@ class Document extends Model
     public function courseWork(): BelongsTo
     {
         return $this->belongsTo(CourseWork::class);
+    }
+
+    public function monitoredMetricResult(): HasOne
+    {
+        return $this->hasOne(MonitoredMetricResult::class);
+    }
+
+    public function documentMetricResult(): HasOne
+    {
+        return $this->hasOne(DocumentMetricResult::class);
     }
 
     public function getParagraphs(): array

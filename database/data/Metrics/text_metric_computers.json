@@ -3,7 +3,7 @@
         "id": 1,
         "name": "RuTS",
         "slug": "ruts",
-        "class": "Domain\\Metrics\\Services\\Computers\\RuTSComputer",
+        "class": "Domain\\Metrics\\Services\\Computers\\Implementations\\RuTSComputer",
         "config": null
     }
 ]

@@ -3,6 +3,7 @@
 namespace Domain\Metrics\Models;
 
 use App\Models\CourseWork;
+use App\Models\Document;
 use App\Models\IdeHelperMonitoredMetricResult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +29,7 @@ class MonitoredMetricResult extends Model
      */
     protected $fillable = [
         'course_work_id',
+        'document_id',
         'results',
     ];
 
@@ -39,6 +41,7 @@ class MonitoredMetricResult extends Model
     protected $casts = [
         'id' => 'integer',
         'course_work_id' => 'integer',
+        'results' => 'array',
     ];
 
     /**
@@ -47,5 +50,13 @@ class MonitoredMetricResult extends Model
     public function courseWork(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(CourseWork::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function document(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Document::class);
     }
 }

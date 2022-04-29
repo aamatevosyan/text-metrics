@@ -17,10 +17,13 @@ class CreateMonitoredMetricResultsTable extends Migration
 
         Schema::create('monitored_metric_results', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('document_id')->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->foreignId('course_work_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->jsonb('results')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index('results', null, 'gin');
         });
 
         Schema::enableForeignKeyConstraints();
