@@ -49,7 +49,7 @@ trait HasBaseModel
      */
     protected function castAttribute($key, $value): mixed
     {
-        if ($this->getCastType($key) === 'array' && is_null($value)) {
+        if (is_null($value) && $this->getCastType($key) === 'array') {
             return [];
         }
 

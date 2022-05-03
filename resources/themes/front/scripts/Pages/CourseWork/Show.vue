@@ -19,16 +19,9 @@
                         </template>
                     </Toolbar>
 
-                    <Accordion class="mt-8 mb-8 ml-2 mr-2 flex flex-col">
-                        <AccordionTab v-for="document in courseWork.documents.data" :key="document.uuid">
-                            <template #header>
-                                <i class="pi pi-paperclip"></i>
-                                <span class="ml-2 mr-3">{{document.uuid}}</span>
-                                <Button @click.stop="preview(document.url)" label="Preview" class="p-button-link"/>
-                            </template>
-                            <p>Some content</p>
-                        </AccordionTab>
-                    </Accordion>
+                   <course-work-details :documents="courseWork.documents.data">
+
+                   </course-work-details>
                 </div>
             </div>
         </div>
@@ -40,20 +33,18 @@ import {defineComponent, computed, ref} from 'vue'
 import AppLayout from '@front/Layouts/AppLayout.vue'
 import DocumentUpload from "@front/Components/DocumentUpload.vue"
 import Toast from "primevue/toast";
-import Accordion from "primevue/accordion";
-import AccordionTab from "primevue/accordiontab";
 import Fieldset from "primevue/fieldset";
 import Divider from "primevue/divider";
 import Toolbar from "primevue/toolbar";
 import Button from "primevue/button";
+import CourseWorkDetails from "@/Components/CourseWorkDetails.vue";
 
 export default defineComponent({
     components: {
+        CourseWorkDetails,
         AppLayout,
         DocumentUpload,
         Toast,
-        Accordion,
-        AccordionTab,
         Fieldset,
         Divider,
         Toolbar,
@@ -62,9 +53,6 @@ export default defineComponent({
     setup(props, {attrs}) {
         const courseWork = computed(() => attrs.data);
 
-        const preview = (url) => {
-            window.open(url, '_blank');
-        }
         // const selectedCourseWork = ref(null)
         //
         // return {
@@ -74,7 +62,6 @@ export default defineComponent({
 
         return {
             courseWork,
-            preview
         }
     }
 })

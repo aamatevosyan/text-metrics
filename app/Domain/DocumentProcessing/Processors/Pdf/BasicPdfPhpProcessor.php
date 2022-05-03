@@ -105,7 +105,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
                 'type' => $this->getDocumentElementType($item)->value,
                 'uuid' => Str::orderedUuid()->toString(),
                 'page' => $item['Page'] ?? null,
-                'text' => $item['Text'] ?? null,
+                'text' => !empty($item['Text']) ? Encoding::toUTF8($item['Text']) : null,
             ];
 
 //            if (mb_check_encoding($new['text'], 'CP1251')) {
@@ -200,7 +200,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
         $results = [
             'type' => DocumentElementType::Document->value,
             'uuid' => Str::orderedUuid()->toString(),
-            'text' => null,
+            'text' => 'Document',
             'children' => $results,
         ];
 
