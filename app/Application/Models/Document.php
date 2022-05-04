@@ -7,6 +7,7 @@ use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Domain\Metrics\Models\DocumentMetricResult;
 use Domain\Metrics\Models\MonitoredMetricResult;
+use Domain\Metrics\Services\MetricComputingService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -46,6 +47,14 @@ class Document extends Model
         'content' => 'array',
     ];
 
+    public static function booted()
+    {
+        self::created(function (Document $document) {
+            $computer = new MetricComputingService();
+            $computer->process($document);
+        });
+    }
+
     /**
      * @return BelongsTo
      */
@@ -82,7 +91,7 @@ class Document extends Model
 
             if (!empty($element['children'])) {
                 foreach ($element['children'] as $child) {
-                   $func($child, $data);
+                    $func($child, $data);
                 }
             }
         };

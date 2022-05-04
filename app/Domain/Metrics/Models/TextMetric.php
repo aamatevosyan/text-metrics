@@ -36,6 +36,7 @@ class TextMetric extends Model
         'name',
         'text_metric_computer_id',
         'description',
+        'group',
         'slug',
         'numeric',
         'monitored',

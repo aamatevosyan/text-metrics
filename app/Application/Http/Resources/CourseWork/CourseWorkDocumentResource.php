@@ -56,13 +56,15 @@ class CourseWorkDocumentResource extends JsonResource
         ];
     }
 
-    protected function getIcon(DocumentElementType $type): string
+    protected function getIcon(DocumentElementType $type): ?string
     {
         return match ($type) {
             DocumentElementType::Document => 'pi pi-fw pi-book',
             DocumentElementType::Heading => 'pi pi-fw pi-bookmark',
-            DocumentElementType::Paragraph => 'pi pi-fw pi-align-left',
-            DocumentElementType::ListItem => 'pi pi-fw pi-list',
+//            DocumentElementType::Paragraph => 'pi pi-fw pi-align-left',
+            DocumentElementType::Paragraph => null,
+            DocumentElementType::ListItem => null,
+//            DocumentElementType::ListItem => 'pi pi-fw pi-list',
         };
     }
 
@@ -83,7 +85,7 @@ class CourseWorkDocumentResource extends JsonResource
                 'key' => $item['uuid'],
                 'icon' => $this->getIcon(DocumentElementType::from($item['type'])),
                 'label' => mb_convert_encoding(substr($item['text'] ?? 'Empty', 0,
-                    160), 'UTF-8', 'UTF-8'),
+                    10000), 'UTF-8', 'UTF-8'),
                 'data' => $this->getData($item),
                 'leaf' => true,
             ];

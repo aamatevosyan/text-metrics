@@ -7,6 +7,7 @@
             "ru": "Автоматический индекс удобочитаемости"
         },
         "slug": "automated_readability_index",
+        "group": "readability",
         "description": {
             "en": "Automated Readability Index",
             "ru": "Автоматический индекс удобочитаемости"
@@ -22,6 +23,7 @@
             "ru": "Индекс Колман-Лиау"
         },
         "slug": "coleman_liau_index",
+        "group": "readability",
         "description": {
             "en": "Coleman-Liau Index",
             "ru": "Индекс Колман-Лиау"
@@ -37,6 +39,7 @@
             "ru": "Тест Флеша-Кинкайда"
         },
         "slug": "flesch_kincaid_grade",
+        "group": "readability",
         "description": {
             "en": "Flesch-Kincaid Grade Level",
             "ru": "Тест Флеша-Кинкайда"
@@ -52,6 +55,7 @@
             "ru": "Индекс SMOG"
         },
         "slug": "smog_index",
+        "group": "readability",
         "description": {
             "en": "SMOG Index",
             "ru": "Индекс SMOG"
@@ -67,6 +71,7 @@
             "ru": "Индекс удобочитаемости Флеша"
         },
         "slug": "flesch_reading_easy",
+        "group": "readability",
         "description": {
             "en": "Flesch Reading Eas",
             "ru": "Индекс удобочитаемости Флеша"
@@ -82,9 +87,218 @@
             "ru": "Индекс удобочитаемости LIX"
         },
         "slug": "lix",
+        "group": "readability",
         "description": {
             "en": "LIX readability measure",
             "ru": "Индекс удобочитаемости LIX"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 7,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Hapax Index",
+            "ru": "Гапакс-индекс"
+        },
+        "slug": "hapax_index",
+        "group": "diversity",
+        "description": {
+            "en": "Hapax Index",
+            "ru": "Гапакс-индекс"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 8,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Type-Token Ratio (TTR)",
+            "ru": "Метрика Type-Token Ratio (TTR)"
+        },
+        "slug": "ttr",
+        "group": "diversity",
+        "description": {
+            "en": "Type-Token Ratio (TTR)",
+            "ru": "Метрика Type-Token Ratio (TTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 9,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Root Type-Token Ratio (RTTR)",
+            "ru": "Метрика Root Type-Token Ratio (RTTR)"
+        },
+        "slug": "rttr",
+        "group": "diversity",
+        "description": {
+            "en": "Root Type-Token Ratio (RTTR)",
+            "ru": "Метрика Root Type-Token Ratio (RTTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 10,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Corrected Type-Token Ratio (CTTR)",
+            "ru": "Метрика Corrected Type-Token Ratio (CTTR)"
+        },
+        "slug": "cttr",
+        "group": "diversity",
+        "description": {
+            "en": "Corrected Type-Token Ratio (CTTR)",
+            "ru": "Метрика Corrected Type-Token Ratio (CTTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 11,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Herdan Type-Token Ratio (HTTR)",
+            "ru": "Метрика Herdan Type-Token Ratio (HTTR)"
+        },
+        "slug": "httr",
+        "group": "diversity",
+        "description": {
+            "en": "Herdan Type-Token Ratio (HTTR)",
+            "ru": "Метрика Herdan Type-Token Ratio (HTTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 12,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Summer Type-Token Ratio (STTR)",
+            "ru": "Метрика Summer Type-Token Ratio (STTR)"
+        },
+        "slug": "sttr",
+        "group": "diversity",
+        "description": {
+            "en": "Summer Type-Token Ratio (STTR)",
+            "ru": "Метрика Summer Type-Token Ratio (STTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 13,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Mass Type-Token Ratio (MTTR)",
+            "ru": "Метрика Mass Type-Token Ratio (MTTR)"
+        },
+        "slug": "mttr",
+        "group": "diversity",
+        "description": {
+            "en": "Mass Type-Token Ratio (MTTR)",
+            "ru": "Метрика Mass Type-Token Ratio (MTTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 14,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Dugast Type-Token Ratio (DTTR)",
+            "ru": "Метрика Dugast Type-Token Ratio (DTTR)"
+        },
+        "slug": "dttr",
+        "group": "diversity",
+        "description": {
+            "en": "Dugast Type-Token Ratio (DTTR)",
+            "ru": "Метрика Dugast Type-Token Ratio (DTTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 15,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Moving Average Type-Token Ratio (MATTR)",
+            "ru": "Метрика Moving Average Type-Token Ratio (MATTR)"
+        },
+        "slug": "mattr",
+        "group": "diversity",
+        "description": {
+            "en": "Moving Average Type-Token Ratio (MATTR)",
+            "ru": "Метрика Moving Average Type-Token Ratio (MATTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 16,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Mean Segmental Type-Token Ratio (MSTTR)",
+            "ru": "Метрика Mean Segmental Type-Token Ratio (MSTTR)"
+        },
+        "slug": "msttr",
+        "group": "diversity",
+        "description": {
+            "en": "Mean Segmental Type-Token Ratio (MSTTR)",
+            "ru": "Метрика Mean Segmental Type-Token Ratio (MSTTR)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 19,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Measure of Textual Lexical Diversity (MTLD)",
+            "ru": "Метрика Measure of Textual Lexical Diversity (MTLD)"
+        },
+        "slug": "mtld",
+        "group": "diversity",
+        "description": {
+            "en": "Measure of Textual Lexical Diversity (MTLD)",
+            "ru": "Метрика Measure of Textual Lexical Diversity (MTLD)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 18,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Hypergeometric Distribution D (HD-D)",
+            "ru": "Метрика Hypergeometric Distribution D (HD-D)"
+        },
+        "slug": "hdd",
+        "group": "diversity",
+        "description": {
+            "en": "Hypergeometric Distribution D (HD-D)",
+            "ru": "Метрика Hypergeometric Distribution D (HD-D)"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 19,
+        "text_metric_computer_id": 1,
+        "name": {
+            "en": "Simpson Index",
+            "ru": "Индекс Симпсона"
+        },
+        "slug": "simpson_index",
+        "group": "diversity",
+        "description": {
+            "en": "Simpson Index",
+            "ru": "Индекс Симпсона"
         },
         "numeric": true,
         "monitored": true

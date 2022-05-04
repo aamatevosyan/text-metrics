@@ -6,7 +6,7 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/supervisor/js/**/*.vue',
+        './resources/themes/supervisor/scripts/**/*.vue',
     ],
 
     theme: {

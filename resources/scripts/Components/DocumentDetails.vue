@@ -1,9 +1,10 @@
 <template>
     <tree :value="document.content">
-        <template #default="slotProps" class="flex-col">
+        <template #default="slotProps" class="flex">
             <document-tree-view-item :type="slotProps.node.data.type" :uuid="slotProps.node.data.uuid"
                                      :paragraph="getParagraph(slotProps.node.data.uuid)"
                                      :label="slotProps.node.label"
+                                     :metrics="metrics"
             >
             </document-tree-view-item>
         </template>
@@ -30,6 +31,7 @@ export default {
     data() {
         return {
             nodes: document.content,
+            metrics: document.metrics,
             expandedKeys: {},
         }
     },

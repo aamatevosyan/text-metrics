@@ -8,6 +8,9 @@ import ProgressBar from "primevue/progressbar";
 import Tree from 'primevue/tree';
 import Button from "primevue/button";
 import Dialog from 'primevue/dialog';
+import Splitter from 'primevue/splitter';
+import SplitterPanel from 'primevue/splitterpanel';
+import Divider from "primevue/divider";
 
 export default (app) => {
     return app
@@ -21,4 +24,7 @@ export default (app) => {
         .component('tree', Tree)
         .component('prime-button', Button)
         .component('prime-dialog', Dialog)
+        .component('splitter', Splitter)
+        .component('splitter-panel', SplitterPanel)
+        .component('divider', Divider)
 };

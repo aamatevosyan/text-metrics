@@ -21,6 +21,7 @@ class CreateTextMetricsTable extends Migration
             $table->foreignId('text_metric_computer_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->jsonb('description')->nullable();
             $table->string('slug')->unique();
+            $table->string('group')->index();
             $table->boolean('numeric')->default(false);
             $table->boolean('monitored')->default(false);
             $table->softDeletes();
