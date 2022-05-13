@@ -3,16 +3,14 @@
 namespace Domain\Metrics\Jobs;
 
 use Cache;
-use DB;
+use Domain\DocumentProcessing\Services\Document\DocumentElement;
 use Domain\Metrics\Models\DocumentMetricResult;
-use Domain\Metrics\Services\Computers\Core\TextBasedTextMetricComputer;
-use Domain\Metrics\Services\Computers\Core\TextMetricComputerResult;
+use Domain\Metrics\Services\Computers\Core\AbstractDocumentElementComputer;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\Middleware\WithoutOverlapping;
 use Illuminate\Queue\SerializesModels;
 
 class ApplySectionTextMetricComputingJob implements ShouldQueue
@@ -25,22 +23,10 @@ class ApplySectionTextMetricComputingJob implements ShouldQueue
      * @return void
      */
     public function __construct(
-        protected TextBasedTextMetricComputer $computer,
-        protected string $uuid,
-        protected string $text,
+        protected AbstractDocumentElementComputer $computer,
+        protected DocumentElement $documentElement,
         protected int $documentMetricResultId,
     ) {
-        //
-    }
-
-    /**
-     * Get the middleware the job should pass through.
-     *
-     * @return array
-     */
-    public function middleware()
-    {
-        return [(new WithoutOverlapping($this->documentMetricResultId))->releaseAfter(60)->expireAfter(180)];
     }
 
     /**
@@ -50,14 +36,26 @@ class ApplySectionTextMetricComputingJob implements ShouldQueue
      */
     public function handle()
     {
-        $cacheKey = DocumentMetricResult::getCacheKey('section_results.'.$this->documentMetricResultId);
-        $section_results = Cache::get($cacheKey, []);
+        $cacheKey = DocumentMetricResult::getCacheKey(
+            'section_results.'.$this->documentMetricResultId.'.'.$this->computer->getModel()->id.'.'
+            .$this->documentElement->uuid,
+        );
 
-        $origin = TextMetricComputerResult::fromData(compact('section_results'));
-        $textMetricResults = $this->computer->process($this->text);
+        $computed = $this->computer->process($this->documentElement);
 
-        $origin->addSectionResults($this->uuid, $textMetricResults);
+        if ($computed) {
+            Cache::forever($cacheKey, $computed);
+        }
 
-        Cache::forever($cacheKey, $origin->getSectionResults());
+        $jobs = $this->documentElement->children->toCollection()->map(
+            fn(DocumentElement $element) => new self(
+                $this->computer,
+                $element,
+                $this->documentMetricResultId,
+            )
+        );
+
+        $this->batch()
+            ->add($jobs);
     }
 }

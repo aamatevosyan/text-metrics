@@ -44,6 +44,9 @@ class MetricComputingService
             )
         );
 
+        $queueId = $documentMetricResult->id % config('queue.parallel_jobs_count.metric-computing');
+        $queue = "metric-computing-$queueId";
+
         $batch = Bus::batch($jobs)
             ->then(function (Batch $batch) use ($documentMetricResult, $monitoredMetricResult) {
                 $documentMetricResult->refresh();
@@ -52,8 +55,8 @@ class MetricComputingService
                     'results' => $documentMetricResult->results,
                 ]);
             })
+            ->onQueue($queue)
             ->allowFailures()
-            ->onQueue('metric-computing')
             ->dispatch();
 
         return $batch->id;

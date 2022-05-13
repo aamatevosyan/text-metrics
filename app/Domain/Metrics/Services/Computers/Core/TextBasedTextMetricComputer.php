@@ -2,53 +2,24 @@
 
 namespace Domain\Metrics\Services\Computers\Core;
 
-use App\Models\Document;
-use Bus;
-use Cache;
-use Domain\Metrics\Jobs\ApplySectionTextMetricComputingJob;
-use Domain\Metrics\Models\DocumentMetricResult;
-use Illuminate\Bus\Batch;
+use Domain\DocumentProcessing\Services\Document\DocumentElement;
 
-abstract class TextBasedTextMetricComputer extends AbstractTextMetricComputer
+abstract class TextBasedTextMetricComputer extends AbstractDocumentElementComputer
 {
-    public function getType(): TextMetricComputerType
+    abstract public function processText(string $text): ?array;
+
+    public function processElement(DocumentElement $element): ?array
     {
-        return TextMetricComputerType::TEXT_BASED;
+        return $this->processText($element->text);
     }
 
-    abstract public function isProcessingParagraphs(): bool;
-
-    abstract public function process(string $inputText): array;
-
-    public function compute(Document $document): TextMetricComputerResult
+    public function processRootElement(DocumentElement $element): ?array
     {
-        $results = $this->process(
-            $document->getParagraphsText()
-        );
+        return $this->processText($element->getWholeText());
+    }
 
-        if ($this->isProcessingParagraphs()) {
-            $jobs = collect($document->getParagraphs())->map(
-                fn(string $text, string $uuid) => new ApplySectionTextMetricComputingJob(
-                    $this,
-                    $uuid,
-                    $text,
-                    $document->documentMetricResult->id,
-                )
-            );
-
-            $batch = Bus::batch($jobs)
-                ->then(function (Batch $batch) use ($document) {
-                    $cacheKey = DocumentMetricResult::getCacheKey('section_results.'.$document->documentMetricResult->id);
-                    $section_results = Cache::get($cacheKey);
-                    $document->documentMetricResult()->update(compact('section_results'));
-
-                    Cache::forget($cacheKey);
-                })
-                ->allowFailures()
-                ->onQueue('section-metric-computing')
-                ->dispatch();
-        }
-
-        return TextMetricComputerResult::fromData(compact('results'));
+    public function needsProcessing(DocumentElement $element): bool
+    {
+        return $element->text || $this->isProcessingRootElement();
     }
 }

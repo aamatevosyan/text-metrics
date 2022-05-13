@@ -1,0 +1,13 @@
+graphviz>0
+matplotlib>3
+nltk>3
+numpy>1
+pandas>1
+pymorphy2>0
+pytest>6
+razdel>0
+scipy>1
+spacy>3
+fastapi>=0.68.0,<0.69.0
+pydantic>=1.8.0,<2.0.0
+uvicorn>=0.15.0,<0.16.0

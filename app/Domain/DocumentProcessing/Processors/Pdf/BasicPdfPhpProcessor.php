@@ -104,21 +104,21 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
             $new = [
                 'type' => $this->getDocumentElementType($item)->value,
                 'uuid' => Str::orderedUuid()->toString(),
+                'font' => $item['Font'] ?? null,
+                'lang' => $item['Lang'] ?? null,
                 'page' => $item['Page'] ?? null,
                 'text' => !empty($item['Text']) ? Encoding::toUTF8($item['Text']) : null,
             ];
 
-//            if (mb_check_encoding($new['text'], 'CP1251')) {
-//                // convert back to source string via CP1252 single-byte encoding
-//                $new['text'] = mb_convert_encoding($new['text'], 'CP1252', 'UTF-8');
-//
-//                // correctly convert source string to UTF8 using CP1251
-//                $new['text'] = mb_convert_encoding($new['text'], 'UTF-8', 'CP1251');
-//            }
+            if (!empty($item['TextSize'])) {
+                $new['font']['size'] = floor($item['TextSize']);
+            }
 
             if (isset($item['children'])) {
                 $this->transformResults($item['children']);
                 $new['children'] = $item['children'];
+            } else {
+                $new['children'] = [];
             }
 
             $item = $new;
@@ -159,7 +159,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
             $temporaryFile = $temporaryDirectory->path('/').DIRECTORY_SEPARATOR.'response.zip';
 
             $process = Process::fromShellCommandline(
-                "node src/extractpdf/extract-text-info-from-pdf.js --input={$filePath} --output={$temporaryFile}",
+                "node app/extractpdf/extract-text-info-from-pdf.js --input={$filePath} --output={$temporaryFile}",
                 base_path('modules/pdfservices-node-sdk'),
             );
             $process->setTimeout(600);
@@ -200,7 +200,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
         $results = [
             'type' => DocumentElementType::Document->value,
             'uuid' => Str::orderedUuid()->toString(),
-            'text' => 'Document',
+            'text' => null,
             'children' => $results,
         ];
 

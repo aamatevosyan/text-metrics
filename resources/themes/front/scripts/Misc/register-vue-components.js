@@ -11,6 +11,9 @@ import Dialog from 'primevue/dialog';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 import Divider from "primevue/divider";
+import Tag from "primevue/tag";
+import Badge from 'primevue/badge';
+import BadgeDirective from 'primevue/badgedirective';
 
 export default (app) => {
     return app
@@ -27,4 +30,7 @@ export default (app) => {
         .component('splitter', Splitter)
         .component('splitter-panel', SplitterPanel)
         .component('divider', Divider)
+        .component('prime-tag', Tag)
+        .component('badge', Badge)
+        .directive('badge', BadgeDirective)
 };

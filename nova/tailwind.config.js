@@ -62,8 +62,8 @@ function toColorVariables(colors) {
 module.exports = {
     mode: 'jit',
     purge: [
-        './src/**/*.php',
-        './src/**/*.vue',
+        './app/**/*.php',
+        './app/**/*.vue',
         './resources/**/*{js,vue,blade.php}',
         '../nova-components/**/resources/**/*{js,vue,blade.php}'
     ],

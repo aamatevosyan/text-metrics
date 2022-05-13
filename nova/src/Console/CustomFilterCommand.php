@@ -43,18 +43,18 @@ class CustomFilterCommand extends ComponentGeneratorCommand
         $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/resources/js/filter.js');
 
         // Filter.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/Filter.stub');
-        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/src/Filter.stub');
-        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/src/Filter.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/Filter.stub');
+        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/app/Filter.stub');
+        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/app/Filter.stub');
 
         (new Filesystem)->move(
-            $this->componentPath().'/src/Filter.stub',
-            $this->componentPath().'/src/'.$this->componentClass().'.php'
+            $this->componentPath().'/app/Filter.stub',
+            $this->componentPath().'/app/'.$this->componentClass().'.php'
         );
 
         // FilterServiceProvider.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/FilterServiceProvider.stub');
-        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/src/FilterServiceProvider.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/FilterServiceProvider.stub');
+        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/app/FilterServiceProvider.stub');
 
         // webpack.mix.js replacements...
         $this->replace('{{ name }}', $this->component(), $this->componentPath().'/webpack.mix.js');
@@ -98,7 +98,7 @@ class CustomFilterCommand extends ComponentGeneratorCommand
     protected function stubsToRename()
     {
         return [
-            $this->componentPath().'/src/FilterServiceProvider.stub',
+            $this->componentPath().'/app/FilterServiceProvider.stub',
         ];
     }
 

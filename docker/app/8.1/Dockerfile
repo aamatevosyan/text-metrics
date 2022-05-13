@@ -57,9 +57,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.1/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
-COPY requirements.txt /etc/configs/docker/requirements.txt
-RUN pip3 install -r /etc/configs/docker/requirements.txt
-
 EXPOSE 8000
 
 ENTRYPOINT ["start-container"]

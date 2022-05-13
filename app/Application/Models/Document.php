@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\DocumentElementType;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
+use Domain\DocumentProcessing\Services\Document\DocumentElement;
 use Domain\Metrics\Models\DocumentMetricResult;
 use Domain\Metrics\Models\MonitoredMetricResult;
 use Domain\Metrics\Services\MetricComputingService;
@@ -13,10 +14,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 /**
  * @mixin IdeHelperDocument
  */
+#[TypeScript]
 class Document extends Model
 {
     use HasBaseModel;
@@ -44,7 +47,7 @@ class Document extends Model
         'id' => 'integer',
         'course_work_id' => 'integer',
         'media_id' => 'integer',
-        'content' => 'array',
+        'content' => DocumentElement::class,
     ];
 
     public static function booted()
@@ -79,32 +82,5 @@ class Document extends Model
     public function documentMetricResult(): HasOne
     {
         return $this->hasOne(DocumentMetricResult::class);
-    }
-
-    public function getParagraphs(): array
-    {
-        $func = static function ($element, &$data) use (&$func) {
-            if ($element['type'] === DocumentElementType::Paragraph->value
-                || $element['type'] === DocumentElementType::ListItem->value) {
-                $data[$element['uuid']] = $element['text'];
-            }
-
-            if (!empty($element['children'])) {
-                foreach ($element['children'] as $child) {
-                    $func($child, $data);
-                }
-            }
-        };
-
-        $data = [];
-
-        $func($this->content, $data);
-
-        return $data;
-    }
-
-    public function getParagraphsText(): string
-    {
-        return implode('\n', $this->getParagraphs());
     }
 }

@@ -90,4 +90,9 @@ return [
         'table' => 'failed_jobs',
     ],
 
+    'parallel_jobs_count' => [
+        'section-metric-computing' => 4,
+        'metric-computing' => 2,
+    ]
+
 ];

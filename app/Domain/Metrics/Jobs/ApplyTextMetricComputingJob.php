@@ -31,17 +31,6 @@ class ApplyTextMetricComputingJob implements ShouldQueue
         protected Document $document,
         protected DocumentMetricResult $documentMetricResult,
     ) {
-        //
-    }
-
-    /**
-     * Get the middleware the job should pass through.
-     *
-     * @return array
-     */
-    public function middleware()
-    {
-        return [new WithoutOverlapping($this->document->id)];
     }
 
     /**
@@ -53,11 +42,13 @@ class ApplyTextMetricComputingJob implements ShouldQueue
     {
         $this->computer = AbstractTextMetricComputer::fromModel($this->textMetricComputer);
 
-        $origin = TextMetricComputerResult::fromData($this->documentMetricResult->only('results', 'detailed_results'));
-        $textMetricResults = $this->computer->compute($this->document);
+        $origin = $this->documentMetricResult->results;
+        $computed = $this->computer->compute($this->document) ?? [];
 
-        $origin->merge($textMetricResults);
+        $calculated = array_merge($origin, $computed);
 
-        $this->documentMetricResult->update($origin->except('section_results'));
+        if ($calculated) {
+            $this->documentMetricResult->update(['results' => $calculated]);
+        }
     }
 }

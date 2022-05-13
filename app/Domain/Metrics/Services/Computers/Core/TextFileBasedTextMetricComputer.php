@@ -2,6 +2,7 @@
 
 namespace Domain\Metrics\Services\Computers\Core;
 
+use Domain\Metrics\Models\TextMetricComputer;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 use Str;
 
@@ -9,8 +10,10 @@ abstract class TextFileBasedTextMetricComputer extends TextBasedTextMetricComput
 {
     protected TemporaryDirectory $temporaryDirectory;
 
-    public function __construct(protected array $config = [])
+    public function __construct(TextMetricComputer $model, protected array $slugs, array $config = [])
     {
+        parent::__construct($model, $slugs, $config);
+
         $this->temporaryDirectory = \Spatie\MediaLibrary\Support\TemporaryDirectory::create();
     }
 
@@ -37,15 +40,13 @@ abstract class TextFileBasedTextMetricComputer extends TextBasedTextMetricComput
         );
     }
 
-    public function processUsingFiles(string $inputTextFilePath, string $outputFilePath): void
-    {
-    }
+    abstract public function processUsingFiles(string $inputTextFilePath, string $outputFilePath): void;
 
-    public function process(string $inputText): array
+    public function processText(string $text): ?array
     {
         $uuid = Str::orderedUuid()->toString();
 
-        $inputTextFilePath = $this->getTextPath($inputText, $uuid);
+        $inputTextFilePath = $this->getTextPath($text, $uuid);
         $outputFilePath = $this->getComputerResultsPath($uuid);
 
         $this->processUsingFiles($inputTextFilePath, $outputFilePath);

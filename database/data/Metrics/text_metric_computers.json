@@ -5,5 +5,19 @@
         "slug": "ruts",
         "class": "Domain\\Metrics\\Services\\Computers\\Implementations\\RuTSComputer",
         "config": null
+    },
+    {
+        "id": 2,
+        "name": "Times New Roman Checker",
+        "slug": "times-new-roman-checker",
+        "class": "Domain\\Metrics\\Services\\Computers\\Implementations\\TimesNewRomanFontChecker",
+        "config": null
+    },
+    {
+        "id": 3,
+        "name": "Plagiarist Computer",
+        "slug": "plagiarist-computer",
+        "class": "Domain\\Metrics\\Services\\Computers\\Implementations\\PlagiaristComputer",
+        "config": null
     }
 ]

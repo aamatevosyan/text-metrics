@@ -40,9 +40,9 @@ class AssetCommand extends ComponentGeneratorCommand
         );
 
         // AssetServiceProvider.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/AssetServiceProvider.stub');
-        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/src/AssetServiceProvider.stub');
-        $this->replace('{{ name }}', $this->componentName(), $this->componentPath().'/src/AssetServiceProvider.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/AssetServiceProvider.stub');
+        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/app/AssetServiceProvider.stub');
+        $this->replace('{{ name }}', $this->componentName(), $this->componentPath().'/app/AssetServiceProvider.stub');
 
         // asset.js replacements...
         $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/resources/js/asset.js');
@@ -69,7 +69,7 @@ class AssetCommand extends ComponentGeneratorCommand
     protected function stubsToRename()
     {
         return [
-            $this->componentPath().'/src/AssetServiceProvider.stub',
+            $this->componentPath().'/app/AssetServiceProvider.stub',
         ];
     }
 

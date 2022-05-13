@@ -55,26 +55,26 @@ class ToolCommand extends ComponentGeneratorCommand
         $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/resources/js/pages/Tool.vue');
 
         // Tool.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/Tool.stub');
-        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/src/Tool.stub');
-        $this->replace('{{ title }}', $this->componentTitle(), $this->componentPath().'/src/Tool.stub');
-        $this->replace(['{{ component }}', '{{ name }}'], $this->componentName(), $this->componentPath().'/src/Tool.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/Tool.stub');
+        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/app/Tool.stub');
+        $this->replace('{{ title }}', $this->componentTitle(), $this->componentPath().'/app/Tool.stub');
+        $this->replace(['{{ component }}', '{{ name }}'], $this->componentName(), $this->componentPath().'/app/Tool.stub');
 
         (new Filesystem)->move(
-            $this->componentPath().'/src/Tool.stub',
-            $this->componentPath().'/src/'.$this->componentClass().'.php'
+            $this->componentPath().'/app/Tool.stub',
+            $this->componentPath().'/app/'.$this->componentClass().'.php'
         );
 
         // ToolServiceProvider.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/ToolServiceProvider.stub');
-        $this->replace(['{{ component }}', '{{ name }}'], $this->componentName(), $this->componentPath().'/src/ToolServiceProvider.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/ToolServiceProvider.stub');
+        $this->replace(['{{ component }}', '{{ name }}'], $this->componentName(), $this->componentPath().'/app/ToolServiceProvider.stub');
 
         // webpack.mix.js replacements...
         $this->replace('{{ name }}', $this->component(), $this->componentPath().'/webpack.mix.js');
 
         // Authorize.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/Http/Middleware/Authorize.stub');
-        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/src/Http/Middleware/Authorize.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/Http/Middleware/Authorize.stub');
+        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/app/Http/Middleware/Authorize.stub');
 
         // Tool composer.json replacements...
         $this->prepareComposerReplacements();
@@ -94,8 +94,8 @@ class ToolCommand extends ComponentGeneratorCommand
     protected function stubsToRename()
     {
         return [
-            $this->componentPath().'/src/ToolServiceProvider.stub',
-            $this->componentPath().'/src/Http/Middleware/Authorize.stub',
+            $this->componentPath().'/app/ToolServiceProvider.stub',
+            $this->componentPath().'/app/Http/Middleware/Authorize.stub',
             $this->componentPath().'/routes/api.stub',
             $this->componentPath().'/routes/inertia.stub',
         ];

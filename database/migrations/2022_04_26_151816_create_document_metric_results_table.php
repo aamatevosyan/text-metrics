@@ -20,7 +20,6 @@ class CreateDocumentMetricResultsTable extends Migration
             $table->foreignId('course_work_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('document_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->jsonb('results')->nullable();
-            $table->jsonb('detailed_results')->nullable();
             $table->jsonb('section_results')->nullable();
             $table->softDeletes();
             $table->timestamps();

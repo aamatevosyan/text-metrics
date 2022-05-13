@@ -2,24 +2,28 @@
 
 namespace Domain\Metrics\Services\Computers\Implementations;
 
-use Domain\Metrics\Services\Computers\Core\TextFileBasedTextMetricComputer;
-use Symfony\Component\Process\Process;
+use Domain\Metrics\Services\Computers\Core\TextBasedTextMetricComputer;
+use Http;
 
-class RuTSComputer extends TextFileBasedTextMetricComputer
+class RuTSComputer extends TextBasedTextMetricComputer
 {
-    public function processUsingFiles(string $inputTextFilePath, string $outputFilePath): void
+    public function isProcessingRootElement(): bool
     {
-        $process = Process::fromShellCommandline(
-            "python3 run.py $inputTextFilePath $outputFilePath",
-            base_path('modules/ruTS'),
-        );
-
-        $process->setTimeout(600);
-        $process->mustRun();
+        return false;
     }
 
-    public function isProcessingParagraphs(): bool
+    public function isProcessingSections(): bool
     {
         return true;
+    }
+
+    public function isReducingSectionResults(): bool
+    {
+        return true;
+    }
+
+    public function processText(string $text): ?array
+    {
+        return Http::timeout(300)->post('http://ruts:8009', compact('text'))->json();
     }
 }

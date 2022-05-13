@@ -5,36 +5,9 @@
             <p v-else>{{ label }}</p>
 
             <divider v-if="showDetailsButton" layout="horizontal">
-                <div class="flex items-center place-content-evenly">
-                    <prime-button
-                        icon="pi pi-comments"
-                        class="p-button-sm p-button-rounded p-button-outlined mr-4"
-                        @click.prevent.stop="display = true"
-                    />
-
-                    <prime-button
-                        icon="pi pi-comments"
-                        class="p-button-sm p-button-rounded p-button-outlined mr-4"
-                        @click.prevent.stop="display = true"
-                    />
-                    <prime-button
-                        icon="pi pi-comments"
-                        class="p-button-sm p-button-rounded p-button-outlined mr-4"
-                        @click.prevent.stop="display = true"
-                    />
-                    <prime-button
-                        icon="pi pi-comments"
-                        class="p-button-sm p-button-rounded p-button-outlined mr-4"
-                        @click.prevent.stop="display = true"
-                    />
-                </div>
-
-                <prime-dialog header="Header" footer="Footer" v-model:visible="display" :maximizable="true"
-                              :modal="true">
-                    {{ paragraph }}
-
-                    {{ metrics }}
-                </prime-dialog>
+                <prime-tag v-for="badge in badges" :key="badge" class="mr-2"
+                           :severity="badge.positive ? 'info' :
+                'danger'" :value="badge.group"/>
             </divider>
         </div>
         <divider v-if="showDetailsButton" type="dotted"/>
@@ -57,18 +30,9 @@ export default {
             type: String,
             required: true,
         },
-        paragraph: {
-            type: String,
-            required: false,
-        },
-        metrics: {
-            type: Object,
-            required: false,
-        }
-    },
-    data() {
-        return {
-            display: false,
+        badges: {
+            type: Array,
+            required: true,
         }
     },
     computed: {

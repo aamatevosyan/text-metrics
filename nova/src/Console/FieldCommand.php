@@ -40,25 +40,25 @@ class FieldCommand extends ComponentGeneratorCommand
         $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/resources/js/field.js');
 
         // Field.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/Field.stub');
-        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/src/Field.stub');
-        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/src/Field.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/Field.stub');
+        $this->replace('{{ class }}', $this->componentClass(), $this->componentPath().'/app/Field.stub');
+        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/app/Field.stub');
 
         (new Filesystem)->move(
-            $this->componentPath().'/src/Field.stub',
-            $this->componentPath().'/src/'.$this->componentClass().'.php'
+            $this->componentPath().'/app/Field.stub',
+            $this->componentPath().'/app/'.$this->componentClass().'.php'
         );
 
         // FieldServiceProvider.php replacements...
-        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/src/FieldServiceProvider.stub');
-        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/src/FieldServiceProvider.stub');
+        $this->replace('{{ namespace }}', $this->componentNamespace(), $this->componentPath().'/app/FieldServiceProvider.stub');
+        $this->replace('{{ component }}', $this->componentName(), $this->componentPath().'/app/FieldServiceProvider.stub');
 
         // webpack.mix.js replacements...
         $this->replace('{{ name }}', $this->component(), $this->componentPath().'/webpack.mix.js');
 
         (new Filesystem)->move(
-            $this->componentPath().'/src/FieldServiceProvider.stub',
-            $this->componentPath().'/src/FieldServiceProvider.php'
+            $this->componentPath().'/app/FieldServiceProvider.stub',
+            $this->componentPath().'/app/FieldServiceProvider.php'
         );
 
         // Field composer.json replacements...

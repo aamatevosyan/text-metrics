@@ -34,7 +34,6 @@ class DocumentMetricResult extends Model
         'course_work_id',
         'document_id',
         'results',
-        'detailed_results',
         'section_results',
     ];
 

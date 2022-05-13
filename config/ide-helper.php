@@ -111,7 +111,7 @@ return [
     'include_helpers' => true,
 
     'helper_files' => [
-        base_path().'/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+        base_path().'/vendor/laravel/framework/app/Illuminate/Support/helpers.php',
         base_path().'/app/Application/Helpers/helper.php',
     ],
 
@@ -131,8 +131,8 @@ return [
     'model_locations' => [
         'app/Application/Models',
         'app/Domain/DocumentProcessing/Models',
-        'vendor/silber/bouncer/src/Database',
-        'vendor/spatie/laravel-medialibrary/src/MediaCollections/Models',
+        'vendor/silber/bouncer/app/Database',
+        'vendor/spatie/laravel-medialibrary/app/MediaCollections/Models',
     ],
 
     /*

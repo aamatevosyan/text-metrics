@@ -302,5 +302,37 @@
         },
         "numeric": true,
         "monitored": true
+    },
+    {
+        "id": 20,
+        "text_metric_computer_id": 2,
+        "name": {
+            "en": "Times New Roman Metirc",
+            "ru": "Метрика Times New Roman"
+        },
+        "slug": "times_new_roman",
+        "group": "font",
+        "description": {
+            "en": "Checks for Timew New Roman font",
+            "ru": "Проверка на фонт Times New Roman"
+        },
+        "numeric": true,
+        "monitored": true
+    },
+    {
+        "id": 21,
+        "text_metric_computer_id": 3,
+        "name": {
+            "en": "Plagiat percentage",
+            "ru": "Процент плагиата"
+        },
+        "slug": "plagiat_percentage",
+        "group": "plagiat",
+        "description": {
+            "en": "Shows plagiat percentage",
+            "ru": "Показывает процент плагиата"
+        },
+        "numeric": true,
+        "monitored": true
     }
 ]

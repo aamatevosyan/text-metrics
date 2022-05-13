@@ -5,7 +5,9 @@ namespace App\Providers;
 use Barryvdh\Debugbar\ServiceProvider as DebugBarServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Bouncer;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\ServiceProvider;
+use RateLimiter;
 use Spatie\LaravelRay\RayServiceProvider;
 use Storage;
 use URL;
@@ -34,5 +36,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Bouncer::cache();
+
+        RateLimiter::for('section-metric-computing', function ($job) {
+            return Limit::perMinute(30)->by($job->getDocumentMetricResultId());
+        });
     }
 }

@@ -37,7 +37,7 @@ class CourseWorkDocumentResource extends JsonResource
         $content = null;
 
         if ($document) {
-            $content = [$document->content];
+            $content = [$document->content->toArray()];
             $this->transformContent($content);
         }
 
@@ -50,8 +50,8 @@ class CourseWorkDocumentResource extends JsonResource
                 'media' => $this->uuid,
             ]),
             'content' => $content,
-            'paragraphs' => $document?->getParagraphs(),
-            'metrics' => $document?->documentMetricResult?->only('results', 'detailed_results', 'section_results'),
+            'section_results' => $document?->documentMetricResult?->section_results,
+            'results' => $document?->documentMetricResult?->results,
             'created_at' => $this->created_at->toDayDateTimeString(),
         ];
     }
@@ -83,14 +83,15 @@ class CourseWorkDocumentResource extends JsonResource
         foreach ($results as &$item) {
             $new = [
                 'key' => $item['uuid'],
-                'icon' => $this->getIcon(DocumentElementType::from($item['type'])),
-                'label' => mb_convert_encoding(substr($item['text'] ?? 'Empty', 0,
-                    10000), 'UTF-8', 'UTF-8'),
+                'icon' => $this->getIcon($item['type']),
+                'label' => mb_convert_encoding($item['text'] ?? '', 'UTF-8', 'UTF-8'),
                 'data' => $this->getData($item),
+                'selectable' => $item['type'] === DocumentElementType::Paragraph || $item['type']  ===
+                    DocumentElementType::ListItem,
                 'leaf' => true,
             ];
 
-            if (isset($item['children'])) {
+            if (!empty($item['children'])) {
                 $this->transformContent($item['children']);
                 $new['children'] = $item['children'];
                 $new['leaf'] = false;
