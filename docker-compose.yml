@@ -29,7 +29,7 @@ services:
             - pgsql
             - redis
             - ruts
-            - languagetool
+#            - languagetool
         container_name: 'text_metrics_app'
     pgsql:
         image: 'postgres:latest'
@@ -77,19 +77,19 @@ services:
         networks:
             - sail
         container_name: 'text_metrics_ruts'
-    languagetool:
-        image: erikvl87/languagetool
-        container_name: 'text_metrics_languagetool'
-        ports:
-            - 8010:8010  # Using default port from the image
-        networks:
-            - sail
-        environment:
-#            - langtool_languageModel=/ngrams  # OPTIONAL: Using ngrams data
-            - Java_Xms=512m  # OPTIONAL: Setting a minimal Java heap size of 512 mib
-            - Java_Xmx=1g  # OPTIONAL: Setting a maximum Java heap size of 1 Gib
-#        volumes:
-#            - /path/to/ngrams/data:/ngrams
+#    languagetool:
+#        image: erikvl87/languagetool
+#        container_name: 'text_metrics_languagetool'
+#        ports:
+#            - 8010:8010  # Using default port from the image
+#        networks:
+#            - sail
+#        environment:
+##            - langtool_languageModel=/ngrams  # OPTIONAL: Using ngrams data
+#            - Java_Xms=512m  # OPTIONAL: Setting a minimal Java heap size of 512 mib
+#            - Java_Xmx=1g  # OPTIONAL: Setting a maximum Java heap size of 1 Gib
+##        volumes:
+##            - /path/to/ngrams/data:/ngrams
 networks:
     sail:
         driver: bridge
