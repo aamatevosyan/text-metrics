@@ -10,9 +10,10 @@ RUN apk update \
 
 RUN apk add --no-cache curl
 
-RUN set -x ; \
-    addgroup -g 82 -S www-data ; \
-    adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
+ARG WWWGROUP
+
+RUN groupadd --force -g $WWWGROUP sail
+RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
 ARG PHP_UPSTREAM_CONTAINER=php-fpm
 ARG PHP_UPSTREAM_PORT=9000

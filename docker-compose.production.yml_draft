@@ -11,6 +11,9 @@ services:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
       - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+    environment:
+      WWWUSER: '${WWWUSER}'
+      LARAVEL_SAIL: 1
     ports:
       #            port mappings, host to docker
       - "${NGINX_HOST_HTTPS_PORT}:443"
@@ -26,6 +29,9 @@ services:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
     networks:
       - sail
+    environment:
+      WWWUSER: '${WWWUSER}'
+      LARAVEL_SAIL: 1
     expose:
       - "9000"
     container_name: 'text_metrics_php_fpm'

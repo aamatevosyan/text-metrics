@@ -113,7 +113,7 @@ RUN . ~/.bashrc
 # Laravel Schedule Cron Job:
 #####################################
 
-RUN echo "* * * * * www-data /usr/local/bin/php /var/www/artisan schedule:run >> /dev/null 2>&1"  >> /etc/cron.d/laravel-scheduler
+RUN echo "* * * * * sail /usr/local/bin/php /var/www/artisan schedule:run >> /dev/null 2>&1"  >> /etc/cron.d/laravel-scheduler
 RUN chmod 0644 /etc/cron.d/laravel-scheduler
 
 #
@@ -148,7 +148,10 @@ RUN chmod +x /usr/bin/d
 
 RUN rm -r /var/lib/apt/lists/*
 
-RUN usermod -u 1000 www-data
+ARG WWWGROUP
+
+RUN groupadd --force -g $WWWGROUP sail
+RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
 WORKDIR /var/www/html
 

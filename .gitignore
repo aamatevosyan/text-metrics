@@ -24,3 +24,4 @@ resources/google_service_account.json
 modules/pdfservices-node-sdk/pdfservices-api-credentials.json
 modules/pdfservices-node-sdk/private.key
 modules/pdfservices-node-sdk/certificate_pub.crt
+docker-compose.yml
