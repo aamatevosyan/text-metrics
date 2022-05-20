@@ -25,6 +25,7 @@
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
         "predis/predis": "^1.1",
+        "roave/security-advisories": "dev-latest",
         "silber/bouncer": "^1.0",
         "spatie/laravel-data": "^1.4",
         "spatie/laravel-google-cloud-storage": "^2.0",
@@ -54,7 +55,6 @@
         "naoray/blueprint-nova-addon": "dev-patch-1",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.13",
-        "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-ray": "^1.29",
         "worksome/envy": "^0.4.0"

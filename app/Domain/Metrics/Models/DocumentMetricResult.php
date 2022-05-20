@@ -51,6 +51,16 @@ class DocumentMetricResult extends Model
         'section_results' => 'array',
     ];
 
+    public static function booted()
+    {
+        self::updating(function (self $documentMetricResult) {
+            if ($documentMetricResult->isDirty('results')) {
+                MonitoredMetricResult::where('id', $documentMetricResult->document_id)
+                    ->update($documentMetricResult->only('results'));
+            }
+        });
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

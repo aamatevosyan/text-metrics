@@ -36,6 +36,7 @@ class Document extends Model
         'media_id',
         'course_work_id',
         'content',
+        'comments',
     ];
 
     /**
@@ -48,6 +49,7 @@ class Document extends Model
         'course_work_id' => 'integer',
         'media_id' => 'integer',
         'content' => DocumentElement::class,
+        'comments' => 'array',
     ];
 
     public static function booted()

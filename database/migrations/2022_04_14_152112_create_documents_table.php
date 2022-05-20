@@ -29,6 +29,7 @@ class CreateDocumentsTable extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->longText('content');
+            $table->jsonb('comments')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

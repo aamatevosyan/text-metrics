@@ -51,6 +51,7 @@ class CourseWorkDocumentResource extends JsonResource
             ]),
             'content' => $content,
             'section_results' => $document?->documentMetricResult?->section_results,
+            'comments' => $document?->comments,
             'results' => $document?->documentMetricResult?->results,
             'created_at' => $this->created_at->toDayDateTimeString(),
         ];

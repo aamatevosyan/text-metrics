@@ -29,7 +29,6 @@ services:
             - pgsql
             - redis
             - ruts
-#            - languagetool
         container_name: 'text_metrics_app'
     pgsql:
         image: 'postgres:latest'
@@ -63,6 +62,14 @@ services:
             retries: 3
             timeout: 5s
         container_name: 'text_metrics_redis'
+    mailhog:
+        image: 'mailhog/mailhog:latest'
+        ports:
+            - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+            - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+        networks:
+            - sail
+        container_name: 'text_metrics_mailhog'
     ruts:
         image: 'newapple4g/ruts'
         build:
@@ -77,19 +84,20 @@ services:
         networks:
             - sail
         container_name: 'text_metrics_ruts'
-#    languagetool:
-#        image: erikvl87/languagetool
-#        container_name: 'text_metrics_languagetool'
-#        ports:
-#            - 8010:8010  # Using default port from the image
-#        networks:
-#            - sail
-#        environment:
-##            - langtool_languageModel=/ngrams  # OPTIONAL: Using ngrams data
-#            - Java_Xms=512m  # OPTIONAL: Setting a minimal Java heap size of 512 mib
-#            - Java_Xmx=1g  # OPTIONAL: Setting a maximum Java heap size of 1 Gib
-##        volumes:
-##            - /path/to/ngrams/data:/ngrams
+    cohesion:
+        image: 'newapple4g/cohesion'
+        build:
+            context: ./modules/cohesion
+            dockerfile: Dockerfile
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - '8010:8010'
+        volumes:
+            - './modules/cohesion/app:/code/app'
+        networks:
+            - sail
+        container_name: 'text_metrics_cohesion'
 networks:
     sail:
         driver: bridge
