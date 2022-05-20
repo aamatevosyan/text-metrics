@@ -5,7 +5,6 @@
 /public/storage
 /storage/*.key
 /storage/media-library
-!storage/app/document-processing/*
 /vendor
 .env
 .env.backup
@@ -25,3 +24,4 @@ modules/pdfservices-node-sdk/pdfservices-api-credentials.json
 modules/pdfservices-node-sdk/private.key
 modules/pdfservices-node-sdk/certificate_pub.crt
 docker-compose.yml
+storage/logs

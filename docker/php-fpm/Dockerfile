@@ -150,10 +150,10 @@ RUN rm -r /var/lib/apt/lists/*
 
 ARG WWWGROUP
 
+WORKDIR /var/www/html
+
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
-
-WORKDIR /var/www/html
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
