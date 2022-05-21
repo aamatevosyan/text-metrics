@@ -334,5 +334,21 @@
         },
         "numeric": true,
         "monitored": true
+    },
+    {
+        "id": 22,
+        "text_metric_computer_id": 4,
+        "name": {
+            "en": "Cohesion",
+            "ru": "Связность текста"
+        },
+        "slug": "cohesion",
+        "group": "cohesion",
+        "description": {
+            "en": "Cohesion",
+            "ru": "Связность текста"
+        },
+        "numeric": true,
+        "monitored": true
     }
 ]

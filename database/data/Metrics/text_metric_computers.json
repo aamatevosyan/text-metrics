@@ -19,5 +19,12 @@
         "slug": "plagiarist-computer",
         "class": "Domain\\Metrics\\Services\\Computers\\Implementations\\PlagiaristComputer",
         "config": null
+    },
+    {
+        "id": 4,
+        "name": "Cohesion Computer",
+        "slug": "cohesion-computer",
+        "class": "Domain\\Metrics\\Services\\Computers\\Implementations\\CohesionComputer",
+        "config": null
     }
 ]

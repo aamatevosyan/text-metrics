@@ -9,7 +9,7 @@ class PlagiaristComputer extends AbstractDocumentElementComputer
 {
     public function processElement(DocumentElement $element): ?array
     {
-        $plagiat_percentage = random_int(100, 3000) / 100;
+        $plagiat_percentage = random_int(100, 8000) / 100;
 
         return compact('plagiat_percentage');
     }

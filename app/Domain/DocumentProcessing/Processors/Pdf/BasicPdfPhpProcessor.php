@@ -159,7 +159,7 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
             $temporaryFile = $temporaryDirectory->path('/').DIRECTORY_SEPARATOR.'response.zip';
 
             $process = Process::fromShellCommandline(
-                "node app/extractpdf/extract-text-info-from-pdf.js --input={$filePath} --output={$temporaryFile}",
+                "node src/extractpdf/extract-text-info-from-pdf.js --input={$filePath} --output={$temporaryFile}",
                 base_path('modules/pdfservices-node-sdk'),
             );
             $process->setTimeout(600);

@@ -6,6 +6,7 @@ use App\Models\CourseWork;
 use App\Models\Document;
 use App\Models\IdeHelperDocumentMetricResult;
 use App\Traits\HasBaseModel;
+use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -53,10 +54,30 @@ class DocumentMetricResult extends Model
 
     public static function booted()
     {
-        self::updating(function (self $documentMetricResult) {
-            if ($documentMetricResult->isDirty('results')) {
+        self::created(function (self $documentMetricResult) {
+            if ($documentMetricResult->results) {
                 MonitoredMetricResult::where('id', $documentMetricResult->document_id)
                     ->update($documentMetricResult->only('results'));
+            }
+        });
+
+        self::updating(function (self $documentMetricResult) {
+            if ($documentMetricResult->results && $documentMetricResult->isDirty('results')) {
+                $results = $documentMetricResult->results;
+
+                $slugs = Cache::remember(
+                    TextMetric::getCacheKey('slugs'),
+                    now()->addMinutes(5),
+                    fn() => TextMetric::query()
+                        ->where('numeric', true)
+                        ->where('monitored', true)
+                        ->pluck('slug')
+                );
+
+                $results = collect($results)->only($slugs)->toArray();
+
+                MonitoredMetricResult::where('id', $documentMetricResult->document_id)
+                    ->update(compact('results'));
             }
         });
     }

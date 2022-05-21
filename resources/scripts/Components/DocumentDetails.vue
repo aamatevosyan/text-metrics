@@ -86,36 +86,44 @@ export default {
         const getBadges = (result: any) => {
             let data = []
 
-            if (result?.automated_readability_index) {
+            if (result?.hasOwnProperty('automated_readability_index')) {
                 data.push({
                     'group': 'Readability',
-                    'positive': result.automated_readability_index > 15,
+                    'positive': result.automated_readability_index <= 40,
                 })
             }
 
-            if (result?.ttr) {
+            if (result?.hasOwnProperty('ttr')) {
                 data.push({
                     'group': 'Diversity',
-                    'positive': result.ttr === 1,
+                    'positive': result.ttr >= 0.5,
                 })
             }
 
-            if (result?.times_new_roman) {
+            if (result?.hasOwnProperty('times_new_roman')) {
                 data.push({
                     'group': 'Font',
                     'positive': result.times_new_roman === 1,
                 })
             }
 
-            if (result?.plagiat_percentage) {
+            if (result?.hasOwnProperty('plagiat_percentage')) {
                 data.push({
                     'group': result.type === 'document' ? `Plagiat - ${Math.floor(result.plagiat_percentage)}%` :
                         'Plagiat',
-                    'positive': result.plagiat_percentage <= 20,
+                    'positive': result.plagiat_percentage <= 40,
                 })
             }
 
-            return data.filter((item) => !item.positive)
+            if (result?.hasOwnProperty('cohesion')) {
+                data.push({
+                    'group': result.type === 'document' ? `Cohesion - ${result.cohesion}` :
+                        'Cohesion',
+                    'positive': result.cohesion >= 0.5,
+                })
+            }
+
+            return data
         }
 
         return {

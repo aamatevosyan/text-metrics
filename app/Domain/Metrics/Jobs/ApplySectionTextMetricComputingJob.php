@@ -36,6 +36,11 @@ class ApplySectionTextMetricComputingJob implements ShouldQueue
      */
     public function handle()
     {
+        if ($this->computer->isRootElement($this->documentElement) && !$this->computer->isProcessingRootElement()) {
+            $this->createJobs();
+            return;
+        }
+
         $cacheKey = DocumentMetricResult::getCacheKey(
             'section_results.'.$this->documentMetricResultId.'.'.$this->computer->getModel()->id.'.'
             .$this->documentElement->uuid,
@@ -43,10 +48,15 @@ class ApplySectionTextMetricComputingJob implements ShouldQueue
 
         $computed = $this->computer->process($this->documentElement);
 
-        if ($computed) {
+        if (!is_null($computed)) {
             Cache::forever($cacheKey, $computed);
         }
 
+        $this->createJobs();
+    }
+
+    public function createJobs()
+    {
         $jobs = $this->documentElement->children->toCollection()->map(
             fn(DocumentElement $element) => new self(
                 $this->computer,

@@ -1,16 +1,15 @@
 #
 FROM python:3
 
-##
-#WORKDIR /code
 #
-##
-#COPY ./requirements.txt /code/requirements.txt
+WORKDIR /code
+
 #
-##
-#RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+COPY ./requirements.txt /code/requirements.txt
 #
-#WORKDIR /code/app
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+WORKDIR /code/app
+
 #
-##
-#ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8009"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8010"]

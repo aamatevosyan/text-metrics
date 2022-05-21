@@ -22,11 +22,11 @@ abstract class AbstractDocumentElementComputer extends AbstractTextMetricCompute
             return null;
         }
 
-        if ($this->isProcessingSections() || !$this->isRootElement($element)) {
-            return $this->processElement($element);
+        if ($this->isRootElement($element)) {
+            return $this->isProcessingRootElement() ? $this->processRootElement($element) : null;
         }
 
-        return $this->isProcessingRootElement() ? $this->processRootElement($element) : null;
+        return $this->processElement($element);
     }
 
     abstract public function isProcessingRootElement(): bool;
@@ -41,10 +41,9 @@ abstract class AbstractDocumentElementComputer extends AbstractTextMetricCompute
     public function saveSectionResult(Document $document): void
     {
         DB::transaction(function () use ($document) {
-            $query = $document->documentMetricResult()->sharedLock();
-            $document->documentMetricResult->refresh();
+            $documentMetricResult = $document->documentMetricResult()->lockForUpdate()->first();
 
-            $section_results = $document->documentMetricResult->section_results;
+            $section_results = $documentMetricResult->section_results;
 
             $uuids = $document->content->flatten()->pluck('uuid');
 
@@ -60,12 +59,12 @@ abstract class AbstractDocumentElementComputer extends AbstractTextMetricCompute
 
                 $res = Cache::get($cacheKey, []);
 
-                if ($res) {
+                if (!is_null($res)) {
                     $section_results[$uuid] = array_merge($section_results[$uuid], (array) $res);
                 }
             });
 
-            $query->update(compact('section_results'));
+            $documentMetricResult->update(compact('section_results'));
 
             $uuids->each(function (string $uuid) use ($document) {
                 $cacheKey = DocumentMetricResult::getCacheKey(
@@ -110,28 +109,26 @@ abstract class AbstractDocumentElementComputer extends AbstractTextMetricCompute
         }
 
         DB::transaction(function () use ($document) {
-            $query = $document->documentMetricResult()->sharedLock();
-
-            $document->documentMetricResult->refresh();
-            $section_results = collect($document->documentMetricResult->section_results);
+            $documentMetricResult = $document->documentMetricResult()->lockForUpdate()->first();
+            $section_results = collect($documentMetricResult->section_results);
 
             $results = [];
 
             foreach ($this->slugs as $slug) {
-                $plucked = $section_results->pluck($slug);
+                $plucked = $section_results->pluck($slug)->filter(fn($el) => !is_null($el));
                 $computed = $this->reduceSectionResults($slug, $plucked);
 
-                if ($computed) {
+                if (!is_null($computed)) {
                     $results[$slug] = $computed;
                 }
             }
 
             $results = array_merge(
-                $document->documentMetricResult->results,
+                $documentMetricResult->results,
                 $results,
             );
 
-            $query->update(compact('results'));
+            $documentMetricResult->update(compact('results'));
         });
     }
 

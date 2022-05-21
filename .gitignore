@@ -25,3 +25,4 @@ modules/pdfservices-node-sdk/private.key
 modules/pdfservices-node-sdk/certificate_pub.crt
 docker-compose.yml
 storage/logs
+/modules/cohesion/app/stanza_resources/
