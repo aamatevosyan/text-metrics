@@ -42,7 +42,7 @@ class CourseWorkDocumentResource extends JsonResource
         }
 
         return [
-            'uuid' => $this->uuid,
+            'uuid' => $document?->uuid,
             'size' => $this->size,
             'hash' => $this->custom_properties['hash'] ?? '',
             'url' => route("{$guard}.course-works.preview", [

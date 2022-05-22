@@ -4,8 +4,10 @@ namespace Domain\Supervisor\Http\Controllers;
 
 use App\Http\Controllers\InertiaController;
 use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
+use App\Http\Resources\CourseWork\CourseWorkInListResource;
 use App\Http\Resources\CourseWork\CourseWorkResource;
 use App\Models\CourseWork;
+use App\Models\Document;
 use App\Models\Supervisor;
 use Illuminate\Http\Request;
 use Inertia\Response as InertiaResponse;
@@ -20,13 +22,13 @@ class CourseWorkController extends InertiaController
      */
     public function index(): array|InertiaResponse
     {
-        /** @var Supervisor $supervisor */
+         /** @var Supervisor $supervisor*/
         $supervisor = $this->user();
 
-        return $this->render('CourseWork/Index', CourseWorkCollectionResource::from(
+        return $this->render('CourseWork/Index', CourseWorkInListResource::collection(
             $supervisor->courseWorks()
                 ->orderBy('id')
-                ->paginate(CourseWork::getItemsPerPage())
+                ->get()
         ));
     }
 
@@ -111,5 +113,15 @@ class CourseWorkController extends InertiaController
         $url = $media->getTemporaryUrl(now()->addMinutes(30));
 
         return redirect($url);
+    }
+
+    public function addComment(Request $request, Document $document, string $uuid)
+    {
+        $comments = $document->comments ?? [];
+        $comments[$uuid] = $request->input('comment');
+
+        $document->update(compact('comments'));
+
+        return redirect()->back();
     }
 }

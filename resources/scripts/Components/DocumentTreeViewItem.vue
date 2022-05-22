@@ -6,7 +6,7 @@
 
             <divider v-if="showDetailsButton" layout="horizontal">
                 <prime-tag v-for="badge in badges" :key="badge" class="mr-2"
-                           :severity="badge.positive ? 'info' :
+                           :severity="badge.positive ? 'sucess' :
                 'danger'" :value="badge.group"/>
             </divider>
         </div>

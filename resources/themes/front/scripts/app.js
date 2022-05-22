@@ -25,6 +25,8 @@ createInertiaApp({
         let vueApp = createApp({render: () => h(app, props)});
         vueApp.use(plugin);
         vueApp = registerVueComponents(vueApp);
+        vueApp.config.globalProperties.$isSupervisor = false;
+        vueApp.provide('isSupervisor', false);
 
         return vueApp
             .use(PrimeVue)

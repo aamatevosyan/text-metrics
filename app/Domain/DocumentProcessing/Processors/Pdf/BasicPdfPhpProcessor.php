@@ -105,13 +105,23 @@ class BasicPdfPhpProcessor extends AbstractDocumentProcessor
                 'type' => $this->getDocumentElementType($item)->value,
                 'uuid' => Str::orderedUuid()->toString(),
                 'font' => $item['Font'] ?? null,
-                'lang' => $item['Lang'] ?? null,
+                'lang' => !empty($item['Lang']) && in_array($item['Lang'], ['en', 'ru']) ? $item['Lang'] : null,
                 'page' => $item['Page'] ?? null,
-                'text' => !empty($item['Text']) ? Encoding::toUTF8($item['Text']) : null,
             ];
 
+            if (!empty($item['Text'])) {
+                $text = $item['Text'];
+
+                if (!empty($item['Font']) && $item['Font']['encoding'] == 'Custom') {
+                    $text = iconv('utf-8//IGNORE', 'cp1252//IGNORE', $text);
+                    $text = iconv('cp1251//IGNORE', 'utf-8//IGNORE', $text);
+                }
+
+                $new['text'] = $text;
+            }
+
             if (!empty($item['TextSize'])) {
-                $new['font']['size'] = floor($item['TextSize']);
+                $new['font']['size'] = round($item['TextSize']);
             }
 
             if (isset($item['children'])) {

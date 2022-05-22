@@ -58,7 +58,7 @@
                                 style="min-width: 10rem">
                             <template #body="{data}">
                                 <prime-tag :class="'customer-badge status-' + data.status"
-                                           :severity="data.status ? 'info' : 'danger'">{{
+                                           :severity="data.status ? 'sucess' : 'danger'">{{
                                         statuses[data.status]
                                     }}
                                 </prime-tag>

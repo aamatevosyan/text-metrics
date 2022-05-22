@@ -26,5 +26,9 @@ Route::domain(domainFor('supervisor'))
                 Route::get('/{course_work:uuid}/{media:uuid}', 'preview')
                     ->whereUuid(['course_work', 'media'])
                     ->name('preview');
+
+                Route::post('/{document:uuid}/{uuid}/comments', 'addComment')
+                    ->whereUuid(['document', 'uuid'])
+                    ->name('add-comment');
             });
     });

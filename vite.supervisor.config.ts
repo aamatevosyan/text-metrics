@@ -10,7 +10,7 @@ export default defineConfig({
         vue(),
         laravel({
             postcss: [
-                tailwindcss('./tailwind/tailwind.supervisor.config.js'),
+                tailwindcss('./tailwind.supervisor.config.js'),
                 autoprefixer(),
             ],
         }),

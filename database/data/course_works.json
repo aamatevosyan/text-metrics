@@ -16,7 +16,7 @@
             "en": "Program for Clustering Russian Universities on their Educational and Research Indicators on the Basis of Agglomerative Hierarchical Method",
             "ru": "Программа для кластеризации российских вузов по показателям их научно-образовательной деятельности на основе иерархического агломеративного метода"
         },
-        "status": 1
+        "status": 0
     },
     {
         "id": 3,
@@ -86,6 +86,7 @@
             "en": "Web Application for Monitoring the Quality of Texts of Students' Term and Graduate Qualification Works",
             "ru": "Веб-приложение для мониторинга качества текстов курсовых и выпускных квалификационных работ студентов"
         },
-        "status": 1
+        "status": 1,
+        "type": 1
     }
 ]

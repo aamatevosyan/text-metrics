@@ -18,6 +18,9 @@ import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import Slider from "primevue/slider";
 import InputText from "primevue/inputtext";
+import TabView from "primevue/tabview";
+import TabPanel from "primevue/tabpanel";
+import Textarea from "primevue/textarea";
 
 export default (app) => {
     return app
@@ -40,6 +43,9 @@ export default (app) => {
         .component('splitter-panel', SplitterPanel)
         .component('divider', Divider)
         .component('prime-tag', Tag)
+        .component('tab-view', TabView)
+        .component('tab-panel', TabPanel)
+        .component('prime-textarea', Textarea)
         .component('badge', Badge)
         .directive('badge', BadgeDirective)
 };
