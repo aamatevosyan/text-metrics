@@ -3,6 +3,7 @@
 namespace App\Http\Resources\CourseWork;
 
 use App\Models\CourseWork;
+use Domain\Metrics\Models\MonitoredMetricResult;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,9 +23,12 @@ class CourseWorkInListResource extends JsonResource
         return [
             'uuid' => $this->uuid,
             'name' => $this->name,
+            'type' => $this->type,
             'supervisor' => $this->supervisor->name,
+            'student' => $this->student->name,
             'status' => $this->status,
-            'documents' => CourseWorkDocumentResource::collection($this->media()->with('model')->get()),
+            'plagiat_percentage' => $this->monitoredMetricResult?->results['plagiat_percentage'] ?? null,
+            'created_at' => $this->created_at->toDateString(),
         ];
     }
 }

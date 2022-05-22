@@ -14,6 +14,10 @@ import Divider from "primevue/divider";
 import Tag from "primevue/tag";
 import Badge from 'primevue/badge';
 import BadgeDirective from 'primevue/badgedirective';
+import Dropdown from "primevue/dropdown";
+import Calendar from "primevue/calendar";
+import Slider from "primevue/slider";
+import InputText from "primevue/inputtext";
 
 export default (app) => {
     return app
@@ -26,7 +30,12 @@ export default (app) => {
         .component('progress-bar', ProgressBar)
         .component('tree', Tree)
         .component('prime-button', Button)
+        .component('prime-dropdown', Dropdown)
         .component('prime-dialog', Dialog)
+        .component('prime-calendar', Calendar)
+        .component('prime-progress-bar', ProgressBar)
+        .component('prime-slider', Slider)
+        .component('prime-input-text', InputText)
         .component('splitter', Splitter)
         .component('splitter-panel', SplitterPanel)
         .component('divider', Divider)

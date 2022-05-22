@@ -4,6 +4,7 @@ namespace Domain\Front\Http\Controllers;
 
 use App\Http\Controllers\InertiaController;
 use App\Http\Resources\CourseWork\CourseWorkCollectionResource;
+use App\Http\Resources\CourseWork\CourseWorkInListResource;
 use App\Http\Resources\CourseWork\CourseWorkResource;
 use App\Models\CourseWork;
 use App\Models\Student;
@@ -23,10 +24,10 @@ class CourseWorkController extends InertiaController
         /** @var Student $student */
         $student = $this->user();
 
-        return $this->render('CourseWork/Index', CourseWorkCollectionResource::from(
+        return $this->render('CourseWork/Index', CourseWorkInListResource::collection(
             $student->courseWorks()
                 ->orderBy('id')
-                ->paginate(CourseWork::getItemsPerPage())
+                ->get()
         ));
     }
 

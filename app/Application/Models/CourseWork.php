@@ -6,8 +6,10 @@ use App\Enums\CourseWorkStatus;
 use App\Enums\CourseWorkType;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
+use Domain\Metrics\Models\MonitoredMetricResult;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -50,5 +52,10 @@ class CourseWork extends Model implements HasMedia
     public function supervisor(): BelongsTo
     {
         return $this->belongsTo(Supervisor::class);
+    }
+
+    public function monitoredMetricResult(): HasOne
+    {
+        return $this->hasOne(MonitoredMetricResult::class);
     }
 }
