@@ -1,14 +1,16 @@
 <template>
     <div class="flex-col">
-        <div class="m-4">
+        <div class="flex">
             <prime-tag v-for="badge in getBadges(document?.results, true)" :key="badge" class="mr-2"
                        :severity="badge.positive ?
     'success' :
-                'danger'" :value="badge.group"/>
+                'danger'" :value="badge.group"
+            />
         </div>
 
 
-        <tree :value="content" selectionMode="single" v-model:selectionKeys="selectedNodeKeys" :metaKeySelection="false"
+        <tree class="mt-4" :value="content" selectionMode="single" v-model:selectionKeys="selectedNodeKeys"
+               :metaKeySelection="false"
               @node-select="onNodeSelect" @node-unselect="onNodeUnselect">
             <template #default="slotProps" class="flex">
                 <document-tree-view-item :type="slotProps.node.data.type" :uuid="slotProps.node.data.uuid"
@@ -17,13 +19,11 @@
                                          getComments(slotProps.node.data.uuid))">
                 </document-tree-view-item>
             </template>
-            <!--        <template #url="slotProps">-->
-            <!--            <a :href="slotProps.node.data">{{ slotProps.node.label }}</a>-->
-            <!--        </template>-->
         </tree>
         <prime-dialog v-if="display" header="" footer="" v-model:visible="display" :maximizable="true"
                       :modal="true"
                       @hide="onHideDialog"
+                      class="min-w-800"
         >
             <section-details :uuid="Object.keys(selectedNodeKeys)[0]"
                              :results="getSectionResult(Object.keys(selectedNodeKeys)[0])"

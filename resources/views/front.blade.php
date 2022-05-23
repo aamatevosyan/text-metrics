@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
+    <script src="https://kit.fontawesome.com/ac32890ca4.js" crossorigin="anonymous"></script>
 
     @routes('front')
     @vite('front')

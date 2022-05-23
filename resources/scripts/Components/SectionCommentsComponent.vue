@@ -1,13 +1,16 @@
 <template>
-    <div class="flex-col flex-nowrap">
-        <prime-textarea class="grow" v-model="modelComment" :autoResize="true" rows="5" cols="60" :disabled="!isSupervisor"/>
-        <prime-button v-show="isSupervisor" @click.stop="updateComment">Update</prime-button>
+    <div class="flex-col flex-nowrap place-content-center">
+        <div>
+            <prime-textarea class="grow" v-model="modelComment" :autoResize="true" rows="5" cols="60"
+                            :disabled="!isSupervisor"/>
+        </div>
+        <prime-button class="m-4 float-righ" v-show="isSupervisor" @click.stop="updateComment">Update</prime-button>
     </div>
 </template>
 
 <script>
 import {inject, ref} from "vue"
-import { Inertia } from '@inertiajs/inertia'
+import {Inertia} from '@inertiajs/inertia'
 import {useToast} from "primevue/usetoast"
 
 export default {

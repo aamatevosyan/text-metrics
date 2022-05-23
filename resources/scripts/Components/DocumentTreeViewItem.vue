@@ -2,15 +2,14 @@
     <div class="flex-col">
         <div class="flex flex-col">
             <b v-if="type === 'heading'">{{ label }}</b>
-            <p v-else>{{ label }}</p>
+            <p v-else class="mt-4">{{ label }}</p>
 
-            <divider v-if="showDetailsButton" layout="horizontal">
+            <div v-if="showDetailsButton" class="flex m-2 p-2">
                 <prime-tag v-for="badge in badges" :key="badge" class="mr-2"
-                           :severity="badge.positive ? 'sucess' :
+                           :severity="badge.positive ? 'success' :
                 'danger'" :value="badge.group"/>
-            </divider>
+            </div>
         </div>
-        <divider v-if="showDetailsButton" type="dotted"/>
     </div>
 </template>
 

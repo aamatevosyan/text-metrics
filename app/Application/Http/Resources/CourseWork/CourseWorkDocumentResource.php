@@ -60,8 +60,8 @@ class CourseWorkDocumentResource extends JsonResource
     protected function getIcon(DocumentElementType $type): ?string
     {
         return match ($type) {
-            DocumentElementType::Document => 'pi pi-fw pi-book',
-            DocumentElementType::Heading => 'pi pi-fw pi-bookmark',
+            DocumentElementType::Document => 'fa-solid fa-book',
+            DocumentElementType::Heading => 'fa-solid fa-heading',
 //            DocumentElementType::Paragraph => 'pi pi-fw pi-align-left',
             DocumentElementType::Paragraph => null,
             DocumentElementType::ListItem => null,

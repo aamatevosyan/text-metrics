@@ -2,8 +2,8 @@
     <Accordion class="mt-8 mb-8 ml-2 mr-2 flex flex-col">
         <AccordionTab v-for="document in documents" :key="document.uuid">
             <template #header>
-                <i class="pi pi-paperclip"></i>
-                <span class="ml-2 mr-3">{{ document.uuid }} - {{ document.created_at }}</span>
+                <i class="fa-solid fa-file-lines"></i>
+                <span class="ml-2 mr-3">{{ document.uuid ?? 'Not processed' }} - {{ document.created_at }}</span>
                 <prime-button @click.stop="preview(document.url)" label="Preview" class="p-button-link"/>
             </template>
             <document-details :document="document">

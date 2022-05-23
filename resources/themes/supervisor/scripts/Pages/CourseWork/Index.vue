@@ -25,10 +25,9 @@
                         <template #loading>
                             Loading customers data. Please wait.
                         </template>
-                        <column field="name" header="Name" sortable style="min-width: 14rem">
+                        <column field="name" header="Name" sortable style="min-width: 18rem">
                             <template #body="{data}">
-                                <a :href="route('supervisor.course-works.show', {course_work: data.uuid})"
-                                   v-text="data.name"/>
+                                <span> {{ data.name }} </span>
                             </template>
                             <template #filter="{filterModel}">
                                 <prime-input-text type="text" v-model="filterModel.value" class="p-column-filter"
@@ -36,7 +35,7 @@
                             </template>
                         </column>
                         <column field="student" header="Supervisor" sortable filterMatchMode="contains"
-                                style="min-width: 14rem">
+                                style="min-width: 8rem">
                             <template #body="{data}">
                                 <span class="image-text">{{ data.student }}</span>
                             </template>
@@ -54,7 +53,7 @@
                                                 placeholder="mm/dd/yyyy"/>
                             </template>
                         </column>
-                        <column field="status" header="Status" sortable :filterMenuStyle="{'width':'14rem'}"
+                        <column field="status" header="Status" sortable :filterMenuStyle="{'width':'6rem'}"
                                 style="min-width: 10rem">
                             <template #body="{data}">
                                 <prime-tag :class="'customer-badge status-' + data.status"
@@ -82,7 +81,7 @@
                                 </prime-dropdown>
                             </template>
                         </column>
-                        <column field="type" header="Type" sortable :filterMenuStyle="{'width':'14rem'}"
+                        <column field="type" header="Type" sortable :filterMenuStyle="{'width':'6rem'}"
                                 style="min-width: 10rem">
                             <template #body="{data}">
                                 <badge :class="'customer-badge type-' + data.type">{{ types[data.type] }}</badge>
@@ -107,7 +106,7 @@
                             </template>
                         </column>
                         <column field="plagiat_percentage" header="Plagiat" sortable :showFilterMatchModes="false"
-                                style="min-width: 10rem">
+                                style="min-width: 8rem">
                             <template #body="{data}">
                                 <prime-progress-bar :value="data.plagiat_percentage" :showValue="false"/>
                             </template>
