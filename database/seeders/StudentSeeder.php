@@ -11,10 +11,4 @@ class StudentSeeder extends ModelSeeder
     {
         return Student::class;
     }
-
-    public function prepareData(array $data): array
-    {
-        $data['password'] = Hash::make($data['password']);
-        return parent::prepareData($data);
-    }
 }

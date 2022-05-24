@@ -9,7 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UserPasswordUpdatedMail extends Mailable
+class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -37,13 +37,15 @@ class UserPasswordUpdatedMail extends Mailable
             'admins' => route('nova.login'),
         };
 
-        return $this->to($this->user->email)
+        $mailable = $this->to($this->user->email)
             ->from('info@amatech.studio', 'TextMetrics')
-            ->subject('TextMetrics: User Password Updated')
-            ->markdown('emails.users.password.updated', [
+            ->subject('TextMetrics: Welcome')
+            ->markdown('emails.users.welcome', [
                 'url' => $url,
                 'name' => $this->user->name,
                 'password' => $this->password,
             ]);
+
+        return $mailable;
     }
 }

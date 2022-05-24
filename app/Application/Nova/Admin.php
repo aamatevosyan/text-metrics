@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ResetUserPassword;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -113,7 +114,9 @@ class Admin extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new ResetUserPassword,
+        ];
     }
 
     public function subtitle(): ?string

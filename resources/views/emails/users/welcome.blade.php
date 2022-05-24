@@ -1,7 +1,7 @@
 @component('mail::message')
 # Hello, {{ $name }}
 
-Your password was updated by administrator.\
+Welcome to TextMetrics.\
 Use following password to login: **{{ $password }}**
 
 @component('mail::button', ['url' => $url])

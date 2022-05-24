@@ -14,12 +14,6 @@ class AdminSeeder extends ModelSeeder
         return Admin::class;
     }
 
-    public function prepareData(array $data): array
-    {
-        $data['password'] = Hash::make($data['password']);
-        return parent::prepareData($data);
-    }
-
     /**
      * @param  array  $data
      * @param  Admin  $model

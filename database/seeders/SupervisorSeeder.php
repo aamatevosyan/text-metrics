@@ -11,10 +11,4 @@ class SupervisorSeeder extends ModelSeeder
     {
         return Supervisor::class;
     }
-
-    public function prepareData(array $data): array
-    {
-        $data['password'] = Hash::make($data['password']);
-        return parent::prepareData($data);
-    }
 }

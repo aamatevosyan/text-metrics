@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasPasswordEmails;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -25,6 +26,7 @@ class Supervisor extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRolesAndAbilities;
     use SoftDeletes;
+    use HasPasswordEmails;
 
     /**
      * The attributes that are mass assignable.
