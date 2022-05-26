@@ -4940,6 +4940,16 @@
                         return $instance->macroCall($method, $parameters);
         }
                     /**
+         * Get the query grammar used by the connection.
+         *
+         * @static 
+         */ 
+        public static function getQueryGrammar()
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
+                        return $instance->getQueryGrammar();
+        }
+                    /**
          * Get a schema builder instance for the connection.
          *
          * @static 
@@ -4948,6 +4958,16 @@
         {
                         /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
                         return $instance->getSchemaBuilder();
+        }
+                    /**
+         * Get the schema grammar used by the connection.
+         *
+         * @static 
+         */ 
+        public static function getSchemaGrammar()
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
+                        return $instance->getSchemaGrammar();
         }
                     /**
          * Get a new query builder instance.
@@ -5478,17 +5498,6 @@
                         return $instance->getDriverName();
         }
                     /**
-         * Get the query grammar used by the connection.
-         *
-         * @return \Illuminate\Database\Query\Grammars\Grammar 
-         * @static 
-         */ 
-        public static function getQueryGrammar()
-        {            //Method inherited from \Illuminate\Database\Connection         
-                        /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
-                        return $instance->getQueryGrammar();
-        }
-                    /**
          * Set the query grammar used by the connection.
          *
          * @param \Illuminate\Database\Query\Grammars\Grammar $grammar
@@ -5499,17 +5508,6 @@
         {            //Method inherited from \Illuminate\Database\Connection         
                         /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
                         return $instance->setQueryGrammar($grammar);
-        }
-                    /**
-         * Get the schema grammar used by the connection.
-         *
-         * @return \Illuminate\Database\Schema\Grammars\Grammar 
-         * @static 
-         */ 
-        public static function getSchemaGrammar()
-        {            //Method inherited from \Illuminate\Database\Connection         
-                        /** @var \Tpetry\PostgresqlEnhanced\PostgresEnhancedConnection $instance */
-                        return $instance->getSchemaGrammar();
         }
                     /**
          * Set the schema grammar used by the connection.
@@ -13279,6 +13277,16 @@
      */ 
         class Schema {
                     /**
+         * Get the database connection instance.
+         *
+         * @static 
+         */ 
+        public static function getConnection()
+        {
+                        /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
+                        return $instance->getConnection();
+        }
+                    /**
          * Create a database in the schema.
          *
          * @param string $name
@@ -13589,17 +13597,6 @@
         {            //Method inherited from \Illuminate\Database\Schema\Builder         
                         /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
                         return $instance->disableForeignKeyConstraints();
-        }
-                    /**
-         * Get the database connection instance.
-         *
-         * @return \Illuminate\Database\Connection 
-         * @static 
-         */ 
-        public static function getConnection()
-        {            //Method inherited from \Illuminate\Database\Schema\Builder         
-                        /** @var \Tpetry\PostgresqlEnhanced\Schema\Builder $instance */
-                        return $instance->getConnection();
         }
                     /**
          * Set the database connection instance.
@@ -18995,36 +18992,6 @@
      *
      */ 
         class BelongsToMany {
-         
-    }
-     
-}
-
-    namespace Laravel\Nova\Http\Requests { 
-            /**
-     * 
-     *
-     * @property-read string|null $resource
-     * @property-read mixed|null $resourceId
-     * @property-read string|null $relatedResource
-     * @property-read mixed|null $relatedResourceId
-     * @property-read string|null $viaResource
-     * @property-read mixed|null $viaResourceId
-     * @property-read string|null $viaRelationship
-     * @property-read string|null $relationshipType
-     */ 
-        class NovaRequest {
-         
-    }
-     
-}
-
-    namespace Illuminate\Foundation\Http { 
-            /**
-     * 
-     *
-     */ 
-        class FormRequest {
          
     }
      

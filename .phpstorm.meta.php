@@ -164,6 +164,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
@@ -320,6 +321,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
@@ -476,6 +478,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
@@ -632,6 +635,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
@@ -788,6 +792,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\App::get(0), map([
         '' => '@',
@@ -944,6 +949,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\App::make(0), map([
         '' => '@',
@@ -1100,6 +1106,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
@@ -1256,6 +1263,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\app(0), map([
         '' => '@',
@@ -1412,6 +1420,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\resolve(0), map([
         '' => '@',
@@ -1568,6 +1577,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
@@ -1724,6 +1734,7 @@ namespace PHPSTORM_META {
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
             'redis.connection' => \Illuminate\Redis\Connections\PhpRedisConnection::class,
+            'translation.loader' => \Illuminate\Translation\FileLoader::class,
         ]));
 
 

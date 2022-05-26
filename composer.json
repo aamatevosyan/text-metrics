@@ -15,7 +15,7 @@
         "ebess/advanced-nova-media-library": "^4.0",
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.4",
-        "inertiajs/inertia-laravel": "^0.5.4",
+        "inertiajs/inertia-laravel": "^0.6",
         "innocenzi/laravel-vite": "0.2.*",
         "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^9.0",
@@ -38,8 +38,8 @@
         "spatie/typescript-transformer": "^2.1",
         "suleymanozev/enum-field": "^1.0",
         "tightenco/ziggy": "^1.4",
-        "tpetry/laravel-postgresql-enhanced": "^0.13",
-        "yadahan/nova-bouncer": "^1.0",
+        "tpetry/laravel-postgresql-enhanced": "^0.15",
+        "yadahan/nova-bouncer": "^2.0",
         "zanysoft/laravel-zip": "dev-patch-1"
     },
     "require-dev": {
@@ -49,7 +49,7 @@
         "fidum/laravel-blueprint-pestphp-addon": "^2.2",
         "jasonmccreary/laravel-test-assertions": "^2.1",
         "laravel-lang/lang": "^10.6",
-        "laravel-lang/publisher": "^12.2",
+        "laravel-lang/publisher": "^13.0",
         "laravel-shift/blueprint": "^2.3",
         "laravel/sail": "^1.13",
         "mockery/mockery": "^1.5",
