@@ -4,8 +4,10 @@ namespace App\Nova;
 
 use App\Enums\CourseWorkStatus;
 use App\Enums\CourseWorkType;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Enum;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
@@ -68,6 +70,8 @@ class CourseWork extends Resource
 
             BelongsTo::make('Student')->searchable()->withSubtitles()->sortable()->filterable(),
             BelongsTo::make('Supervisor')->searchable()->withSubtitles()->sortable()->filterable(),
+
+            HasMany::make('Documents'),
 
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),

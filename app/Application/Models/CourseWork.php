@@ -9,6 +9,7 @@ use App\Traits\HasUuid;
 use Domain\Metrics\Models\MonitoredMetricResult;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
@@ -57,5 +58,10 @@ class CourseWork extends Model implements HasMedia
     public function monitoredMetricResult(): HasOne
     {
         return $this->hasOne(MonitoredMetricResult::class);
+    }
+
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class);
     }
 }

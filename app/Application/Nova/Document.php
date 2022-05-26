@@ -2,8 +2,10 @@
 
 namespace App\Nova;
 
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -54,16 +56,31 @@ class Document extends Resource
             ID::make()->sortable(),
 
             Text::make('Uuid')
-                ->rules('required'),
+                ->rules('required')
+                ->readonly(),
 
-            BelongsTo::make('CourseWork'),
+            BelongsTo::make('CourseWork')->readonly(),
 
             Code::make('Content')
                 ->json()
-                ->rules('required'),
+                ->rules('required')
+                ->readonly(),
 
-            Date::make('Created at')->hideWhenCreating()->hideWhenUpdating(),
-            Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating(),
+            File::make('Media')
+                ->download(function ($request, $model, $disk, $value) {
+                    $media = $model->media;
+
+                    if ($media->disk === 'local') {
+                        return response()->download($media->getPath(), $media->file_name);
+                    }
+
+                    $url = $media->getTemporaryUrl(now()->addMinutes(30));
+
+                    return redirect($url);
+                })->readonly(),
+
+            Date::make('Created at')->readonly(),
+            Date::make('Updated at')->readonly(),
         ];
     }
 

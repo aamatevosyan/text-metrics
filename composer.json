@@ -12,6 +12,7 @@
         "aamatevosyan/user-profile-tool": "*",
         "blendbyte/nova-items-field": "^1.0",
         "coderello/laravel-nova-lang": "^1.8",
+        "ebess/advanced-nova-media-library": "^4.0",
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.4",
         "inertiajs/inertia-laravel": "^0.5.4",
