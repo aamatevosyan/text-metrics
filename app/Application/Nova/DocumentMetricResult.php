@@ -18,6 +18,13 @@ class DocumentMetricResult extends Resource
     public static $model = \Domain\Metrics\Models\DocumentMetricResult::class;
 
     /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
+
+    /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
@@ -42,21 +49,17 @@ class DocumentMetricResult extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()->sortable()->onlyOnDetail(),
 
-            Text::make('Results'),
+            Text::make('Results')->onlyOnDetail(),
+            Text::make('Section Results')->onlyOnDetail(),
 
-            Text::make('Detailed results'),
+            BelongsTo::make('CourseWork')->onlyOnDetail(),
+            BelongsTo::make('Document')->onlyOnDetail(),
 
-            DateTime::make('Softdeletes')
-                ->rules('required'),
-
-            BelongsTo::make('CourseWork'),
-            BelongsTo::make('Document'),
-
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
-            DateTime::make('Deleted at'),
+            DateTime::make('Created at')->onlyOnDetail(),
+            DateTime::make('Updated at')->onlyOnDetail(),
+            DateTime::make('Deleted at')->onlyOnDetail(),
         ];
     }
 

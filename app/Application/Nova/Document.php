@@ -20,6 +20,13 @@ class Document extends Resource
     public static $model = \App\Models\Document::class;
 
     /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
+
+    /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
@@ -54,8 +61,6 @@ class Document extends Resource
             Code::make('Content')
                 ->json()
                 ->rules('required'),
-
-//            BelongsTo::make('Media'),
 
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating(),

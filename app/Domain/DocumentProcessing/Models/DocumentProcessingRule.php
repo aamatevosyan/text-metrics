@@ -3,6 +3,7 @@
 namespace Domain\DocumentProcessing\Models;
 
 use App\Enums\CourseWorkType;
+use App\Models\Branch;
 use App\Traits\HasBaseModel;
 use App\Traits\HasUuid;
 use Domain\DocumentProcessing\Enums\DocumentProcessingRuleStatus;
@@ -34,5 +35,10 @@ class DocumentProcessingRule extends Model
     public function documentProcessor(): BelongsTo
     {
         return $this->belongsTo(DocumentProcessor::class);
+    }
+
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class);
     }
 }

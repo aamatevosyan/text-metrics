@@ -19,11 +19,18 @@ class TextMetric extends Resource
     public static $model = \Domain\Metrics\Models\TextMetric::class;
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Text Metrics';
+
+    /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,7 +38,8 @@ class TextMetric extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
+        'slug',
     ];
 
     /**
@@ -46,27 +54,26 @@ class TextMetric extends Resource
             ID::make()->sortable(),
 
             Text::make('Name')
-                ->rules('required'),
-
-            Text::make('Description'),
+                ->rules('required')
+                ->sortable(),
 
             Text::make('Slug')
-                ->rules('required', 'string', 'unique:text_metrics,slug'),
+                ->rules('required', 'string', 'unique:text_metrics,slug')
+                ->creationRules('unique:text_metrics,slug')
+                ->updateRules('unique:text_metrics,slug,{{resourceId}}')
+                ->sortable(),
 
             Boolean::make('Numeric')
-                ->rules('required'),
+                ->rules('required')
+                ->sortable()
+                ->filterable(),
 
             Boolean::make('Monitored')
-                ->rules('required'),
+                ->rules('required')
+                ->sortable()
+                ->filterable(),
 
-            DateTime::make('Softdeletes')
-                ->rules('required'),
-
-            BelongsTo::make('TextMetricComputer'),
-
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
-            DateTime::make('Deleted at'),
+            BelongsTo::make('TextMetricComputer')->filterable(),
         ];
     }
 

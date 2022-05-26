@@ -6,8 +6,6 @@ use App\Nova\Actions\ResetUserPassword;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\PasswordConfirmation;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 
@@ -19,6 +17,13 @@ class Student extends Resource
      * @var string
      */
     public static $model = \App\Models\Student::class;
+
+    /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Users';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -34,6 +39,7 @@ class Student extends Resource
      */
     public static $search = [
         'name',
+        'email',
     ];
 
     public static $with = [
@@ -52,21 +58,16 @@ class Student extends Resource
             ID::make()->sortable(),
 
             Text::make('Name')
-                ->rules('required', 'string')
+                ->rules('required', 'string', 'max:255')
                 ->sortable(),
 
             Text::make('Email')
                 ->rules('required', 'email')
+                ->creationRules('unique:students,email')
+                ->updateRules('unique:students,email,{{resourceId}}')
                 ->sortable(),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'alpha_num', 'min:8', 'confirmed')
-                ->updateRules('nullable', 'alpha_num', 'min:8', 'confirmed'),
-
-            PasswordConfirmation::make('Password Confirmation'),
-
-            BelongsTo::make('Branch')->searchable()->sortable()->filterable(),
+            BelongsTo::make('Branch')->sortable()->filterable(),
 
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),

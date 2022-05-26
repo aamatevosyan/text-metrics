@@ -184,6 +184,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
+ * @property-read \Domain\Metrics\Models\MonitoredMetricResult|null $monitoredMetricResult
  * @property-read \App\Models\Student $student
  * @property-read \App\Models\Supervisor $supervisor
  * @method static \Database\Factories\CourseWorkFactory factory(...$parameters)
@@ -371,6 +372,7 @@ namespace Domain\DocumentProcessing\Models{
  * @property array|null $config
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Branch|null $branch
  * @property-read \Domain\DocumentProcessing\Models\DocumentProcessor $documentProcessor
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessingRule newQuery()
@@ -403,6 +405,10 @@ namespace Domain\DocumentProcessing\Models{
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentProcessingRule[] $documentProcessingRules
+ * @property-read int|null $document_processing_rules_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentType[] $documentTypes
+ * @property-read int|null $document_types_count
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentProcessor query()
@@ -454,8 +460,8 @@ namespace Domain\DocumentProcessing\Models{
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentProcessor[] $documentProcessor
- * @property-read int|null $document_processor_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\DocumentProcessing\Models\DocumentProcessor[] $documentProcessors
+ * @property-read int|null $document_processors_count
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentType query()

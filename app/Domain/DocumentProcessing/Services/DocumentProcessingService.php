@@ -30,7 +30,7 @@ class DocumentProcessingService
                     ->orWhereIn('branch_id', Branch::descendantsAndSelf($branchId, ['id'])
                         ->pluck('id'))
             )
-            ->where('document_processor_id', $documentType->documentProcessor()->pluck('document_processors.id'))
+            ->where('document_processor_id', $documentType->documentProcessors()->pluck('document_processors.id'))
             ->orderByRaw('branch_id DESC NULLS LAST')
             ->orderByRaw('course_work_type DESC NULLS LAST');
 

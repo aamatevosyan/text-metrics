@@ -17,11 +17,18 @@ class TextMetricComputer extends Resource
     public static $model = \Domain\Metrics\Models\TextMetricComputer::class;
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Text Metrics';
+
+    /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -29,7 +36,9 @@ class TextMetricComputer extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
+        'slug',
+        'class'
     ];
 
     /**
@@ -44,20 +53,20 @@ class TextMetricComputer extends Resource
             ID::make()->sortable(),
 
             Text::make('Name')
-                ->rules('required', 'string', 'unique:text_metric_computers,name'),
+                ->rules('required', 'string', 'max:255')
+                ->creationRules('unique:text_metrics,name')
+                ->updateRules('unique:text_metrics,name,{{resourceId}}')
+                ->sortable(),
 
             Text::make('Slug')
-                ->rules('required', 'string', 'unique:text_metric_computers,slug'),
+                ->rules('required', 'string', 'max:255')
+                ->creationRules('unique:text_metrics,slug')
+                ->updateRules('unique:text_metrics,slug,{{resourceId}}')
+                ->sortable(),
 
             Text::make('Class')
-                ->rules('required', 'string'),
-
-            DateTime::make('Softdeletes')
-                ->rules('required'),
-
-            DateTime::make('Created at'),
-            DateTime::make('Updated at'),
-            DateTime::make('Deleted at'),
+                ->rules('required', 'string')
+                ->sortable(),
         ];
     }
 

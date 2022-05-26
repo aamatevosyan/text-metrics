@@ -5,6 +5,7 @@ namespace App\Nova;
 use App\Enums\CourseWorkStatus;
 use App\Enums\CourseWorkType;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Enum;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
@@ -15,7 +16,6 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Spatie\NovaTranslatable\Translatable;
 use Str;
-use Suleymanozev\EnumField\Enum;
 
 class CourseWork extends Resource
 {
@@ -64,14 +64,10 @@ class CourseWork extends Resource
                     ->sortable()
             ]),
 
-            Enum::make('Type')->attach(CourseWorkType::class)->sortable()->filterable(),
+            Enum::make('Type')->attach(CourseWorkType::class),
 
             BelongsTo::make('Student')->searchable()->withSubtitles()->sortable()->filterable(),
             BelongsTo::make('Supervisor')->searchable()->withSubtitles()->sortable()->filterable(),
-
-            Enum::make('Status')->attach(CourseWorkStatus::class)->sortable()->filterable(),
-
-//            BelongsToMany::make('Media'),
 
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
