@@ -208,26 +208,38 @@ __webpack_require__.r(__webpack_exports__);
     updatePassword: function updatePassword() {
       var _this = this;
 
-      this.form.put(Nova.request().route('admin.user-password.update'), {
-        errorBag: 'updatePassword',
-        preserveScroll: true,
-        onSuccess: function onSuccess() {
-          return _this.form.reset();
-        },
-        onError: function onError() {
-          if (_this.form.errors.password) {
-            _this.form.reset('password', 'password_confirmation');
+      Nova.request().post('/nova-vendor/user-profile-tool', this.form).then(function (response) {
+        _this.form.errors = {};
 
-            _this.$refs.password.focus();
+        _this.form.reset();
+
+        Nova.success('Password changed successfully');
+      })["catch"](function (reason) {
+        if (reason.response.data && reason.response.data.errors) {
+          var errors = {};
+
+          for (var key in reason.response.data.errors) {
+            errors[key] = reason.response.data.errors[key][0];
           }
 
-          if (_this.form.errors.current_password) {
-            _this.form.reset('current_password');
-
-            _this.$refs.current_password.focus();
-          }
+          _this.form.errors = errors;
         }
-      });
+      }); // this.form.post('/nova-vendor/user-profile-tool', {
+      //     errorBag: 'updatePassword',
+      //     preserveScroll: true,
+      //     onSuccess: () => this.form.reset(),
+      //     onError: () => {
+      //         if (this.form.errors.password) {
+      //             this.form.reset('password', 'password_confirmation')
+      //             this.$refs.password.focus()
+      //         }
+      //
+      //         if (this.form.errors.current_password) {
+      //             this.form.reset('current_password')
+      //             this.$refs.current_password.focus()
+      //         }
+      //     }
+      // })
     }
   }
 }));
@@ -1043,19 +1055,14 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   key: 0
 };
-var _hoisted_4 = {
-  key: 1
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
   var _component_Heading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Heading");
 
-  var _component_update_profile_information_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-profile-information-form");
+  var _component_update_password_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-password-form");
 
   var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
-
-  var _component_update_password_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-password-form");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "User Profile Tool"
@@ -1068,13 +1075,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_ctx.$page.props.jetstream.canUpdateProfileInformation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_profile_information_form, {
-    user: _ctx.$page.props.user
-  }, null, 8
-  /* PROPS */
-  , ["user"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canUpdatePassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_password_form, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_ctx.$page.props.jetstream.canUpdatePassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_password_form, {
     "class": "mt-10 sm:mt-0"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <Card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            class=\"flex flex-col items-center justify-center\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            style=\"min-height: 300px\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        >"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <update-profile-information-form v-if=\"$page.props.jetstream.canUpdateProfileInformation\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                             :user=\"$page.props.user\"/>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <update-password-form v-if=\"$page.props.jetstream.canUpdatePassword\"/>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </Card>")]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]);
 }
 
 /***/ }),

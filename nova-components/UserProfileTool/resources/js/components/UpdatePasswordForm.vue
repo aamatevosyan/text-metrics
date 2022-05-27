@@ -10,21 +10,24 @@
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="current_password" value="Current Password" />
-                <jet-input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
-                <jet-input-error :message="form.errors.current_password" class="mt-2" />
+                <jet-label for="current_password" value="Current Password"/>
+                <jet-input id="current_password" type="password" class="mt-1 block w-full"
+                           v-model="form.current_password" ref="current_password" autocomplete="current-password"/>
+                <jet-input-error :message="form.errors.current_password" class="mt-2"/>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password" value="New Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" ref="password" autocomplete="new-password" />
-                <jet-input-error :message="form.errors.password" class="mt-2" />
+                <jet-label for="password" value="New Password"/>
+                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password"
+                           ref="password" autocomplete="new-password"/>
+                <jet-input-error :message="form.errors.password" class="mt-2"/>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
-                <jet-input-error :message="form.errors.password_confirmation" class="mt-2" />
+                <jet-label for="password_confirmation" value="Confirm Password"/>
+                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full"
+                           v-model="form.password_confirmation" autocomplete="new-password"/>
+                <jet-input-error :message="form.errors.password_confirmation" class="mt-2"/>
             </div>
         </template>
 
@@ -41,53 +44,70 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import JetActionMessage from './Jetstream/ActionMessage.vue'
-    import JetButton from './Jetstream/Button.vue'
-    import JetFormSection from './Jetstream/FormSection.vue'
-    import JetInput from './Jetstream/Input.vue'
-    import JetInputError from './Jetstream/InputError.vue'
-    import JetLabel from './Jetstream/Label.vue'
+import {defineComponent} from 'vue'
+import JetActionMessage from './Jetstream/ActionMessage.vue'
+import JetButton from './Jetstream/Button.vue'
+import JetFormSection from './Jetstream/FormSection.vue'
+import JetInput from './Jetstream/Input.vue'
+import JetInputError from './Jetstream/InputError.vue'
+import JetLabel from './Jetstream/Label.vue'
 
-    export default defineComponent({
-        components: {
-            JetActionMessage,
-            JetButton,
-            JetFormSection,
-            JetInput,
-            JetInputError,
-            JetLabel,
-        },
+export default defineComponent({
+    components: {
+        JetActionMessage,
+        JetButton,
+        JetFormSection,
+        JetInput,
+        JetInputError,
+        JetLabel,
+    },
 
-        data() {
-            return {
-                form: this.$inertia.form({
-                    current_password: '',
-                    password: '',
-                    password_confirmation: '',
-                }),
-            }
-        },
+    data() {
+        return {
+            form: this.$inertia.form({
+                current_password: '',
+                password: '',
+                password_confirmation: '',
+            }),
+        }
+    },
 
-        methods: {
-            updatePassword() {
-                this.form.put(Nova.request().route('admin.user-password.update'), {
-                    errorBag: 'updatePassword',
-                    preserveScroll: true,
-                    onSuccess: () => this.form.reset(),
-                    onError: () => {
-                        if (this.form.errors.password) {
-                            this.form.reset('password', 'password_confirmation')
-                            this.$refs.password.focus()
+    methods: {
+        updatePassword() {
+            Nova.request().post('/nova-vendor/user-profile-tool', this.form)
+                .then(response => {
+                    this.form.errors = {}
+                    this.form.reset()
+
+                    Nova.success('Password changed successfully')
+                })
+                .catch(reason => {
+                    if (reason.response.data && reason.response.data.errors) {
+                        let errors = {}
+                        for (const key in reason.response.data.errors) {
+                            errors[key] = reason.response.data.errors[key][0]
                         }
 
-                        if (this.form.errors.current_password) {
-                            this.form.reset('current_password')
-                            this.$refs.current_password.focus()
-                        }
+                        this.form.errors = errors
                     }
                 })
-            },
+            // this.form.post('/nova-vendor/user-profile-tool', {
+            //     errorBag: 'updatePassword',
+            //     preserveScroll: true,
+            //     onSuccess: () => this.form.reset(),
+            //     onError: () => {
+            //         if (this.form.errors.password) {
+            //             this.form.reset('password', 'password_confirmation')
+            //             this.$refs.password.focus()
+            //         }
+            //
+            //         if (this.form.errors.current_password) {
+            //             this.form.reset('current_password')
+            //             this.$refs.current_password.focus()
+            //         }
+            //     }
+            // })
         },
-    })
+    },
+})
 </script>
