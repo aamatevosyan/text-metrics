@@ -2,7 +2,38 @@
     {
         "id": 2,
         "media": [
+            "matevosyan_aa_01.pdf"
+        ]
+    },
+    {
+        "id": 3,
+        "media": [
             "matevosyan_aa_02_pages-1-4.pdf"
+            "matevosyan_aa_02.pdf"
+        ]
+    },
+    {
+        "id": 5,
+        "media": [
+            "ivanov_sv_01.pdf"
+        ]
+    },
+    {
+        "id": 6,
+        "media": [
+            "abdurasulzoda_d-01.pdf"
+        ]
+    },
+    {
+        "id": 7,
+        "media": [
+            "abdullina_od_01.pdf"
+        ]
+    },
+    {
+        "id": 8,
+        "media": [
+            "abdelhafez_m-01.pdf"
         ]
     }
 ]
