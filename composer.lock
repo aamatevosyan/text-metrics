@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3e5f9bd82abe01eef33edc6fbf58200",
+    "content-hash": "4a2b0fbd97be86f7149cb27fdac2ebe8",
     "packages": [
         {
             "name": "aamatevosyan/user-profile-tool",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/UserProfileTool",
@@ -4155,6 +4155,57 @@
                 "source": "https://github.com/maxiwheat/forceutf8/tree/master"
             },
             "time": "2022-02-16T16:08:16+00:00"
+        },
+        {
+            "name": "nemrutco/nova-global-filter",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nemrutco/nova-global-filter.git",
+                "reference": "901c46e7c91a1a55fe24fa8962db6faca11172ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nemrutco/nova-global-filter/zipball/901c46e7c91a1a55fe24fa8962db6faca11172ec",
+                "reference": "901c46e7c91a1a55fe24fa8962db6faca11172ec",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": ">=2.0",
+                "php": ">=7.1.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nemrutco\\NovaGlobalFilter\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nemrutco\\NovaGlobalFilter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "This package allows you to broadcast any of your existing Laravel Nova filters to metrics or custom cards.",
+            "keywords": [
+                "Metrics",
+                "card",
+                "dashboard",
+                "filters",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/nemrutco/nova-global-filter/issues",
+                "source": "https://github.com/nemrutco/nova-global-filter/tree/v1.2.0"
+            },
+            "time": "2021-08-08T11:30:37+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -14075,6 +14126,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "neitanod/forceutf8": 20,
+        "nemrutco/nova-global-filter": 20,
         "zanysoft/laravel-zip": 20,
         "naoray/blueprint-nova-addon": 20
     },

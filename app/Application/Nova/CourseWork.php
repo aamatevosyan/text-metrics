@@ -68,8 +68,8 @@ class CourseWork extends Resource
 
             Enum::make('Type')->attach(CourseWorkType::class),
 
-            BelongsTo::make('Student')->searchable()->withSubtitles()->sortable()->filterable(),
-            BelongsTo::make('Supervisor')->searchable()->withSubtitles()->sortable()->filterable(),
+            BelongsTo::make('Student')->withSubtitles()->sortable()->filterable(),
+            BelongsTo::make('Supervisor')->withSubtitles()->sortable()->filterable(),
 
             HasMany::make('Documents'),
 
