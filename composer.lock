@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a2b0fbd97be86f7149cb27fdac2ebe8",
+    "content-hash": "bdfbbd99a4aa3cbea2f440b194fd4537",
     "packages": [
         {
             "name": "aamatevosyan/user-profile-tool",

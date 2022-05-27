@@ -66,6 +66,16 @@ class CourseWork extends Resource
                     ->sortable()
             ]),
 
+            Number::make('Plagiat', 'plagiat_group_value')->readonly(),
+
+            Number::make('Readability', 'readability_group_value')->readonly(),
+
+            Number::make('Cohesion', 'cohesion_group_value')->readonly(),
+
+            Number::make('Font', 'font_group_value')->readonly(),
+
+            Number::make('Diversity', 'diversity_group_value')->readonly(),
+
             Enum::make('Type')->attach(CourseWorkType::class),
 
             BelongsTo::make('Student')->withSubtitles()->sortable()->filterable(),

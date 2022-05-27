@@ -120,6 +120,10 @@
             "type": "path",
             "url": "./nova-components/UserProfileTool"
         },
+        "1": {
+            "type": "path",
+            "url": "./nova-components/TextMetricFilter"
+        },
         "marshmallow-packages/nova-global-filter": {
             "type": "vcs",
             "url": "https://github.com/marshmallow-packages/nova-global-filter"
