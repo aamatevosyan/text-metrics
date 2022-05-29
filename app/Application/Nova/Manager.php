@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Admin extends Resource
+class Manager extends Resource
 {
     /**
      * The model the resource corresponds to.
@@ -57,7 +57,7 @@ class Admin extends Resource
      */
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->whereIs('admin');
+        return $query->whereIs('manager');
     }
 
     /**
@@ -148,6 +148,6 @@ class Admin extends Resource
      */
     public static function afterCreate(NovaRequest $request, Model $model)
     {
-        $model->assign('admin');
+        $model->assign('manager');
     }
 }

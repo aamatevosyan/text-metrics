@@ -48,6 +48,12 @@ class CourseWork extends Resource
         'name',
     ];
 
+    public static $with = [
+        'student',
+        'supervisor',
+        'monitoredMetricResult',
+    ];
+
     /**
      * Get the fields displayed by the resource.
      *
