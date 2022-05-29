@@ -4,10 +4,14 @@ namespace App\Nova;
 
 use App\Enums\CourseWorkStatus;
 use App\Enums\CourseWorkType;
+use App\Nova\Filters\TextMetricRange;
+use App\Nova\Filters\TextMetricSlug;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Enum;
+use Laravel\Nova\Fields\Filters\SelectFilter;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
@@ -82,6 +86,7 @@ class CourseWork extends Resource
             BelongsTo::make('Supervisor')->withSubtitles()->sortable()->filterable(),
 
             HasMany::make('Documents'),
+            HasOne::make('MonitoredMetricResult', 'monitoredMetricResult'),
 
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),

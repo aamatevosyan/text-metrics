@@ -40,7 +40,7 @@
         "suleymanozev/enum-field": "^1.0",
         "tightenco/ziggy": "^1.4",
         "tpetry/laravel-postgresql-enhanced": "^0.15",
-        "yadahan/nova-bouncer": "^2.0",
+        "yadahan/nova-bouncer": "dev-master",
         "zanysoft/laravel-zip": "dev-patch-1"
     },
     "require-dev": {

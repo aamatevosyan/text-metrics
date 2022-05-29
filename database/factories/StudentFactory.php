@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Branch;
@@ -28,7 +29,7 @@ class StudentFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'email_verified_at' => $this->faker->dateTime(),
-            'password' => Hash::make('secret'),
+            'password' => 'secret',
             'remember_token' => $this->faker->regexify('[A-Za-z0-9]{100}'),
             'profile_photo_url' => $this->faker->regexify('[A-Za-z0-9]{2048}'),
             'two_factor_secret' => $this->faker->text,

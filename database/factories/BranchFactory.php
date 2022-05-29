@@ -24,7 +24,7 @@ class BranchFactory extends Factory
     public function definition(): array
     {
         return [
-            'parent_id' => Branch::factory(),
+            'parent_id' => null,
             '_lft' => $this->faker->numberBetween(-100000, 100000),
             '_rgt' => $this->faker->numberBetween(-100000, 100000),
             'branch_type_id' => BranchType::factory(),

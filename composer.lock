@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdfbbd99a4aa3cbea2f440b194fd4537",
+    "content-hash": "56fa1c9896430bf4b6660866a012f7f1",
     "packages": [
         {
             "name": "aamatevosyan/user-profile-tool",
@@ -1203,16 +1203,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "3.1.2",
+            "version": "3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "ee0db30118f661fb166bcffbf5d82032df484697"
+                "reference": "a5ed8d58ed0c340a7c2109f587951b1c84cf6286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ee0db30118f661fb166bcffbf5d82032df484697",
-                "reference": "ee0db30118f661fb166bcffbf5d82032df484697",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a5ed8d58ed0c340a7c2109f587951b1c84cf6286",
+                "reference": "a5ed8d58ed0c340a7c2109f587951b1c84cf6286",
                 "shasum": ""
             },
             "require": {
@@ -1259,7 +1259,7 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/3.1.2"
+                "source": "https://github.com/egulias/EmailValidator/tree/3.2"
             },
             "funding": [
                 {
@@ -1267,7 +1267,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-11T09:18:27+00:00"
+            "time": "2022-05-28T22:19:18+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -6279,16 +6279,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.4",
+            "version": "v0.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "05c544b339b112226ad14803e1e5b09a61957454"
+                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/05c544b339b112226ad14803e1e5b09a61957454",
-                "reference": "05c544b339b112226ad14803e1e5b09a61957454",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/c23686f9c48ca202710dbb967df8385a952a2daf",
+                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf",
                 "shasum": ""
             },
             "require": {
@@ -6349,9 +6349,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.4"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.5"
             },
-            "time": "2022-05-06T12:49:14+00:00"
+            "time": "2022-05-27T18:03:49+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -11318,16 +11318,16 @@
         },
         {
             "name": "yadahan/nova-bouncer",
-            "version": "v2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yadahan/nova-bouncer.git",
-                "reference": "d108a5ecb9930037c91d6915fb8dded9381c57ef"
+                "reference": "85c3401e60694aeb337579bbb4b41dd2ada8cfb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yadahan/nova-bouncer/zipball/d108a5ecb9930037c91d6915fb8dded9381c57ef",
-                "reference": "d108a5ecb9930037c91d6915fb8dded9381c57ef",
+                "url": "https://api.github.com/repos/yadahan/nova-bouncer/zipball/85c3401e60694aeb337579bbb4b41dd2ada8cfb6",
+                "reference": "85c3401e60694aeb337579bbb4b41dd2ada8cfb6",
                 "shasum": ""
             },
             "require": {
@@ -11335,6 +11335,7 @@
                 "php": "^7.3|^8.0",
                 "silber/bouncer": "^1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -11366,9 +11367,9 @@
             ],
             "support": {
                 "issues": "https://github.com/yadahan/nova-bouncer/issues",
-                "source": "https://github.com/yadahan/nova-bouncer/tree/v2.0.0"
+                "source": "https://github.com/yadahan/nova-bouncer/tree/master"
             },
-            "time": "2022-05-22T04:49:28+00:00"
+            "time": "2022-05-23T23:59:11+00:00"
         },
         {
             "name": "zanysoft/laravel-zip",
@@ -13213,16 +13214,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.29.6",
+            "version": "1.29.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "d9ec9d8550dfab362167c866fbd24d4b0d4d1e02"
+                "reference": "97b8ccdb9975e3339069765417990e89474254ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/d9ec9d8550dfab362167c866fbd24d4b0d4d1e02",
-                "reference": "d9ec9d8550dfab362167c866fbd24d4b0d4d1e02",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/97b8ccdb9975e3339069765417990e89474254ee",
+                "reference": "97b8ccdb9975e3339069765417990e89474254ee",
                 "shasum": ""
             },
             "require": {
@@ -13281,7 +13282,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.29.6"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.29.7"
             },
             "funding": [
                 {
@@ -13293,7 +13294,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2022-04-15T07:18:37+00:00"
+            "time": "2022-05-27T18:45:58+00:00"
         },
         {
             "name": "spatie/macroable",
@@ -14127,6 +14128,7 @@
     "stability-flags": {
         "neitanod/forceutf8": 20,
         "nemrutco/nova-global-filter": 20,
+        "yadahan/nova-bouncer": 20,
         "zanysoft/laravel-zip": 20,
         "naoray/blueprint-nova-addon": 20
     },
