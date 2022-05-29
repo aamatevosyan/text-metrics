@@ -4,11 +4,11 @@ namespace App\Nova;
 
 use App\Enums\CourseWorkStatus;
 use App\Enums\CourseWorkType;
+use App\Nova\Fields\Enum;
 use App\Nova\Filters\TextMetricRange;
 use App\Nova\Filters\TextMetricSlug;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\Enum;
 use Laravel\Nova\Fields\Filters\SelectFilter;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;

@@ -3,11 +3,11 @@
 namespace App\Nova;
 
 use App\Enums\CourseWorkType;
+use App\Nova\Fields\Enum;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\Enum;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
