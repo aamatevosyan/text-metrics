@@ -26,7 +26,7 @@ trait HasPasswordEmails
         static::created(function (Model $model) {
             Mail::queue((new WelcomeEmail($model, $model->password))->onQueue('emails'));
             $model->password = Hash::make($model->password);
-            $model->save();
+            $model->saveQuietly();
         });
     }
 }

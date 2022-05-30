@@ -33,6 +33,7 @@ class ResetUserPassword extends Action
 
             Mail::queue((new UserPasswordUpdatedMail($model, $model->password))->onQueue('emails'));
             $model->password = Hash::make($model->password);
+            $model->saveQuietly();
         });
 
         return Action::message('Password Reset Links sent');
