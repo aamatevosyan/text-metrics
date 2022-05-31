@@ -60,3 +60,28 @@ if (!function_exists('domainFor')) {
         };
     }
 }
+
+if (!function_exists('array_average_by_key')) {
+    function array_average_by_key($arr): array
+    {
+        $sums = array();
+        $counts = array();
+
+        foreach ($arr as $k => &$v) {
+            foreach ($v as $sub_k => $sub_v) {
+                if (!array_key_exists($sub_k, $counts)) {
+                    $counts[$sub_k] = 0;
+                    $sums[$sub_k] = 0;
+                }
+                $counts[$sub_k]++;
+                $sums[$sub_k] += $sub_v ?? 0;
+            }
+        }
+
+        $avg = array();
+        foreach ($sums as $k => $v) {
+            $avg[$k] = round($v / $counts[$k], 2);
+        }
+        return $avg;
+    }
+}

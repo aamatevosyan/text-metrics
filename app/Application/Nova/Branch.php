@@ -68,6 +68,16 @@ class Branch extends Resource
             BelongsTo::make('Parent', 'parent', self::class)->nullable()->sortable()->searchable()->filterable(),
             BelongsTo::make('BranchType')->sortable()->searchable()->filterable(),
 
+            Number::make('Plagiat', 'plagiat_group_value')->readonly(),
+
+            Number::make('Readability', 'readability_group_value')->readonly(),
+
+            Number::make('Cohesion', 'cohesion_group_value')->readonly(),
+
+            Number::make('Font', 'font_group_value')->readonly(),
+
+            Number::make('Diversity', 'diversity_group_value')->readonly(),
+
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
         ];

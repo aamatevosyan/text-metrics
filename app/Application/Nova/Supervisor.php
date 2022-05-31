@@ -6,6 +6,7 @@ use App\Nova\Actions\ResetUserPassword;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 
@@ -68,6 +69,16 @@ class Supervisor extends Resource
                 ->sortable(),
 
             BelongsTo::make('Branch')->sortable()->filterable(),
+
+            Number::make('Plagiat', 'plagiat_group_value')->readonly(),
+
+            Number::make('Readability', 'readability_group_value')->readonly(),
+
+            Number::make('Cohesion', 'cohesion_group_value')->readonly(),
+
+            Number::make('Font', 'font_group_value')->readonly(),
+
+            Number::make('Diversity', 'diversity_group_value')->readonly(),
 
             Date::make('Created at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
             Date::make('Updated at')->hideWhenCreating()->hideWhenUpdating()->sortable()->filterable(),
